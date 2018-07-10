@@ -709,7 +709,7 @@ PROC sort(\<acute>array, \<acute>lo, \<acute>hi, \<acute>ret)
    apply (simp only:elem_larger_than_bound_def)
 (* finish {inv} c {inv} *)
   apply (intro conjI impI)
-                   apply (simp_all add:elem_larger_than_bound_def elem_inv_def elem_bigger_than_next_2_def elem_bigger_than_next_def)
+     apply (simp_all add:elem_larger_than_bound_def elem_inv_def elem_bigger_than_next_2_def elem_bigger_than_next_def)
   apply (subgoal_tac "length a \<noteq> 0")
    apply clarsimp
   apply clarsimp

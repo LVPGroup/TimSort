@@ -395,9 +395,9 @@ lemma (in merge_hi_impl) merge_hi_spec:
 CATCH
 Skip
 END"
-        in HoarePartial.annotateI)
-   apply vcg
-        apply (simp_all)
+        in HoarePartial.annotateI) 
+   apply vcg 
+    apply (simp_all)
     apply (auto simp add:Suc_diff_Suc)
   done 
 

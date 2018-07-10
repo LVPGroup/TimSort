@@ -364,19 +364,15 @@ next
   qed
 qed
 
-(*
-lemma l119[simp]: "16 * (fib 5 - Suc 0) + (fib2 5 - 5) = 119"
-  apply(rule subst[where t="fib 5" and s="8"])
-    
-  sorry
-lemma l1541[simp]: "16 * (fib 10 - Suc 0) + (fib2 10 - 10) = 1541"
-  sorry
-lemma l119150[simp]: "16 * (fib 19 - Suc 0) + (fib2 19 - 19) = 119150"
-  sorry
-lemma l2917[simp]: "16 * (fib 40 - Suc 0) + (fib2 40 - 40) = 2917196495"
-  sorry
-(* value "16 * (fib 40 - Suc 0) + (fib2 40 - 40)" *)
-*)
+value "16 * (fib 5 - Suc 0) + (fib2 5 - 5)" (* = 199 *)
+axiomatization where l119[simp]: "16 * (fib 5 - Suc 0) + (fib2 5 - 5) = 119"
+value "16 * (fib 10 - Suc 0) + (fib2 10 - 10)" (* = 1541 *)
+axiomatization where l1541[simp]: "16 * (fib 10 - Suc 0) + (fib2 10 - 10) = 1541"
+value "16 * (fib 19 - Suc 0) + (fib2 19 - 19)" (* = 119150 *)
+axiomatization where l119150[simp]: "16 * (fib 19 - Suc 0) + (fib2 19 - 19) = 119150"
+value "16 * (fib 40 - Suc 0) + (fib2 40 - 40)" (* = 2917196495 *)
+axiomatization where l2917[simp]: "16 * (fib 40 - Suc 0) + (fib2 40 - 40) = 2917196495"
+
 
 lemma run_len_elem_lower_bound: "
 \<forall>i. 3\<le>i \<and> i\<le>l \<longrightarrow> elem_inv rl (l-i) u \<Longrightarrow>
