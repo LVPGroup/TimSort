@@ -1,0 +1,1392 @@
+%
+\begin{isabellebody}%
+\setisabellecontext{TimSortLemma}%
+%
+\isadelimtheory
+%
+\endisadelimtheory
+%
+\isatagtheory
+\isacommand{theory}\isamarkupfalse%
+\ TimSortLemma\isanewline
+\ \ \isakeyword{imports}\ \ Main\ {\isachardoublequoteopen}{\isachartilde}{\isachartilde}{\isacharslash}src{\isacharslash}HOL{\isacharslash}Library{\isacharslash}Code{\isacharunderscore}Target{\isacharunderscore}Numeral{\isachardoublequoteclose}\ \isanewline
+\isakeyword{begin}%
+\endisatagtheory
+{\isafoldtheory}%
+%
+\isadelimtheory
+\isanewline
+%
+\endisadelimtheory
+\isacommand{definition}\isamarkupfalse%
+\ list{\isacharunderscore}copy\ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}{\isacharprime}a\ list\ {\isasymRightarrow}\ nat\ {\isasymRightarrow}\ {\isacharprime}a\ list\ \ {\isasymRightarrow}\ nat\ {\isasymRightarrow}\ nat\ {\isasymRightarrow}\ {\isacharprime}a\ list{\isachardoublequoteclose}\ \isakeyword{where}\isanewline
+{\isachardoublequoteopen}list{\isacharunderscore}copy\ xs\ n\ ys\ m\ l\ {\isacharequal}\ {\isacharparenleft}take\ n\ xs{\isacharparenright}\ {\isacharat}\ {\isacharparenleft}take\ l\ {\isacharparenleft}drop\ m\ ys{\isacharparenright}{\isacharparenright}\ {\isacharat}\ {\isacharparenleft}drop\ {\isacharparenleft}n{\isacharplus}l{\isacharparenright}\ xs{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{value}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isacharbrackleft}{\isadigit{1}}{\isacharcomma}{\isadigit{2}}{\isacharcomma}{\isadigit{3}}{\isacharcomma}{\isadigit{4}}{\isacharcomma}{\isadigit{5}}{\isacharcolon}{\isacharcolon}int{\isacharbrackright}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{value}\isamarkupfalse%
+\ {\isachardoublequoteopen}let\ a\ {\isacharequal}\ {\isacharbrackleft}{\isadigit{1}}{\isacharcolon}{\isacharcolon}nat{\isacharcomma}{\isadigit{2}}{\isacharcomma}{\isadigit{3}}{\isacharcomma}{\isadigit{4}}{\isacharcomma}{\isadigit{5}}{\isacharbrackright}\ in\ list{\isacharunderscore}copy\ a\ {\isadigit{1}}\ a\ {\isadigit{0}}\ {\isadigit{5}}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ list{\isacharunderscore}copy{\isacharunderscore}front{\isacharcolon}{\isachardoublequoteopen}n{\isacharless}length\ xs\ {\isasymand}\ m{\isacharless}length\ ys\ {\isasymand}\ {\isacharparenleft}m{\isacharplus}l{\isacharparenright}{\isasymle}length\ ys\ {\isasymLongrightarrow}\ take\ n\ {\isacharparenleft}list{\isacharunderscore}copy\ xs\ n\ ys\ m\ l{\isacharparenright}\ {\isacharequal}\ take\ n\ xs{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}simp\ add{\isacharcolon}list{\isacharunderscore}copy{\isacharunderscore}def{\isacharparenright}%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ list{\isacharunderscore}copy{\isacharunderscore}middle{\isacharcolon}{\isachardoublequoteopen}n{\isacharless}length\ xs\ {\isacharampersand}\ m{\isacharless}length\ ys{\isacharampersand}\ {\isacharparenleft}m{\isacharplus}l{\isacharparenright}{\isasymle}length\ ys\ {\isasymLongrightarrow}\ \isanewline
+\ \ \ \ \ \ \ \ \ \ take\ l\ {\isacharparenleft}drop\ n\ {\isacharparenleft}list{\isacharunderscore}copy\ xs\ n\ ys\ m\ l{\isacharparenright}{\isacharparenright}\ {\isacharequal}\ take\ l\ {\isacharparenleft}drop\ m\ ys{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}auto\ simp\ add{\isacharcolon}list{\isacharunderscore}copy{\isacharunderscore}def{\isacharparenright}%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ list{\isacharunderscore}copy{\isacharunderscore}end{\isacharcolon}{\isachardoublequoteopen}n{\isacharless}length\ xs\ {\isacharampersand}\ m{\isacharless}length\ ys{\isacharampersand}\ {\isacharparenleft}m{\isacharplus}l{\isacharparenright}{\isasymle}length\ ys\ {\isasymLongrightarrow}\ drop\ {\isacharparenleft}n{\isacharplus}l{\isacharparenright}\ {\isacharparenleft}list{\isacharunderscore}copy\ xs\ n\ ys\ m\ l{\isacharparenright}\ {\isacharequal}\ drop\ {\isacharparenleft}n{\isacharplus}l{\isacharparenright}\ xs{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}auto\ simp\ add{\isacharcolon}list{\isacharunderscore}copy{\isacharunderscore}def{\isacharparenright}\isanewline
+\ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}metis\ diff{\isacharunderscore}add{\isacharunderscore}inverse{\isadigit{2}}\ le{\isacharunderscore}add{\isacharunderscore}diff{\isacharunderscore}inverse\ less{\isacharunderscore}imp{\isacharunderscore}le{\isacharunderscore}nat\ min{\isachardot}absorb{\isadigit{2}}\ nat{\isacharunderscore}add{\isacharunderscore}left{\isacharunderscore}cancel{\isacharunderscore}le{\isacharparenright}\isanewline
+\ \ \isacommand{done}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ list{\isacharunderscore}copy{\isacharunderscore}len{\isacharbrackleft}simp{\isacharbrackright}{\isacharcolon}{\isachardoublequoteopen}{\isacharparenleft}m{\isacharplus}l{\isacharparenright}{\isasymle}length\ ys\ {\isasymLongrightarrow}\ {\isacharparenleft}n{\isacharplus}l{\isacharparenright}{\isasymle}length\ xs\ {\isasymLongrightarrow}\ {\isacharparenleft}length\ {\isacharparenleft}list{\isacharunderscore}copy\ xs\ n\ ys\ m\ l{\isacharparenright}\ {\isacharequal}\ length\ xs{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}auto\ simp\ add{\isacharcolon}list{\isacharunderscore}copy{\isacharunderscore}def{\isacharparenright}%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ list{\isacharunderscore}copy{\isacharunderscore}zero{\isacharcolon}{\isachardoublequoteopen}list{\isacharunderscore}copy\ xs\ n\ ys\ m\ {\isadigit{0}}\ {\isacharequal}\ xs{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}simp\ add{\isacharcolon}list{\isacharunderscore}copy{\isacharunderscore}def{\isacharparenright}%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{definition}\isamarkupfalse%
+\ sorted{\isacharunderscore}in{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}int\ list\ {\isasymRightarrow}\ nat\ {\isasymRightarrow}\ nat\ {\isasymRightarrow}\ bool{\isachardoublequoteclose}\ \isakeyword{where}\isanewline
+{\isachardoublequoteopen}sorted{\isacharunderscore}in\ xs\ lo\ hi\ {\isacharequal}\ {\isacharparenleft}{\isasymforall}i{\isachardot}\ {\isacharparenleft}i{\isasymge}lo{\isasymand}i{\isacharless}hi{\isacharparenright}{\isasymlongrightarrow}{\isacharparenleft}xs{\isacharbang}i{\isasymle}xs{\isacharbang}{\isacharparenleft}i{\isacharplus}{\isadigit{1}}{\isacharparenright}{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{thm}\isamarkupfalse%
+\ allE\isanewline
+\isacommand{value}\isamarkupfalse%
+\ {\isachardoublequoteopen}sorted\ {\isacharbrackleft}{\isadigit{0}}{\isacharcomma}{\isacharminus}{\isadigit{1}}{\isacharcolon}{\isacharcolon}int{\isacharbrackright}{\isachardoublequoteclose}\isanewline
+\isacommand{value}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isacharparenleft}{\isacharbrackleft}{\isadigit{0}}{\isacharcolon}{\isacharcolon}int{\isacharcomma}{\isacharminus}{\isadigit{1}}{\isacharbrackright}{\isacharbang}{\isadigit{0}}{\isacharparenright}\ {\isasymle}{\isacharparenleft}{\isacharbrackleft}{\isadigit{0}}{\isacharcolon}{\isacharcolon}int{\isacharcomma}{\isacharminus}{\isadigit{1}}{\isacharbrackright}{\isacharbang}{\isadigit{1}}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ sorted{\isacharunderscore}in{\isacharunderscore}one{\isacharunderscore}more{\isacharcolon}\ {\isachardoublequoteopen}sorted{\isacharunderscore}in\ xs\ lo\ hi\ {\isasymLongrightarrow}\ sorted{\isacharunderscore}in\ {\isacharparenleft}x{\isacharhash}xs{\isacharparenright}\ {\isacharparenleft}Suc\ lo{\isacharparenright}\ {\isacharparenleft}Suc\ hi{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}auto\ simp\ add{\isacharcolon}sorted{\isacharunderscore}in{\isacharunderscore}def{\isacharparenright}\isanewline
+\ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}erule{\isacharunderscore}tac\ {\isacharquery}x\ {\isacharequal}\ {\isachardoublequoteopen}i{\isacharminus}{\isadigit{1}}{\isachardoublequoteclose}\ \isakeyword{in}\ allE{\isacharparenright}\isanewline
+\ \ \isacommand{apply}\isamarkupfalse%
+\ auto\isanewline
+\ \ \isacommand{done}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ sorted{\isacharunderscore}in{\isacharunderscore}conca{\isacharcolon}{\isachardoublequoteopen}sorted{\isacharunderscore}in\ xs\ lo\ mid\ {\isasymand}\ sorted{\isacharunderscore}in\ xs\ mid\ hi\ {\isasymLongrightarrow}\ sorted{\isacharunderscore}in\ xs\ lo\ hi{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}auto\ simp\ add{\isacharcolon}sorted{\isacharunderscore}in{\isacharunderscore}def{\isacharparenright}\isanewline
+\ \ \isacommand{using}\isamarkupfalse%
+\ not{\isacharunderscore}less\ \isacommand{by}\isamarkupfalse%
+\ blast%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ sorted{\isacharunderscore}in{\isacharunderscore}hi{\isacharcolon}{\isachardoublequoteopen}sorted{\isacharunderscore}in\ xs\ lo\ hi\ {\isasymand}\ xs{\isacharbang}hi{\isacharless}xs{\isacharbang}{\isacharparenleft}hi{\isacharplus}{\isadigit{1}}{\isacharparenright}\ {\isasymLongrightarrow}\ sorted{\isacharunderscore}in\ xs\ lo\ {\isacharparenleft}hi{\isacharplus}{\isadigit{1}}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}auto\ simp\ add{\isacharcolon}sorted{\isacharunderscore}in{\isacharunderscore}def{\isacharparenright}\isanewline
+\ \ \isacommand{using}\isamarkupfalse%
+\ less{\isacharunderscore}antisym\ \isacommand{by}\isamarkupfalse%
+\ fastforce%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ sorted{\isacharunderscore}in{\isacharunderscore}pick{\isacharunderscore}two{\isacharcolon}{\isachardoublequoteopen}sorted{\isacharunderscore}in\ xs\ lo\ hi\ {\isasymand}\ i{\isasymge}lo\ {\isasymand}\ j{\isasymle}hi\ {\isasymand}\ i{\isasymle}j\ {\isasymLongrightarrow}\ xs{\isacharbang}i\ {\isasymle}\ xs{\isacharbang}j{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}simp\ add{\isacharcolon}sorted{\isacharunderscore}in{\isacharunderscore}def{\isacharparenright}\isanewline
+\ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}induct\ j\ arbitrary{\isacharcolon}xs\ lo\ hi\ i{\isacharparenright}\isanewline
+\ \ \ \isacommand{apply}\isamarkupfalse%
+\ simp\isanewline
+\ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}case{\isacharunderscore}tac\ {\isachardoublequoteopen}i{\isacharequal}Suc\ j{\isachardoublequoteclose}{\isacharparenright}\isanewline
+\ \ \ \isacommand{apply}\isamarkupfalse%
+\ simp\isanewline
+\ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}subgoal{\isacharunderscore}tac\ {\isachardoublequoteopen}xs\ {\isacharbang}\ i\ {\isasymle}\ xs\ {\isacharbang}\ j{\isachardoublequoteclose}{\isacharparenright}\isanewline
+\ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}meson\ Suc{\isacharunderscore}le{\isacharunderscore}lessD\ dual{\isacharunderscore}order{\isachardot}trans\ le{\isacharunderscore}SucE{\isacharparenright}\isanewline
+\ \ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}meson\ Suc{\isacharunderscore}leD\ le{\isacharunderscore}SucE{\isacharparenright}%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ le{\isacharunderscore}half{\isacharcolon}{\isachardoublequoteopen}a{\isacharless}{\isacharparenleft}b{\isacharcolon}{\isacharcolon}nat{\isacharparenright}\ {\isasymLongrightarrow}\ {\isacharparenleft}a{\isacharplus}b{\isacharparenright}\ div\ {\isadigit{2}}\ {\isacharless}\ b{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\isatagproof
+\isacommand{proof}\isamarkupfalse%
+\ {\isacharminus}\isanewline
+\ \ \isacommand{assume}\isamarkupfalse%
+\ le{\isacharcolon}{\isachardoublequoteopen}a{\isacharless}b{\isachardoublequoteclose}\isanewline
+\ \ \isacommand{from}\isamarkupfalse%
+\ this\ \isacommand{have}\isamarkupfalse%
+\ {\isachardoublequoteopen}a{\isacharplus}b{\isacharless}b{\isacharplus}b{\isachardoublequoteclose}\ \isacommand{by}\isamarkupfalse%
+\ simp\isanewline
+\ \ \isacommand{from}\isamarkupfalse%
+\ this\ \isacommand{have}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isacharparenleft}a{\isacharplus}b{\isacharparenright}\ div\ {\isadigit{2}}\ {\isacharless}\ {\isacharparenleft}b{\isacharplus}b{\isacharparenright}\ div\ {\isadigit{2}}{\isachardoublequoteclose}\isanewline
+\ \ \ \ \isacommand{using}\isamarkupfalse%
+\ div{\isacharunderscore}le{\isacharunderscore}mono\ \isacommand{by}\isamarkupfalse%
+\ auto\isanewline
+\ \ \isacommand{from}\isamarkupfalse%
+\ this\ \isacommand{show}\isamarkupfalse%
+\ {\isacharquery}thesis\isanewline
+\ \ \ \ \isacommand{by}\isamarkupfalse%
+\ linarith\isanewline
+\isacommand{qed}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ conca{\isacharunderscore}nth{\isacharunderscore}a{\isacharbrackleft}simp{\isacharbrackright}{\isacharcolon}{\isachardoublequoteopen}\ i\ {\isacharless}\ length\ xs\ {\isasymLongrightarrow}\ {\isacharparenleft}xs{\isacharat}ys{\isacharparenright}{\isacharbang}i\ {\isacharequal}\ xs{\isacharbang}i{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ nth{\isacharunderscore}take{\isacharbrackleft}of\ i\ {\isachardoublequoteopen}length\ xs{\isachardoublequoteclose}\ {\isachardoublequoteopen}xs{\isacharat}ys{\isachardoublequoteclose}{\isacharbrackright}\ \isacommand{by}\isamarkupfalse%
+\ auto%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isacommand{lemma}\isamarkupfalse%
+\ conca{\isacharunderscore}nth{\isacharunderscore}b{\isacharbrackleft}simp{\isacharbrackright}{\isacharcolon}{\isachardoublequoteopen}\ i{\isasymge}\ length\ xs\ {\isasymLongrightarrow}\ {\isacharparenleft}xs{\isacharat}ys{\isacharparenright}{\isacharbang}i\ {\isacharequal}\ ys{\isacharbang}{\isacharparenleft}i{\isacharminus}length\ xs{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}simp\ add{\isacharcolon}\ nth{\isacharunderscore}append{\isacharparenright}%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isacommand{lemma}\isamarkupfalse%
+\ list{\isacharunderscore}copy{\isacharunderscore}i{\isacharunderscore}front{\isacharbrackleft}simp{\isacharbrackright}{\isacharcolon}{\isachardoublequoteopen}{\isacharparenleft}n{\isacharplus}l{\isacharparenright}{\isasymle}length\ xs\ {\isasymLongrightarrow}\ {\isacharparenleft}m{\isacharplus}l{\isacharparenright}{\isasymle}length\ ys\ {\isasymLongrightarrow}\ i{\isacharless}n\ {\isasymLongrightarrow}\ {\isacharparenleft}list{\isacharunderscore}copy\ xs\ n\ ys\ m\ l{\isacharparenright}{\isacharbang}i\ {\isacharequal}\ xs{\isacharbang}i{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}auto\ simp\ add{\isacharcolon}list{\isacharunderscore}copy{\isacharunderscore}def{\isacharparenright}\isanewline
+\ \ \isacommand{done}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isacommand{lemma}\isamarkupfalse%
+\ list{\isacharunderscore}copy{\isacharunderscore}i{\isacharunderscore}mid{\isacharbrackleft}simp{\isacharbrackright}{\isacharcolon}{\isachardoublequoteopen}{\isacharparenleft}n{\isacharplus}l{\isacharparenright}{\isasymle}length\ xs\ {\isasymLongrightarrow}\ {\isacharparenleft}m{\isacharplus}l{\isacharparenright}{\isasymle}length\ ys\ {\isasymLongrightarrow}\ i{\isasymge}n{\isasymand}i{\isacharless}{\isacharparenleft}n{\isacharplus}l{\isacharparenright}\ {\isasymLongrightarrow}\ {\isacharparenleft}list{\isacharunderscore}copy\ xs\ n\ ys\ m\ l{\isacharparenright}{\isacharbang}i\ {\isacharequal}\ ys{\isacharbang}{\isacharparenleft}i{\isacharminus}n{\isacharplus}m{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}auto\ simp\ add{\isacharcolon}list{\isacharunderscore}copy{\isacharunderscore}def{\isacharparenright}\isanewline
+\ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}subgoal{\isacharunderscore}tac\ {\isachardoublequoteopen}min\ {\isacharparenleft}length\ xs{\isacharparenright}\ n\ {\isacharequal}\ n{\isachardoublequoteclose}{\isacharparenright}\isanewline
+\ \ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}simp{\isacharparenright}\isanewline
+\ \ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}subgoal{\isacharunderscore}tac\ {\isachardoublequoteopen}i{\isacharminus}n\ {\isacharless}\ l{\isachardoublequoteclose}{\isacharparenright}\isanewline
+\ \ \ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}auto\ simp\ add{\isacharcolon}add{\isachardot}commute{\isacharparenright}\isanewline
+\ \ \isacommand{done}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\ \ \isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ list{\isacharunderscore}copy{\isacharunderscore}i{\isacharunderscore}end{\isacharbrackleft}simp{\isacharbrackright}{\isacharcolon}{\isachardoublequoteopen}{\isacharparenleft}n{\isacharplus}l{\isacharparenright}{\isasymle}length\ xs\ {\isasymLongrightarrow}\ {\isacharparenleft}m{\isacharplus}l{\isacharparenright}{\isasymle}length\ ys\ {\isasymLongrightarrow}\ i{\isasymge}n{\isacharplus}l{\isasymand}i{\isacharless}length\ xs\ {\isasymLongrightarrow}\ {\isacharparenleft}list{\isacharunderscore}copy\ xs\ n\ ys\ m\ l{\isacharparenright}{\isacharbang}i\ {\isacharequal}\ xs{\isacharbang}i{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}auto\ simp\ add{\isacharcolon}list{\isacharunderscore}copy{\isacharunderscore}def{\isacharparenright}\isanewline
+\ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}subgoal{\isacharunderscore}tac\ {\isachardoublequoteopen}min\ {\isacharparenleft}length\ xs{\isacharparenright}\ n\ {\isacharplus}\ min\ {\isacharparenleft}length\ ys\ {\isacharminus}\ m{\isacharparenright}\ l\ {\isacharequal}\ n{\isacharplus}l{\isachardoublequoteclose}{\isacharparenright}\isanewline
+\ \ \ \isacommand{apply}\isamarkupfalse%
+\ auto\isanewline
+\ \ \isacommand{done}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isacommand{lemma}\isamarkupfalse%
+\ length{\isacharunderscore}take{\isacharunderscore}one{\isacharcolon}{\isachardoublequoteopen}n{\isasymle}length\ xs\ {\isasymLongrightarrow}length\ {\isacharparenleft}take\ n\ xs{\isacharparenright}\ {\isacharequal}\ \ n{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ auto%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{definition}\isamarkupfalse%
+\ elem{\isacharunderscore}bigger{\isacharunderscore}than{\isacharunderscore}next{\isacharunderscore}{\isadigit{2}}{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}nat\ list\ {\isasymRightarrow}\ nat\ {\isasymRightarrow}\ bool{\isachardoublequoteclose}\isanewline
+\ \ \isakeyword{where}\ {\isachardoublequoteopen}elem{\isacharunderscore}bigger{\isacharunderscore}than{\isacharunderscore}next{\isacharunderscore}{\isadigit{2}}\ array\ index\ {\isasymequiv}\isanewline
+\ \ \ \ \ \ {\isacharparenleft}index{\isacharplus}{\isadigit{2}}{\isacharless}{\isacharparenleft}size\ array{\isacharparenright}{\isacharparenright}\ {\isasymlongrightarrow}\isanewline
+\ \ \ \ \ \ {\isacharparenleft}array{\isacharbang}index{\isacharparenright}\ {\isachargreater}\ {\isacharparenleft}array{\isacharbang}{\isacharparenleft}index{\isacharplus}{\isadigit{1}}{\isacharparenright}{\isacharparenright}\ {\isacharplus}\ {\isacharparenleft}array{\isacharbang}{\isacharparenleft}index{\isacharplus}{\isadigit{2}}{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{definition}\isamarkupfalse%
+\ elem{\isacharunderscore}bigger{\isacharunderscore}than{\isacharunderscore}next{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}nat\ list\ {\isasymRightarrow}\ nat\ {\isasymRightarrow}\ bool{\isachardoublequoteclose}\isanewline
+\ \ \isakeyword{where}\ {\isachardoublequoteopen}elem{\isacharunderscore}bigger{\isacharunderscore}than{\isacharunderscore}next\ array\ index\ {\isasymequiv}\isanewline
+\ \ \ \ \ \ {\isacharparenleft}index{\isacharplus}{\isadigit{1}}{\isacharless}{\isacharparenleft}size\ array{\isacharparenright}{\isacharparenright}\ {\isasymlongrightarrow}\isanewline
+\ \ \ \ \ \ {\isacharparenleft}array{\isacharbang}index{\isacharparenright}\ {\isachargreater}\ {\isacharparenleft}array{\isacharbang}{\isacharparenleft}index{\isacharplus}{\isadigit{1}}{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{definition}\isamarkupfalse%
+\ elem{\isacharunderscore}larger{\isacharunderscore}than{\isacharunderscore}bound{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}nat\ list\ {\isasymRightarrow}\ nat\ {\isasymRightarrow}\ nat\ {\isasymRightarrow}\ bool{\isachardoublequoteclose}\isanewline
+\ \ \isakeyword{where}\ {\isachardoublequoteopen}elem{\isacharunderscore}larger{\isacharunderscore}than{\isacharunderscore}bound\ array\ index\ bound\ {\isasymequiv}\isanewline
+\ \ \ \ \ \ {\isacharparenleft}index{\isacharless}{\isacharparenleft}size\ array{\isacharparenright}{\isacharparenright}\ {\isasymlongrightarrow}\ {\isacharparenleft}array{\isacharbang}index{\isacharparenright}\ {\isasymge}\ bound{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{definition}\isamarkupfalse%
+\ elem{\isacharunderscore}inv{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}nat\ list\ {\isasymRightarrow}\ nat\ {\isasymRightarrow}\ nat\ {\isasymRightarrow}\ bool{\isachardoublequoteclose}\isanewline
+\ \ \isakeyword{where}\ {\isachardoublequoteopen}elem{\isacharunderscore}inv\ array\ index\ bound\ {\isasymequiv}\isanewline
+\ \ \ \ \ \ {\isacharparenleft}elem{\isacharunderscore}bigger{\isacharunderscore}than{\isacharunderscore}next{\isacharunderscore}{\isadigit{2}}\ array\ index{\isacharparenright}\ {\isasymand}\isanewline
+\ \ \ \ \ \ {\isacharparenleft}elem{\isacharunderscore}bigger{\isacharunderscore}than{\isacharunderscore}next\ array\ index{\isacharparenright}\ {\isasymand}\isanewline
+\ \ \ \ \ \ {\isacharparenleft}elem{\isacharunderscore}larger{\isacharunderscore}than{\isacharunderscore}bound\ array\ index\ bound{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isanewline
+\isacommand{value}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isacharparenleft}{\isadigit{1}}{\isacharcolon}{\isacharcolon}int{\isacharparenright}{\isacharhash}{\isadigit{2}}{\isacharhash}{\isadigit{3}}{\isacharhash}{\isacharbrackleft}{\isacharbrackright}{\isachardoublequoteclose}\isanewline
+\isacommand{value}\isamarkupfalse%
+\ {\isachardoublequoteopen}last\ {\isacharparenleft}{\isacharparenleft}{\isadigit{1}}{\isacharcolon}{\isacharcolon}int{\isacharparenright}{\isacharhash}{\isadigit{2}}{\isacharhash}{\isadigit{3}}{\isacharhash}{\isacharbrackleft}{\isacharbrackright}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\isacommand{value}\isamarkupfalse%
+\ {\isachardoublequoteopen}butlast\ {\isacharparenleft}{\isacharparenleft}{\isadigit{1}}{\isacharcolon}{\isacharcolon}int{\isacharparenright}{\isacharhash}{\isadigit{2}}{\isacharhash}{\isadigit{3}}{\isacharhash}{\isacharbrackleft}{\isacharbrackright}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{value}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isacharparenleft}{\isacharparenleft}{\isadigit{1}}{\isacharcolon}{\isacharcolon}int{\isacharparenright}{\isacharhash}{\isadigit{2}}{\isacharhash}{\isadigit{3}}{\isacharhash}{\isacharbrackleft}{\isacharbrackright}{\isacharparenright}{\isacharbang}{\isadigit{2}}{\isachardoublequoteclose}\isanewline
+\isacommand{value}\isamarkupfalse%
+\ {\isachardoublequoteopen}take\ {\isadigit{2}}\ {\isacharparenleft}{\isacharparenleft}{\isadigit{1}}{\isacharcolon}{\isacharcolon}int{\isacharparenright}{\isacharhash}{\isadigit{2}}{\isacharhash}{\isadigit{3}}{\isacharhash}{\isacharbrackleft}{\isacharbrackright}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\isacommand{value}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isacharparenleft}{\isacharparenleft}{\isadigit{1}}{\isacharcolon}{\isacharcolon}int{\isacharparenright}{\isacharhash}{\isadigit{2}}{\isacharhash}{\isadigit{3}}{\isacharhash}{\isacharbrackleft}{\isacharbrackright}{\isacharparenright}{\isacharbrackleft}{\isadigit{2}}{\isacharcolon}{\isacharequal}{\isadigit{1}}{\isadigit{0}}{\isacharbrackright}{\isachardoublequoteclose}\isanewline
+\isacommand{value}\isamarkupfalse%
+\ {\isachardoublequoteopen}replicate\ {\isadigit{5}}\ {\isacharparenleft}{\isadigit{6}}{\isacharcolon}{\isacharcolon}nat{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\isacommand{value}\isamarkupfalse%
+\ {\isachardoublequoteopen}if\ {\isacharparenleft}{\isadigit{3}}{\isacharcolon}{\isacharcolon}nat{\isacharparenright}{\isachargreater}{\isadigit{4}}\ then\ {\isadigit{5}}{\isacharcolon}{\isacharcolon}nat\ else\ {\isacharparenleft}if\ {\isacharparenleft}{\isadigit{3}}{\isacharcolon}{\isacharcolon}nat{\isacharparenright}{\isachargreater}{\isadigit{4}}\ then\ {\isadigit{7}}\ else\ {\isadigit{8}}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{value}\isamarkupfalse%
+\ {\isachardoublequoteopen}if\ {\isadigit{1}}{\isadigit{5}}{\isadigit{0}}\ {\isacharless}\ {\isacharparenleft}{\isadigit{1}}{\isadigit{2}}{\isadigit{0}}{\isacharcolon}{\isacharcolon}nat{\isacharparenright}\ then\ {\isacharparenleft}{\isadigit{4}}{\isacharcolon}{\isacharcolon}nat{\isacharparenright}\ else\ \isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ {\isacharparenleft}if\ {\isacharparenleft}{\isadigit{1}}{\isadigit{5}}{\isadigit{0}}{\isacharcolon}{\isacharcolon}nat{\isacharparenright}\ {\isacharless}\ {\isadigit{1}}{\isadigit{5}}{\isadigit{4}}{\isadigit{2}}\ then\ {\isacharparenleft}{\isadigit{9}}{\isacharcolon}{\isacharcolon}nat{\isacharparenright}\ else\isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ {\isacharparenleft}if\ {\isacharparenleft}{\isadigit{1}}{\isadigit{5}}{\isadigit{0}}{\isacharcolon}{\isacharcolon}nat{\isacharparenright}\ {\isacharless}\ {\isadigit{1}}{\isadigit{1}}{\isadigit{9}}{\isadigit{1}}{\isadigit{5}}{\isadigit{1}}\ then\ {\isacharparenleft}{\isadigit{1}}{\isadigit{8}}{\isacharcolon}{\isacharcolon}nat{\isacharparenright}\ else\ {\isacharparenleft}{\isadigit{3}}{\isadigit{9}}{\isacharcolon}{\isacharcolon}nat{\isacharparenright}{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ suc{\isacharunderscore}simp{\isacharcolon}{\isachardoublequoteopen}Suc\ n\ {\isacharequal}\ n{\isacharplus}{\isadigit{1}}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ simp%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{primrec}\isamarkupfalse%
+\ sum\ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}nat\ list\ {\isasymRightarrow}\ nat{\isachardoublequoteclose}\isanewline
+\ \ \isakeyword{where}\isanewline
+{\isachardoublequoteopen}sum\ {\isacharbrackleft}{\isacharbrackright}\ {\isacharequal}\ {\isadigit{0}}{\isachardoublequoteclose}\ {\isacharbar}\isanewline
+{\isachardoublequoteopen}sum\ {\isacharparenleft}x{\isacharhash}xs{\isacharparenright}\ {\isacharequal}\ x{\isacharplus}{\isacharparenleft}sum\ xs{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{primrec}\isamarkupfalse%
+\ sumn\ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}nat\ list\ {\isasymRightarrow}\ nat\ {\isasymRightarrow}\ nat{\isachardoublequoteclose}\isanewline
+\ \ \isakeyword{where}\isanewline
+{\isachardoublequoteopen}sumn\ a\ {\isadigit{0}}\ {\isacharequal}\ {\isadigit{0}}{\isachardoublequoteclose}\ {\isacharbar}\isanewline
+{\isachardoublequoteopen}sumn\ a\ {\isacharparenleft}Suc\ n{\isacharparenright}\ {\isacharequal}\ a{\isacharbang}n\ {\isacharplus}\ {\isacharparenleft}sumn\ a\ n{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{value}\isamarkupfalse%
+\ {\isachardoublequoteopen}sumn\ {\isacharparenleft}{\isadigit{1}}{\isacharhash}{\isadigit{2}}{\isacharhash}{\isadigit{3}}{\isacharhash}{\isacharbrackleft}{\isacharbrackright}{\isacharparenright}\ {\isadigit{2}}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{fun}\isamarkupfalse%
+\ fib{\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}nat\ {\isasymRightarrow}\ nat{\isachardoublequoteclose}\ \isakeyword{where}\isanewline
+{\isachardoublequoteopen}fib\ {\isadigit{0}}\ {\isacharequal}\ {\isadigit{1}}{\isachardoublequoteclose}\ {\isacharbar}\isanewline
+{\isachardoublequoteopen}fib\ {\isacharparenleft}Suc\ {\isadigit{0}}{\isacharparenright}\ {\isacharequal}\ {\isadigit{1}}{\isachardoublequoteclose}\ {\isacharbar}\isanewline
+{\isachardoublequoteopen}fib\ {\isacharparenleft}Suc\ {\isacharparenleft}Suc\ n{\isacharparenright}{\isacharparenright}\ {\isacharequal}\ fib{\isacharparenleft}n{\isacharparenright}\ {\isacharplus}\ fib{\isacharparenleft}Suc\ n{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isanewline
+\isacommand{fun}\isamarkupfalse%
+\ fib{\isadigit{2}}{\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}nat\ {\isasymRightarrow}\ nat{\isachardoublequoteclose}\ \isakeyword{where}\isanewline
+{\isachardoublequoteopen}fib{\isadigit{2}}\ {\isadigit{0}}\ {\isacharequal}\ {\isadigit{0}}{\isachardoublequoteclose}\ {\isacharbar}\isanewline
+{\isachardoublequoteopen}fib{\isadigit{2}}\ {\isacharparenleft}Suc\ {\isadigit{0}}{\isacharparenright}\ {\isacharequal}\ {\isadigit{1}}{\isachardoublequoteclose}\ {\isacharbar}\isanewline
+{\isachardoublequoteopen}fib{\isadigit{2}}\ {\isacharparenleft}Suc\ {\isacharparenleft}Suc\ n{\isacharparenright}{\isacharparenright}\ {\isacharequal}\ fib{\isadigit{2}}{\isacharparenleft}n{\isacharparenright}\ {\isacharplus}\ fib{\isadigit{2}}{\isacharparenleft}Suc\ n{\isacharparenright}\ {\isacharplus}\ {\isadigit{1}}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ fib{\isacharunderscore}plus{\isacharunderscore}{\isadigit{2}}{\isacharcolon}\ {\isachardoublequoteopen}fib{\isacharparenleft}n{\isacharplus}{\isadigit{2}}{\isacharparenright}\ {\isacharequal}\ fib{\isacharparenleft}n{\isacharplus}{\isadigit{1}}{\isacharparenright}\ {\isacharplus}\ fib{\isacharparenleft}n{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ auto%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ fib{\isadigit{2}}{\isacharunderscore}plus{\isacharunderscore}{\isadigit{2}}{\isacharcolon}\ {\isachardoublequoteopen}fib{\isadigit{2}}{\isacharparenleft}n{\isacharplus}{\isadigit{2}}{\isacharparenright}\ {\isacharequal}\ fib{\isadigit{2}}{\isacharparenleft}n{\isacharplus}{\isadigit{1}}{\isacharparenright}\ {\isacharplus}\ fib{\isadigit{2}}{\isacharparenleft}n{\isacharparenright}\ {\isacharplus}\ {\isadigit{1}}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ auto%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{value}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isacharparenleft}{\isacharparenleft}fib\ {\isadigit{5}}{\isacharparenright}\ {\isacharminus}\ {\isadigit{1}}{\isacharparenright}{\isacharasterisk}{\isadigit{1}}{\isadigit{6}}\ {\isacharplus}\ {\isacharparenleft}fib{\isadigit{2}}\ {\isadigit{5}}{\isacharparenright}\ {\isacharminus}\ {\isacharparenleft}{\isadigit{5}}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\isacommand{value}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isacharparenleft}{\isacharparenleft}fib\ {\isadigit{1}}{\isadigit{9}}{\isacharparenright}\ {\isacharminus}\ {\isadigit{1}}{\isacharparenright}{\isacharasterisk}{\isadigit{1}}{\isadigit{6}}\ {\isacharplus}\ {\isacharparenleft}fib{\isadigit{2}}\ {\isadigit{1}}{\isadigit{9}}{\isacharparenright}\ {\isacharminus}\ {\isacharparenleft}{\isadigit{1}}{\isadigit{9}}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{value}\isamarkupfalse%
+\ {\isachardoublequoteopen}fib\ {\isadigit{3}}{\isachardoublequoteclose}\isanewline
+\isacommand{value}\isamarkupfalse%
+\ {\isachardoublequoteopen}fib{\isadigit{2}}\ {\isadigit{3}}{\isachardoublequoteclose}\isanewline
+\isacommand{term}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isadigit{1}}{\isadigit{5}}{\isacharcolon}{\isacharcolon}nat{\isachardoublequoteclose}\isanewline
+\isanewline
+\isanewline
+\isanewline
+\isanewline
+\isanewline
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ less{\isacharunderscore}than{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlbrakk}{\isacharparenleft}a{\isacharcolon}{\isacharcolon}nat{\isacharparenright}{\isasymle}{\isacharparenleft}b{\isacharcolon}{\isacharcolon}nat{\isacharparenright}{\isacharsemicolon}\ a{\isasymnoteq}b{\isasymrbrakk}\ {\isasymLongrightarrow}\ a{\isacharless}b{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ simp%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ sum{\isacharunderscore}append{\isacharunderscore}one{\isacharcolon}\ {\isachardoublequoteopen}sum{\isacharparenleft}a{\isacharat}{\isacharbrackleft}{\isacharparenleft}b{\isacharcolon}{\isacharcolon}nat{\isacharparenright}{\isacharbrackright}{\isacharparenright}\ {\isacharequal}\ sum\ a\ {\isacharplus}\ b{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}induction\ a{\isacharparenright}\isanewline
+\ \ \ \isacommand{apply}\isamarkupfalse%
+\ auto\isanewline
+\ \ \isacommand{done}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ accu{\isacharunderscore}add{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlbrakk}{\isasymforall}i{\isacharless}{\isacharparenleft}n{\isacharminus}{\isadigit{1}}{\isacharparenright}{\isachardot}\ a{\isacharbang}i\ {\isacharplus}\ b{\isacharbang}i\ {\isacharequal}\ a{\isacharbang}{\isacharparenleft}i{\isacharplus}{\isadigit{1}}{\isacharparenright}{\isacharsemicolon}size\ a\ {\isacharequal}\ size\ b{\isacharsemicolon}\ size\ a\ {\isasymge}\ n{\isacharsemicolon}\ size\ a\ {\isachargreater}\ {\isadigit{0}}{\isacharsemicolon}\ n\ {\isachargreater}\ {\isadigit{0}}{\isasymrbrakk}\ {\isasymLongrightarrow}\ \isanewline
+\ \ a{\isacharbang}{\isacharparenleft}n{\isacharminus}{\isadigit{1}}{\isacharparenright}{\isacharplus}b{\isacharbang}{\isacharparenleft}n{\isacharminus}{\isadigit{1}}{\isacharparenright}\ {\isacharequal}\ a{\isacharbang}{\isacharparenleft}{\isadigit{0}}{\isacharparenright}\ {\isacharplus}\ {\isacharparenleft}sum\ {\isacharparenleft}take\ n\ b{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}induction\ n{\isacharparenright}\isanewline
+\ \ \ \isacommand{apply}\isamarkupfalse%
+\ auto\isanewline
+\ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}case{\isacharunderscore}tac\ {\isachardoublequoteopen}n{\isacharequal}{\isadigit{0}}{\isachardoublequoteclose}{\isacharparenright}\isanewline
+\ \ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}auto\ simp\ add{\isacharcolon}\ take{\isacharunderscore}Suc{\isacharunderscore}conv{\isacharunderscore}app{\isacharunderscore}nth{\isacharparenright}\isanewline
+\ \ \isacommand{using}\isamarkupfalse%
+\ sum{\isacharunderscore}append{\isacharunderscore}one\ \isacommand{by}\isamarkupfalse%
+\ auto%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ list{\isacharunderscore}take{\isacharunderscore}and{\isacharunderscore}drop{\isacharcolon}\ {\isachardoublequoteopen}xs\ {\isacharequal}\ take\ n\ xs\ {\isacharat}\ drop\ n\ xs{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ auto%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ sumn{\isacharunderscore}update{\isacharunderscore}no{\isacharunderscore}use{\isacharcolon}\ {\isachardoublequoteopen}m{\isasymle}length\ a\ {\isasymLongrightarrow}\ n{\isasymge}m\ {\isasymLongrightarrow}sumn\ {\isacharparenleft}a{\isacharbrackleft}n{\isacharcolon}{\isacharequal}t{\isacharbrackright}{\isacharparenright}\ m\ {\isacharequal}\ sumn\ a\ m{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}induct\ m\ arbitrary{\isacharcolon}\ a\ t\ n{\isacharparenright}\isanewline
+\ \ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}auto{\isacharparenright}\isanewline
+\ \ \isacommand{done}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ sumn{\isadigit{1}}{\isacharcolon}{\isachardoublequoteopen}n{\isasymge}{\isadigit{2}}\ {\isasymLongrightarrow}\ n{\isasymle}length\ a\ {\isasymLongrightarrow}\ sumn\ {\isacharparenleft}a{\isacharbrackleft}n\ {\isacharminus}\ {\isadigit{2}}\ {\isacharcolon}{\isacharequal}\ a\ {\isacharbang}\ {\isacharparenleft}n\ {\isacharminus}\ {\isadigit{2}}{\isacharparenright}\ {\isacharplus}\ a\ {\isacharbang}\ Suc\ {\isacharparenleft}n\ {\isacharminus}\ {\isadigit{2}}{\isacharparenright}{\isacharbrackright}{\isacharparenright}\ {\isacharparenleft}n\ {\isacharminus}\ Suc\ {\isadigit{0}}{\isacharparenright}\ {\isacharequal}\ sumn\ a\ n{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}case{\isacharunderscore}tac\ n{\isacharparenright}\isanewline
+\ \ \ \isacommand{apply}\isamarkupfalse%
+\ simp{\isacharunderscore}all\isanewline
+\ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}case{\isacharunderscore}tac\ nat{\isacharparenright}\isanewline
+\ \ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}simp{\isacharunderscore}all\ add{\isacharcolon}sumn{\isacharunderscore}update{\isacharunderscore}no{\isacharunderscore}use{\isacharparenright}\isanewline
+\ \ \isacommand{done}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ sumn{\isadigit{2}}{\isacharcolon}\ {\isachardoublequoteopen}n{\isasymge}{\isadigit{3}}\ {\isasymLongrightarrow}\ n\ {\isasymle}\ length\ a\ {\isasymLongrightarrow}\ sumn\ {\isacharparenleft}a{\isacharbrackleft}n\ {\isacharminus}\ {\isadigit{3}}\ {\isacharcolon}{\isacharequal}\ a\ {\isacharbang}\ {\isacharparenleft}n\ {\isacharminus}\ {\isadigit{3}}{\isacharparenright}\ {\isacharplus}\ a\ {\isacharbang}\ Suc\ {\isacharparenleft}n\ {\isacharminus}\ {\isadigit{3}}{\isacharparenright}{\isacharcomma}\isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Suc\ {\isacharparenleft}n\ {\isacharminus}\ {\isadigit{3}}{\isacharparenright}\ {\isacharcolon}{\isacharequal}\ a\ {\isacharbang}\ Suc\ {\isacharparenleft}Suc\ {\isacharparenleft}n\ {\isacharminus}\ {\isadigit{3}}{\isacharparenright}{\isacharparenright}{\isacharbrackright}{\isacharparenright}\ {\isacharparenleft}n\ {\isacharminus}\ Suc\ {\isadigit{0}}{\isacharparenright}\ {\isacharequal}\ sumn\ a\ n{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}case{\isacharunderscore}tac\ n{\isacharparenright}\isanewline
+\ \ \ \isacommand{apply}\isamarkupfalse%
+\ simp{\isacharunderscore}all\isanewline
+\ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}case{\isacharunderscore}tac\ nat{\isacharparenright}\isanewline
+\ \ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}simp{\isacharunderscore}all{\isacharparenright}\isanewline
+\ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}case{\isacharunderscore}tac\ nata{\isacharparenright}\isanewline
+\ \ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}simp{\isacharunderscore}all{\isacharparenright}\isanewline
+\ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}simp{\isacharunderscore}all\ add{\isacharcolon}sumn{\isacharunderscore}update{\isacharunderscore}no{\isacharunderscore}use{\isacharparenright}\isanewline
+\ \ \isacommand{done}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ nth{\isacharunderscore}list{\isacharunderscore}update{\isacharunderscore}neq{\isadigit{2}}{\isacharcolon}\ {\isachardoublequoteopen}i\ {\isasymnoteq}\ j\ {\isasymLongrightarrow}\ k\ {\isasymnoteq}\ j\ {\isasymLongrightarrow}\ xs{\isacharbrackleft}i{\isacharcolon}{\isacharequal}x{\isacharcomma}k{\isacharcolon}{\isacharequal}y{\isacharbrackright}{\isacharbang}j\ {\isacharequal}\ xs{\isacharbang}j{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}induct\ xs\ arbitrary{\isacharcolon}i\ j\ k{\isacharparenright}\isanewline
+\ \ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}auto\ simp\ add{\isacharcolon}\ nth{\isacharunderscore}Cons\ split{\isacharcolon}\ nat{\isachardot}split{\isacharparenright}\isanewline
+\ \ \isacommand{done}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ run{\isacharunderscore}len{\isacharunderscore}iter{\isacharcolon}\ {\isachardoublequoteopen}{\isasymforall}i{\isacharless}l\ {\isacharminus}\ Suc\ {\isadigit{0}}{\isachardot}\ ys\ {\isacharbang}\ i\ {\isacharplus}\ xs\ {\isacharbang}\ i\ {\isacharequal}\ ys\ {\isacharbang}\ Suc\ i\ {\isasymLongrightarrow}\isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ l\ {\isachargreater}\ {\isadigit{0}}\ {\isasymLongrightarrow}\isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ l\ {\isasymle}\ size\ xs\ {\isasymLongrightarrow}\isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ size\ xs\ {\isacharequal}\ size\ ys\ {\isasymLongrightarrow}\isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ys{\isacharbang}{\isadigit{0}}\ {\isacharplus}\ sumn\ xs\ l\ {\isacharequal}\ xs{\isacharbang}{\isacharparenleft}l{\isacharminus}{\isadigit{1}}{\isacharparenright}\ {\isacharplus}\ ys{\isacharbang}{\isacharparenleft}l{\isacharminus}{\isadigit{1}}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\isatagproof
+\isacommand{proof}\isamarkupfalse%
+\ {\isacharparenleft}induction\ l\ arbitrary{\isacharcolon}\ xs\ ys{\isacharparenright}\isanewline
+\ \ \isacommand{case}\isamarkupfalse%
+\ {\isadigit{0}}\isanewline
+\ \ \isacommand{then}\isamarkupfalse%
+\ \isacommand{show}\isamarkupfalse%
+\ {\isacharquery}case\ \isacommand{by}\isamarkupfalse%
+\ simp\isanewline
+\isacommand{next}\isamarkupfalse%
+\isanewline
+\ \ \isacommand{case}\isamarkupfalse%
+\ {\isacharparenleft}Suc\ l{\isacharparenright}\isanewline
+\ \ \isacommand{from}\isamarkupfalse%
+\ Suc{\isachardot}IH\ Suc{\isachardot}prems\ \isacommand{show}\isamarkupfalse%
+\ {\isacharquery}case\isanewline
+\ \ \isacommand{proof}\isamarkupfalse%
+\ {\isacharparenleft}cases\ {\isachardoublequoteopen}l{\isacharequal}{\isadigit{0}}{\isachardoublequoteclose}{\isacharparenright}\isanewline
+\ \ \ \ \isacommand{case}\isamarkupfalse%
+\ True\isanewline
+\ \ \ \ \isacommand{then}\isamarkupfalse%
+\ \isacommand{show}\isamarkupfalse%
+\ {\isacharquery}thesis\ \isacommand{by}\isamarkupfalse%
+\ simp\isanewline
+\ \ \isacommand{next}\isamarkupfalse%
+\isanewline
+\ \ \ \ \isacommand{case}\isamarkupfalse%
+\ False\isanewline
+\ \ \ \ \isacommand{assume}\isamarkupfalse%
+\ a{\isadigit{0}}{\isacharcolon}{\isachardoublequoteopen}length\ xs\ {\isacharequal}\ length\ ys{\isachardoublequoteclose}\ \isakeyword{and}\ a{\isadigit{1}}{\isacharcolon}{\isachardoublequoteopen}Suc\ l\ {\isasymle}\ length\ xs{\isachardoublequoteclose}\ \isakeyword{and}\ a{\isadigit{2}}{\isacharcolon}{\isachardoublequoteopen}{\isadigit{0}}\ {\isacharless}\ Suc\ l{\isachardoublequoteclose}\ \isakeyword{and}\ a{\isadigit{3}}{\isacharcolon}{\isachardoublequoteopen}l\ {\isasymnoteq}\ {\isadigit{0}}{\isachardoublequoteclose}\ \isakeyword{and}\ a{\isadigit{4}}{\isacharcolon}{\isachardoublequoteopen}\ {\isasymforall}i{\isacharless}Suc\ l\ {\isacharminus}\ Suc\ {\isadigit{0}}{\isachardot}\ ys\ {\isacharbang}\ i\ {\isacharplus}\ xs\ {\isacharbang}\ i\ {\isacharequal}\ ys\ {\isacharbang}\ Suc\ i{\isachardoublequoteclose}\ \isakeyword{and}\isanewline
+\ \ \ \ \ \ \ \ \ \ a{\isadigit{5}}{\isacharcolon}\ {\isachardoublequoteopen}{\isacharparenleft}{\isasymAnd}ys\ xs{\isachardot}\ {\isasymforall}i{\isacharless}l\ {\isacharminus}\ Suc\ {\isadigit{0}}{\isachardot}\ ys\ {\isacharbang}\ i\ {\isacharplus}\ xs\ {\isacharbang}\ i\ {\isacharequal}\ ys\ {\isacharbang}\ Suc\ i\ {\isasymLongrightarrow}\ {\isadigit{0}}\ {\isacharless}\ l\ {\isasymLongrightarrow}\ l\ {\isasymle}\ length\ xs\ {\isasymLongrightarrow}\ length\ xs\ {\isacharequal}\ length\ ys\ {\isasymLongrightarrow}\ ys\ {\isacharbang}\ {\isadigit{0}}\ {\isacharplus}\ sumn\ xs\ l\ {\isacharequal}\ xs\ {\isacharbang}\ {\isacharparenleft}l\ {\isacharminus}\ {\isadigit{1}}{\isacharparenright}\ {\isacharplus}\ ys\ {\isacharbang}\ {\isacharparenleft}l\ {\isacharminus}\ {\isadigit{1}}{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\ \ \ \ \isacommand{from}\isamarkupfalse%
+\ this\ \isacommand{have}\isamarkupfalse%
+\ step{\isadigit{0}}{\isacharcolon}{\isachardoublequoteopen}ys\ {\isacharbang}\ {\isadigit{0}}\ {\isacharplus}\ sumn\ xs\ l\ {\isacharequal}\ xs\ {\isacharbang}\ {\isacharparenleft}l\ {\isacharminus}\ {\isadigit{1}}{\isacharparenright}\ {\isacharplus}\ ys\ {\isacharbang}\ {\isacharparenleft}l\ {\isacharminus}\ {\isadigit{1}}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\ \ \ \ \ \ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}metis\ Suc{\isacharunderscore}diff{\isacharunderscore}Suc\ Suc{\isacharunderscore}diff{\isacharunderscore}diff\ Suc{\isacharunderscore}leD\ Suc{\isacharunderscore}pred\ less{\isacharunderscore}SucI\ not{\isacharunderscore}gr{\isacharunderscore}zero{\isacharparenright}\isanewline
+\ \ \ \ \isacommand{from}\isamarkupfalse%
+\ a{\isadigit{2}}\ a{\isadigit{3}}\ a{\isadigit{4}}\ \isacommand{have}\isamarkupfalse%
+\ one{\isacharunderscore}run{\isacharcolon}{\isachardoublequoteopen}ys{\isacharbang}{\isacharparenleft}l{\isacharminus}{\isadigit{1}}{\isacharparenright}\ {\isacharplus}\ xs{\isacharbang}{\isacharparenleft}l{\isacharminus}{\isadigit{1}}{\isacharparenright}\ {\isacharequal}\ ys{\isacharbang}l{\isachardoublequoteclose}\isanewline
+\ \ \ \ \ \ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}metis\ One{\isacharunderscore}nat{\isacharunderscore}def\ Suc{\isacharunderscore}pred{\isacharprime}\ diff{\isacharunderscore}Suc{\isacharunderscore}{\isadigit{1}}\ diff{\isacharunderscore}Suc{\isacharunderscore}less\ less{\isacharunderscore}antisym{\isacharparenright}\ \isanewline
+\ \ \ \ \isacommand{from}\isamarkupfalse%
+\ sumn{\isachardot}simps{\isacharparenleft}{\isadigit{2}}{\isacharparenright}\ \isacommand{have}\isamarkupfalse%
+\ one{\isacharunderscore}sumn{\isacharcolon}{\isachardoublequoteopen}sumn\ xs\ {\isacharparenleft}l{\isacharplus}{\isadigit{1}}{\isacharparenright}\ {\isacharequal}\ sumn\ xs\ l\ {\isacharplus}\ xs{\isacharbang}l{\isachardoublequoteclose}\ \isacommand{by}\isamarkupfalse%
+\ simp\isanewline
+\ \ \ \ \isacommand{from}\isamarkupfalse%
+\ step{\isadigit{0}}\ one{\isacharunderscore}run\ one{\isacharunderscore}sumn\ \isacommand{show}\isamarkupfalse%
+\ {\isacharquery}thesis\ \isacommand{by}\isamarkupfalse%
+\ simp\isanewline
+\ \ \isacommand{qed}\isamarkupfalse%
+\isanewline
+\isacommand{qed}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ rl{\isacharunderscore}elem{\isacharunderscore}lower{\isacharunderscore}bound{\isacharcolon}\ {\isachardoublequoteopen}{\isasymforall}i{\isachardot}\ {\isadigit{3}}{\isasymle}i\ {\isasymand}\ i{\isasymle}l\ {\isasymlongrightarrow}\ {\isacharparenleft}l{\isacharminus}i\ {\isacharless}\ l{\isacharminus}{\isadigit{2}}\ {\isasymlongrightarrow}\ rl{\isacharbang}Suc\ {\isacharparenleft}l{\isacharminus}i{\isacharparenright}\ {\isacharplus}\ rl{\isacharbang}Suc\ {\isacharparenleft}Suc\ {\isacharparenleft}l{\isacharminus}i{\isacharparenright}{\isacharparenright}\ {\isacharless}\ rl{\isacharbang}{\isacharparenleft}l{\isacharminus}i{\isacharparenright}{\isacharparenright}\ {\isasymand}\ {\isacharparenleft}l{\isacharminus}i\ {\isacharless}\ l{\isacharminus}{\isadigit{1}}\ {\isasymlongrightarrow}\ rl{\isacharbang}Suc\ {\isacharparenleft}l{\isacharminus}i{\isacharparenright}\ {\isacharless}\ rl{\isacharbang}{\isacharparenleft}l{\isacharminus}i{\isacharparenright}{\isacharparenright}\ {\isasymand}\ u\ {\isasymle}\ rl{\isacharbang}{\isacharparenleft}l{\isacharminus}i{\isacharparenright}\ {\isasymLongrightarrow}\isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rl{\isacharbang}{\isacharparenleft}l{\isacharminus}{\isadigit{1}}{\isacharparenright}\ {\isacharless}\ rl{\isacharbang}{\isacharparenleft}l{\isacharminus}{\isadigit{2}}{\isacharparenright}\ {\isasymLongrightarrow}\ u\ {\isasymle}\ rl{\isacharbang}{\isacharparenleft}l{\isacharminus}{\isadigit{1}}{\isacharparenright}\ {\isasymLongrightarrow}\ length\ rl\ {\isacharequal}\ l\ {\isasymLongrightarrow}\ l{\isasymge}{\isadigit{2}}\ {\isasymLongrightarrow}\ k{\isacharless}l\ \isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ {\isasymLongrightarrow}\ rl{\isacharbang}{\isacharparenleft}l{\isacharminus}{\isadigit{1}}{\isacharminus}k{\isacharparenright}\ {\isasymge}\ u{\isacharasterisk}{\isacharparenleft}fib\ k{\isacharparenright}\ {\isacharplus}\ {\isacharparenleft}fib{\isadigit{2}}\ k{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\isatagproof
+\isacommand{proof}\isamarkupfalse%
+\ {\isacharparenleft}induction\ k\ arbitrary{\isacharcolon}u\ rl\ l\ rule{\isacharcolon}fib{\isadigit{2}}{\isachardot}induct{\isacharparenright}\isanewline
+\ \ \isacommand{case}\isamarkupfalse%
+\ {\isadigit{1}}\isanewline
+\ \ \isacommand{then}\isamarkupfalse%
+\ \isacommand{show}\isamarkupfalse%
+\ {\isacharquery}case\ \isacommand{by}\isamarkupfalse%
+\ auto\isanewline
+\isacommand{next}\isamarkupfalse%
+\isanewline
+\ \ \isacommand{case}\isamarkupfalse%
+\ {\isadigit{2}}\isanewline
+\ \ \isacommand{then}\isamarkupfalse%
+\ \isacommand{have}\isamarkupfalse%
+\ {\isachardoublequoteopen}rl{\isacharbang}{\isacharparenleft}l{\isacharminus}{\isadigit{2}}{\isacharparenright}{\isasymge}u{\isacharplus}{\isadigit{1}}{\isachardoublequoteclose}\ \isacommand{by}\isamarkupfalse%
+\ simp\isanewline
+\ \ \isacommand{then}\isamarkupfalse%
+\ \isacommand{show}\isamarkupfalse%
+\ {\isacharquery}case\isanewline
+\ \ \ \ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}metis\ One{\isacharunderscore}nat{\isacharunderscore}def\ diff{\isacharunderscore}diff{\isacharunderscore}left\ fib{\isachardot}simps{\isacharparenleft}{\isadigit{2}}{\isacharparenright}\ fib{\isadigit{2}}{\isachardot}simps{\isacharparenleft}{\isadigit{2}}{\isacharparenright}\ nat{\isacharunderscore}mult{\isacharunderscore}{\isadigit{1}}{\isacharunderscore}right\ one{\isacharunderscore}add{\isacharunderscore}one{\isacharparenright}\ \isanewline
+\isacommand{next}\isamarkupfalse%
+\isanewline
+\ \ \isacommand{case}\isamarkupfalse%
+\ {\isacharparenleft}{\isadigit{3}}\ n{\isacharparenright}\isanewline
+\ \ \isacommand{from}\isamarkupfalse%
+\ this\ \isacommand{have}\isamarkupfalse%
+\ n{\isadigit{1}}{\isacharcolon}{\isachardoublequoteopen}u\ {\isacharasterisk}\ fib\ n\ {\isacharplus}\ fib{\isadigit{2}}\ n\ {\isasymle}\ rl\ {\isacharbang}\ {\isacharparenleft}l\ {\isacharminus}\ {\isadigit{1}}\ {\isacharminus}\ n{\isacharparenright}{\isachardoublequoteclose}\ \isakeyword{and}\ n{\isadigit{2}}{\isacharcolon}{\isachardoublequoteopen}u\ {\isacharasterisk}\ fib\ {\isacharparenleft}Suc\ n{\isacharparenright}\ {\isacharplus}\ fib{\isadigit{2}}\ {\isacharparenleft}Suc\ n{\isacharparenright}\ {\isasymle}\ rl\ {\isacharbang}\ {\isacharparenleft}l\ {\isacharminus}\ {\isadigit{1}}\ {\isacharminus}\ Suc\ n{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\ \ \ \ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}metis\ Suc{\isacharunderscore}lessD{\isacharparenright}{\isacharplus}\isanewline
+\ \ \isacommand{from}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isadigit{3}}{\isachardot}prems{\isachardoublequoteclose}\ \ \isacommand{have}\isamarkupfalse%
+\ larger{\isacharunderscore}than{\isacharunderscore}next{\isacharunderscore}two{\isacharcolon}{\isachardoublequoteopen}rl\ {\isacharbang}\ {\isacharparenleft}l\ {\isacharminus}\ {\isadigit{1}}\ {\isacharminus}\ n{\isacharparenright}\ {\isacharplus}\ rl\ {\isacharbang}\ {\isacharparenleft}l\ {\isacharminus}\ {\isadigit{1}}\ {\isacharminus}\ Suc\ n{\isacharparenright}\ {\isacharless}\ rl\ {\isacharbang}\ {\isacharparenleft}l\ {\isacharminus}\ {\isadigit{1}}\ {\isacharminus}\ Suc\ {\isacharparenleft}Suc\ n{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\ \isanewline
+\ \ \ \ \isacommand{apply}\isamarkupfalse%
+{\isacharparenleft}drule{\isacharunderscore}tac\ x{\isacharequal}{\isachardoublequoteopen}n{\isacharplus}{\isadigit{3}}{\isachardoublequoteclose}\ \isakeyword{in}\ spec{\isacharparenright}\isanewline
+\ \ \ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}clarsimp{\isacharparenright}\isanewline
+\ \ \ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}subgoal{\isacharunderscore}tac\ {\isachardoublequoteopen}l\ {\isacharminus}\ {\isacharparenleft}n\ {\isacharplus}\ {\isadigit{3}}{\isacharparenright}\ {\isacharless}\ l\ {\isacharminus}\ {\isadigit{2}}{\isachardoublequoteclose}{\isacharparenright}\isanewline
+\ \ \ \ \ \isacommand{prefer}\isamarkupfalse%
+\ {\isadigit{2}}\isanewline
+\ \ \ \ \ \isacommand{apply}\isamarkupfalse%
+\ linarith\isanewline
+\ \ \ \ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}smt\ Suc{\isacharunderscore}diff{\isacharunderscore}Suc\ Suc{\isacharunderscore}lessD\ add{\isachardot}commute\ add{\isacharunderscore}{\isadigit{2}}{\isacharunderscore}eq{\isacharunderscore}Suc{\isacharprime}\ add{\isacharunderscore}Suc{\isacharunderscore}right\ nat{\isacharunderscore}le{\isacharunderscore}linear\ not{\isacharunderscore}less\ numeral{\isacharunderscore}{\isadigit{2}}{\isacharunderscore}eq{\isacharunderscore}{\isadigit{2}}\ numeral{\isacharunderscore}{\isadigit{3}}{\isacharunderscore}eq{\isacharunderscore}{\isadigit{3}}{\isacharparenright}\isanewline
+\ \ \isacommand{from}\isamarkupfalse%
+\ n{\isadigit{1}}\ n{\isadigit{2}}\ larger{\isacharunderscore}than{\isacharunderscore}next{\isacharunderscore}two\ \isacommand{show}\isamarkupfalse%
+\ {\isacharquery}case\ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}simp\ add{\isacharcolon}distrib{\isacharunderscore}left{\isacharparenright}\isanewline
+\isacommand{qed}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ append{\isacharunderscore}suc{\isacharcolon}\ {\isachardoublequoteopen}n{\isasymge}{\isadigit{1}}\ {\isasymLongrightarrow}\ length\ xs\ {\isasymge}\ n\ {\isasymLongrightarrow}\ {\isacharparenleft}x{\isacharhash}xs{\isacharparenright}{\isacharbang}n\ {\isacharequal}\ xs{\isacharbang}{\isacharparenleft}n{\isacharminus}{\isadigit{1}}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\isatagproof
+\isacommand{proof}\isamarkupfalse%
+\ {\isacharparenleft}induction\ n\ arbitrary{\isacharcolon}xs\ x{\isacharparenright}\isanewline
+\isacommand{case}\isamarkupfalse%
+\ {\isadigit{0}}\isanewline
+\ \ \isacommand{then}\isamarkupfalse%
+\ \isacommand{show}\isamarkupfalse%
+\ {\isacharquery}case\ \isacommand{by}\isamarkupfalse%
+\ simp\isanewline
+\isacommand{next}\isamarkupfalse%
+\isanewline
+\ \ \isacommand{case}\isamarkupfalse%
+\ {\isacharparenleft}Suc\ n{\isacharparenright}\isanewline
+\ \ \isacommand{then}\isamarkupfalse%
+\ \isacommand{show}\isamarkupfalse%
+\ {\isacharquery}case\ \isacommand{by}\isamarkupfalse%
+\ force\isanewline
+\isacommand{qed}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\ \isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ minus{\isacharunderscore}same{\isacharunderscore}num{\isacharcolon}\ {\isachardoublequoteopen}a{\isacharequal}b\ {\isasymLongrightarrow}\ a{\isacharminus}c\ {\isacharequal}\ b{\isacharminus}c{\isachardoublequoteclose}%
+\isadelimproof
+\ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ simp%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+\isanewline
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ minus{\isacharunderscore}suc{\isacharunderscore}plus{\isacharunderscore}one{\isacharcolon}\ {\isachardoublequoteopen}a\ {\isacharplus}\ {\isadigit{1}}\ {\isacharminus}\ {\isacharparenleft}Suc\ b{\isacharparenright}\ {\isacharequal}\ a\ {\isacharminus}\ b{\isachardoublequoteclose}%
+\isadelimproof
+\ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ simp%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+\isanewline
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ minus{\isacharunderscore}exc{\isacharcolon}\ {\isachardoublequoteopen}a{\isasymge}c\ {\isasymLongrightarrow}\ {\isacharparenleft}a{\isacharcolon}{\isacharcolon}nat{\isacharparenright}{\isacharplus}b{\isacharminus}c\ {\isacharequal}\ a{\isacharminus}c{\isacharplus}b{\isachardoublequoteclose}%
+\isadelimproof
+\ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ simp%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+\isanewline
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ fib{\isadigit{2}}{\isacharunderscore}{\isadigit{1}}{\isacharcolon}\ {\isachardoublequoteopen}fib{\isadigit{2}}\ n\ {\isasymge}\ n{\isachardoublequoteclose}\ \isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}induction\ n\ rule{\isacharcolon}fib{\isadigit{2}}{\isachardot}induct{\isacharparenright}\isanewline
+\ \ \ \ \isacommand{apply}\isamarkupfalse%
+\ auto\isanewline
+\ \ \isacommand{done}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ fib{\isacharunderscore}{\isadigit{1}}{\isacharcolon}{\isachardoublequoteopen}fib\ n\ {\isasymge}\ Suc\ {\isadigit{0}}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}induction\ n\ rule{\isacharcolon}fib{\isachardot}induct{\isacharparenright}\isanewline
+\ \ \ \ \isacommand{apply}\isamarkupfalse%
+\ auto\isanewline
+\ \ \isacommand{done}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ sumn{\isacharunderscore}first{\isacharunderscore}one{\isacharunderscore}out{\isacharcolon}{\isachardoublequoteopen}l\ {\isasymle}\ length\ {\isacharparenleft}a{\isacharhash}rl{\isacharparenright}\ {\isasymLongrightarrow}\ l\ {\isachargreater}\ {\isadigit{0}}\ {\isasymLongrightarrow}\ sumn\ {\isacharparenleft}a\ {\isacharhash}\ rl{\isacharparenright}\ l\ {\isacharequal}\ a\ {\isacharplus}\ sumn\ rl\ {\isacharparenleft}l\ {\isacharminus}\ Suc\ {\isadigit{0}}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\isatagproof
+\isacommand{proof}\isamarkupfalse%
+\ {\isacharparenleft}induction\ l\ arbitrary{\isacharcolon}\ a\ rl{\isacharparenright}\isanewline
+\ \ \isacommand{case}\isamarkupfalse%
+\ {\isadigit{0}}\isanewline
+\ \ \isacommand{then}\isamarkupfalse%
+\ \isacommand{show}\isamarkupfalse%
+\ {\isacharquery}case\ \isacommand{by}\isamarkupfalse%
+\ simp\isanewline
+\isacommand{next}\isamarkupfalse%
+\isanewline
+\ \ \isacommand{case}\isamarkupfalse%
+\ {\isacharparenleft}Suc\ l{\isacharparenright}\isanewline
+\ \ \isacommand{then}\isamarkupfalse%
+\ \isacommand{show}\isamarkupfalse%
+\ {\isacharquery}case\isanewline
+\ \ \isacommand{proof}\isamarkupfalse%
+\ {\isacharparenleft}cases\ {\isachardoublequoteopen}l{\isacharequal}{\isadigit{0}}{\isachardoublequoteclose}{\isacharparenright}\isanewline
+\ \ \ \ \isacommand{case}\isamarkupfalse%
+\ True\isanewline
+\ \ \ \ \isacommand{then}\isamarkupfalse%
+\ \isacommand{show}\isamarkupfalse%
+\ {\isacharquery}thesis\ \isacommand{by}\isamarkupfalse%
+\ simp\isanewline
+\ \ \isacommand{next}\isamarkupfalse%
+\isanewline
+\ \ \ \ \isacommand{case}\isamarkupfalse%
+\ False\isanewline
+\ \ \ \ \isacommand{then}\isamarkupfalse%
+\ \isacommand{show}\isamarkupfalse%
+\ {\isacharquery}thesis\ \isacommand{using}\isamarkupfalse%
+\ Suc{\isachardot}IH{\isacharbrackleft}of\ a\ rl{\isacharbrackright}\ Suc{\isachardot}prems\isanewline
+\ \ \ \ \ \ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}smt\ Suc{\isacharunderscore}leD\ Suc{\isacharunderscore}pred\ ab{\isacharunderscore}semigroup{\isacharunderscore}add{\isacharunderscore}class{\isachardot}add{\isacharunderscore}ac{\isacharparenleft}{\isadigit{1}}{\isacharparenright}\ add{\isachardot}commute\ diff{\isacharunderscore}Suc{\isacharunderscore}{\isadigit{1}}\ less{\isacharunderscore}Suc{\isacharunderscore}eq\ nth{\isacharunderscore}Cons{\isacharunderscore}pos\ sumn{\isachardot}simps{\isacharparenleft}{\isadigit{2}}{\isacharparenright}{\isacharparenright}\ \isanewline
+\ \ \ \ \isacommand{qed}\isamarkupfalse%
+\isanewline
+\isacommand{qed}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ rl{\isacharunderscore}sum{\isacharunderscore}lower{\isacharunderscore}bound{\isacharcolon}\ {\isachardoublequoteopen}{\isasymforall}i{\isachardot}\ {\isadigit{3}}{\isasymle}i\ {\isasymand}\ i{\isasymle}l\ {\isasymlongrightarrow}\ {\isacharparenleft}l{\isacharminus}i\ {\isacharless}\ l{\isacharminus}{\isadigit{2}}\ {\isasymlongrightarrow}\ rl{\isacharbang}Suc\ {\isacharparenleft}l{\isacharminus}i{\isacharparenright}\ {\isacharplus}\ rl{\isacharbang}Suc\ {\isacharparenleft}Suc\ {\isacharparenleft}l{\isacharminus}i{\isacharparenright}{\isacharparenright}\ {\isacharless}\ rl{\isacharbang}{\isacharparenleft}l{\isacharminus}i{\isacharparenright}{\isacharparenright}\ {\isasymand}\ {\isacharparenleft}l{\isacharminus}i\ {\isacharless}\ l{\isacharminus}{\isadigit{1}}\ {\isasymlongrightarrow}\ rl{\isacharbang}Suc\ {\isacharparenleft}l{\isacharminus}i{\isacharparenright}\ {\isacharless}\ rl{\isacharbang}{\isacharparenleft}l{\isacharminus}i{\isacharparenright}{\isacharparenright}\ {\isasymand}\ u\ {\isasymle}\ rl{\isacharbang}{\isacharparenleft}l{\isacharminus}i{\isacharparenright}\ {\isasymLongrightarrow}\isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rl{\isacharbang}{\isacharparenleft}l{\isacharminus}{\isadigit{1}}{\isacharparenright}\ {\isacharless}\ rl{\isacharbang}{\isacharparenleft}l{\isacharminus}{\isadigit{2}}{\isacharparenright}\ {\isasymLongrightarrow}\ u\ {\isasymle}\ rl{\isacharbang}{\isacharparenleft}l{\isacharminus}{\isadigit{1}}{\isacharparenright}\ {\isasymLongrightarrow}\ length\ rl\ {\isacharequal}\ l\ {\isasymLongrightarrow}\ l{\isasymge}{\isadigit{2}}\isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ {\isasymLongrightarrow}\ sumn\ rl\ l\ {\isasymge}\ u{\isacharasterisk}{\isacharparenleft}{\isacharparenleft}fib\ {\isacharparenleft}l{\isacharplus}{\isadigit{1}}{\isacharparenright}{\isacharparenright}{\isacharminus}{\isadigit{1}}{\isacharparenright}\ {\isacharplus}\ {\isacharparenleft}{\isacharparenleft}fib{\isadigit{2}}\ {\isacharparenleft}l{\isacharplus}{\isadigit{1}}{\isacharparenright}{\isacharparenright}\ {\isacharminus}\ {\isacharparenleft}l{\isacharplus}{\isadigit{1}}{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\isatagproof
+\isacommand{proof}\isamarkupfalse%
+\ {\isacharparenleft}induction\ rl\ arbitrary{\isacharcolon}u\ l{\isacharparenright}\isanewline
+\ \ \isacommand{case}\isamarkupfalse%
+\ Nil\isanewline
+\ \ \isacommand{then}\isamarkupfalse%
+\ \isacommand{show}\isamarkupfalse%
+\ {\isacharquery}case\ \isacommand{by}\isamarkupfalse%
+\ simp\isanewline
+\isacommand{next}\isamarkupfalse%
+\isanewline
+\ \ \isacommand{case}\isamarkupfalse%
+\ {\isacharparenleft}Cons\ a\ rl{\isacharparenright}\isanewline
+\ \ \isacommand{then}\isamarkupfalse%
+\ \isacommand{show}\isamarkupfalse%
+\ {\isacharquery}case\isanewline
+\ \ \isacommand{proof}\isamarkupfalse%
+\ {\isacharparenleft}cases\ {\isachardoublequoteopen}l{\isacharequal}{\isadigit{2}}{\isachardoublequoteclose}{\isacharparenright}\isanewline
+\ \ \ \ \isacommand{case}\isamarkupfalse%
+\ True\isanewline
+\ \ \ \ \isacommand{then}\isamarkupfalse%
+\ \isacommand{show}\isamarkupfalse%
+\ {\isacharquery}thesis\ \isacommand{using}\isamarkupfalse%
+\ Cons{\isachardot}prems\ Cons{\isachardot}IH\isanewline
+\ \ \ \ \ \ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}simp\ add{\isacharcolon}\ numeral{\isacharunderscore}{\isadigit{2}}{\isacharunderscore}eq{\isacharunderscore}{\isadigit{2}}\ numeral{\isacharunderscore}{\isadigit{3}}{\isacharunderscore}eq{\isacharunderscore}{\isadigit{3}}{\isacharparenright}\isanewline
+\ \ \isacommand{next}\isamarkupfalse%
+\isanewline
+\ \ \ \ \isacommand{case}\isamarkupfalse%
+\ False\isanewline
+\ \ \ \ \isacommand{from}\isamarkupfalse%
+\ this\ \isacommand{have}\isamarkupfalse%
+\ l{\isadigit{3}}{\isacharcolon}{\isachardoublequoteopen}l{\isasymge}{\isadigit{3}}{\isachardoublequoteclose}\ \isacommand{using}\isamarkupfalse%
+\ Cons{\isachardot}prems\ \isacommand{by}\isamarkupfalse%
+\ simp\isanewline
+\ \ \ \ \isacommand{from}\isamarkupfalse%
+\ this\ \isacommand{have}\isamarkupfalse%
+\ a{\isadigit{0}}{\isacharcolon}{\isachardoublequoteopen}\ l\ {\isacharminus}{\isadigit{1}}\ {\isasymge}\ {\isadigit{2}}{\isachardoublequoteclose}\ \isacommand{by}\isamarkupfalse%
+\ simp\isanewline
+\ \ \ \ \isacommand{from}\isamarkupfalse%
+\ Cons{\isachardot}prems\ \isacommand{have}\isamarkupfalse%
+\ a{\isadigit{1}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymforall}i{\isachardot}\ {\isadigit{3}}\ {\isasymle}\ i\ {\isasymand}\ i\ {\isasymle}\ l\ {\isacharminus}\ {\isadigit{1}}\ {\isasymlongrightarrow}\isanewline
+\ \ \ \ \ \ \ \ {\isacharparenleft}l\ {\isacharminus}\ {\isadigit{1}}\ {\isacharminus}\ i\ {\isacharless}\ l\ {\isacharminus}\ {\isadigit{1}}\ {\isacharminus}\ {\isadigit{2}}\ {\isasymlongrightarrow}\ rl\ {\isacharbang}\ Suc\ {\isacharparenleft}l\ {\isacharminus}\ {\isadigit{1}}\ {\isacharminus}\ i{\isacharparenright}\ {\isacharplus}\ rl\ {\isacharbang}\ Suc\ {\isacharparenleft}Suc\ {\isacharparenleft}l\ {\isacharminus}\ {\isadigit{1}}\ {\isacharminus}\ i{\isacharparenright}{\isacharparenright}\ {\isacharless}\ rl\ {\isacharbang}\ {\isacharparenleft}l\ {\isacharminus}\ {\isadigit{1}}\ {\isacharminus}\ i{\isacharparenright}{\isacharparenright}\ {\isasymand}\isanewline
+\ \ \ \ \ \ \ \ {\isacharparenleft}l\ {\isacharminus}\ {\isadigit{1}}\ {\isacharminus}\ i\ {\isacharless}\ l\ {\isacharminus}\ {\isadigit{1}}\ {\isacharminus}\ {\isadigit{1}}\ {\isasymlongrightarrow}\ rl\ {\isacharbang}\ Suc\ {\isacharparenleft}l\ {\isacharminus}\ {\isadigit{1}}\ {\isacharminus}\ i{\isacharparenright}\ {\isacharless}\ rl\ {\isacharbang}\ {\isacharparenleft}l\ {\isacharminus}\ {\isadigit{1}}\ {\isacharminus}\ i{\isacharparenright}{\isacharparenright}\ {\isasymand}\ u\ {\isasymle}\ rl\ {\isacharbang}\ {\isacharparenleft}l\ {\isacharminus}\ {\isadigit{1}}\ {\isacharminus}\ i{\isacharparenright}\ {\isasymLongrightarrow}\isanewline
+\ \ \ \ rl\ {\isacharbang}\ {\isacharparenleft}l\ {\isacharminus}\ {\isadigit{1}}\ {\isacharminus}\ {\isadigit{1}}{\isacharparenright}\ {\isacharless}\ rl\ {\isacharbang}\ {\isacharparenleft}l\ {\isacharminus}\ {\isadigit{1}}\ {\isacharminus}\ {\isadigit{2}}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\ \ \ \ \ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}clarsimp{\isacharparenright}\isanewline
+\ \ \ \ \ \ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}metis\ False\ One{\isacharunderscore}nat{\isacharunderscore}def\ diff{\isacharunderscore}Suc{\isacharunderscore}eq{\isacharunderscore}diff{\isacharunderscore}pred\ less{\isacharunderscore}than\ nth{\isacharunderscore}Cons{\isacharunderscore}pos\ numeral{\isacharunderscore}{\isadigit{2}}{\isacharunderscore}eq{\isacharunderscore}{\isadigit{2}}\ zero{\isacharunderscore}less{\isacharunderscore}diff{\isacharparenright}\isanewline
+\ \ \ \ \isacommand{from}\isamarkupfalse%
+\ Cons{\isachardot}prems\ a{\isadigit{0}}\ \isacommand{have}\isamarkupfalse%
+\ a{\isadigit{2}}{\isacharcolon}{\isachardoublequoteopen}rl\ {\isacharbang}\ {\isacharparenleft}l\ {\isacharminus}\ {\isadigit{1}}\ {\isacharminus}\ {\isadigit{1}}{\isacharparenright}\ {\isacharless}\ rl\ {\isacharbang}\ {\isacharparenleft}l\ {\isacharminus}\ {\isadigit{1}}\ {\isacharminus}\ {\isadigit{2}}{\isacharparenright}{\isachardoublequoteclose}\ \isanewline
+\ \ \ \ \ \ \isacommand{using}\isamarkupfalse%
+\ l{\isadigit{3}}\ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}simp\ add{\isacharcolon}\ numeral{\isacharunderscore}{\isadigit{2}}{\isacharunderscore}eq{\isacharunderscore}{\isadigit{2}}{\isacharparenright}\isanewline
+\ \ \ \ \isacommand{from}\isamarkupfalse%
+\ Cons{\isachardot}prems\ \isacommand{have}\isamarkupfalse%
+\ a{\isadigit{3}}{\isacharcolon}{\isachardoublequoteopen}u\ {\isasymle}\ rl\ {\isacharbang}\ {\isacharparenleft}l\ {\isacharminus}\ {\isadigit{1}}\ {\isacharminus}\ {\isadigit{1}}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\ \ \ \ \ \ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}simp{\isacharparenright}\isanewline
+\ \ \ \ \isacommand{from}\isamarkupfalse%
+\ Cons{\isachardot}prems\ \isacommand{have}\isamarkupfalse%
+\ a{\isadigit{4}}{\isacharcolon}{\isachardoublequoteopen}length\ rl\ {\isacharequal}\ l\ {\isacharminus}\ {\isadigit{1}}{\isachardoublequoteclose}\isanewline
+\ \ \ \ \ \ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}simp{\isacharparenright}\isanewline
+\ \ \ \ \isacommand{from}\isamarkupfalse%
+\ Cons{\isachardot}IH{\isacharbrackleft}of\ {\isachardoublequoteopen}l{\isacharminus}{\isadigit{1}}{\isachardoublequoteclose}\ u{\isacharbrackright}\ a{\isadigit{0}}\ a{\isadigit{1}}\ a{\isadigit{2}}\ a{\isadigit{3}}\ a{\isadigit{4}}\ \isacommand{have}\isamarkupfalse%
+\ l{\isadigit{1}}{\isacharcolon}{\isachardoublequoteopen}u\ {\isacharasterisk}\ {\isacharparenleft}fib\ {\isacharparenleft}l\ {\isacharminus}\ {\isadigit{1}}\ {\isacharplus}\ {\isadigit{1}}{\isacharparenright}\ {\isacharminus}\ {\isadigit{1}}{\isacharparenright}\ {\isacharplus}\ {\isacharparenleft}fib{\isadigit{2}}\ {\isacharparenleft}l\ {\isacharminus}\ {\isadigit{1}}\ {\isacharplus}\ {\isadigit{1}}{\isacharparenright}\ {\isacharminus}\ {\isacharparenleft}l\ {\isacharminus}\ {\isadigit{1}}\ {\isacharplus}\ {\isadigit{1}}{\isacharparenright}{\isacharparenright}\ {\isasymle}\ sumn\ rl\ {\isacharparenleft}l\ {\isacharminus}\ {\isadigit{1}}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\ \ \ \ \ \ \isacommand{apply}\isamarkupfalse%
+\ clarsimp\isanewline
+\ \ \ \ \ \ \isacommand{using}\isamarkupfalse%
+\ Cons{\isachardot}prems\ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}smt\ Suc{\isacharunderscore}diff{\isacharunderscore}le\ Suc{\isacharunderscore}le{\isacharunderscore}lessD\ Suc{\isacharunderscore}less{\isacharunderscore}eq\ Suc{\isacharunderscore}pred\ diff{\isacharunderscore}Suc{\isacharunderscore}{\isadigit{1}}\ diff{\isacharunderscore}Suc{\isacharunderscore}Suc\ nat{\isacharunderscore}less{\isacharunderscore}le\ nth{\isacharunderscore}Cons{\isacharunderscore}pos\ numeral{\isacharunderscore}{\isadigit{2}}{\isacharunderscore}eq{\isacharunderscore}{\isadigit{2}}\ zero{\isacharunderscore}less{\isacharunderscore}Suc{\isacharparenright}\isanewline
+\ \ \ \ \isacommand{from}\isamarkupfalse%
+\ Cons{\isachardot}prems\ \isacommand{have}\isamarkupfalse%
+\ la{\isacharcolon}{\isachardoublequoteopen}a\ {\isasymge}\ u{\isacharasterisk}{\isacharparenleft}fib\ {\isacharparenleft}l{\isacharminus}{\isadigit{1}}{\isacharparenright}{\isacharparenright}\ {\isacharplus}\ {\isacharparenleft}fib{\isadigit{2}}\ {\isacharparenleft}l{\isacharminus}{\isadigit{1}}{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\ \isacommand{using}\isamarkupfalse%
+\ rl{\isacharunderscore}elem{\isacharunderscore}lower{\isacharunderscore}bound{\isacharbrackleft}of\ l\ {\isachardoublequoteopen}a{\isacharhash}rl{\isachardoublequoteclose}\ u\ {\isachardoublequoteopen}l{\isacharminus}{\isadigit{1}}{\isachardoublequoteclose}{\isacharbrackright}\isanewline
+\ \ \ \ \ \ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}metis\ One{\isacharunderscore}nat{\isacharunderscore}def\ a{\isadigit{4}}\ diff{\isacharunderscore}self{\isacharunderscore}eq{\isacharunderscore}{\isadigit{0}}\ less{\isacharunderscore}add{\isacharunderscore}same{\isacharunderscore}cancel{\isadigit{1}}\ less{\isacharunderscore}numeral{\isacharunderscore}extra{\isacharparenleft}{\isadigit{1}}{\isacharparenright}\ list{\isachardot}size{\isacharparenleft}{\isadigit{4}}{\isacharparenright}\ nth{\isacharunderscore}Cons{\isacharunderscore}{\isadigit{0}}{\isacharparenright}\isanewline
+\ \ \ \ \isacommand{have}\isamarkupfalse%
+\ {\isachardoublequoteopen}fib{\isadigit{2}}\ l\ {\isacharplus}\ fib{\isadigit{2}}\ {\isacharparenleft}l\ {\isacharminus}\ Suc\ {\isadigit{0}}{\isacharparenright}\ {\isacharplus}\ {\isadigit{1}}\ {\isacharequal}\ fib{\isadigit{2}}\ {\isacharparenleft}Suc\ l{\isacharparenright}\ {\isachardoublequoteclose}\ \ \isacommand{using}\isamarkupfalse%
+\ fib{\isadigit{2}}{\isachardot}simps{\isacharparenleft}{\isadigit{3}}{\isacharparenright}{\isacharbrackleft}of\ {\isachardoublequoteopen}l\ {\isacharminus}\ Suc\ {\isadigit{0}}{\isachardoublequoteclose}{\isacharbrackright}\ Cons{\isachardot}prems{\isacharparenleft}{\isadigit{5}}{\isacharparenright}\ \isacommand{by}\isamarkupfalse%
+\ simp\isanewline
+\ \ \ \ \isacommand{from}\isamarkupfalse%
+\ this\ \isacommand{have}\isamarkupfalse%
+\ {\isachardoublequoteopen}fib{\isadigit{2}}\ l\ {\isacharplus}\ fib{\isadigit{2}}\ {\isacharparenleft}l\ {\isacharminus}\ Suc\ {\isadigit{0}}{\isacharparenright}\ {\isacharplus}\ {\isadigit{1}}\ {\isacharminus}\ Suc\ l\ {\isacharequal}\ fib{\isadigit{2}}\ {\isacharparenleft}Suc\ l{\isacharparenright}\ {\isacharminus}\ Suc\ l{\isachardoublequoteclose}\ \isacommand{using}\isamarkupfalse%
+\ minus{\isacharunderscore}same{\isacharunderscore}num\ \isacommand{by}\isamarkupfalse%
+\ simp\isanewline
+\ \ \ \ \isacommand{from}\isamarkupfalse%
+\ this\ \isacommand{have}\isamarkupfalse%
+\ {\isachardoublequoteopen}fib{\isadigit{2}}\ l\ {\isacharplus}\ fib{\isadigit{2}}\ {\isacharparenleft}l\ {\isacharminus}\ Suc\ {\isadigit{0}}{\isacharparenright}\ {\isacharminus}\ l\ {\isacharequal}\ fib{\isadigit{2}}\ {\isacharparenleft}Suc\ l{\isacharparenright}\ {\isacharminus}\ Suc\ l{\isachardoublequoteclose}\ \isacommand{using}\isamarkupfalse%
+\ minus{\isacharunderscore}suc{\isacharunderscore}plus{\isacharunderscore}one\ \isacommand{by}\isamarkupfalse%
+\ simp\isanewline
+\ \ \ \ \isacommand{from}\isamarkupfalse%
+\ this\ \isacommand{have}\isamarkupfalse%
+\ f{\isadigit{2}}{\isacharcolon}{\isachardoublequoteopen}fib{\isadigit{2}}\ l\ {\isacharminus}\ l\ {\isacharplus}\ fib{\isadigit{2}}\ {\isacharparenleft}l\ {\isacharminus}\ Suc\ {\isadigit{0}}{\isacharparenright}\ {\isacharequal}\ fib{\isadigit{2}}\ {\isacharparenleft}Suc\ l{\isacharparenright}\ {\isacharminus}\ Suc\ l{\isachardoublequoteclose}\ \isacommand{using}\isamarkupfalse%
+\ minus{\isacharunderscore}exc\ fib{\isadigit{2}}{\isacharunderscore}{\isadigit{1}}\ \ \isacommand{by}\isamarkupfalse%
+\ metis\isanewline
+\ \ \ \ \isacommand{have}\isamarkupfalse%
+\ {\isachardoublequoteopen}fib\ l\ {\isacharplus}\ \ fib\ {\isacharparenleft}l\ {\isacharminus}\ Suc\ {\isadigit{0}}{\isacharparenright}\ {\isacharequal}\ fib\ {\isacharparenleft}Suc\ l{\isacharparenright}{\isachardoublequoteclose}\ \isacommand{using}\isamarkupfalse%
+\ fib{\isachardot}simps{\isacharparenleft}{\isadigit{3}}{\isacharparenright}\ Cons{\isachardot}prems{\isacharparenleft}{\isadigit{5}}{\isacharparenright}\ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}metis\ Cons{\isachardot}prems{\isacharparenleft}{\isadigit{4}}{\isacharparenright}\ One{\isacharunderscore}nat{\isacharunderscore}def\ a{\isadigit{4}}\ add{\isachardot}commute\ length{\isacharunderscore}Cons{\isacharparenright}\ \isanewline
+\ \ \ \ \isacommand{from}\isamarkupfalse%
+\ this\ \isacommand{have}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isacharparenleft}fib\ l\ {\isacharminus}\ Suc\ {\isadigit{0}}{\isacharparenright}\ {\isacharplus}\ fib\ {\isacharparenleft}l\ {\isacharminus}\ Suc\ {\isadigit{0}}{\isacharparenright}\ {\isacharequal}\ {\isacharparenleft}fib\ {\isacharparenleft}Suc\ l{\isacharparenright}\ {\isacharminus}\ Suc\ {\isadigit{0}}{\isacharparenright}{\isachardoublequoteclose}\ \isacommand{using}\isamarkupfalse%
+\ Cons{\isachardot}prems{\isacharparenleft}{\isadigit{5}}{\isacharparenright}\ minus{\isacharunderscore}exc\ fib{\isacharunderscore}{\isadigit{1}}\ \isacommand{by}\isamarkupfalse%
+\ metis\isanewline
+\ \ \ \ \isacommand{from}\isamarkupfalse%
+\ this\ \isacommand{have}\isamarkupfalse%
+\ f{\isadigit{1}}{\isacharcolon}{\isachardoublequoteopen}u\ {\isacharasterisk}\ {\isacharparenleft}fib\ l\ {\isacharminus}\ Suc\ {\isadigit{0}}{\isacharparenright}\ {\isacharplus}\ u\ {\isacharasterisk}\ fib\ {\isacharparenleft}l\ {\isacharminus}\ Suc\ {\isadigit{0}}{\isacharparenright}\ {\isacharequal}\ u\ {\isacharasterisk}\ {\isacharparenleft}fib\ {\isacharparenleft}Suc\ l{\isacharparenright}\ {\isacharminus}\ Suc\ {\isadigit{0}}{\isacharparenright}{\isachardoublequoteclose}\ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}metis\ add{\isacharunderscore}mult{\isacharunderscore}distrib{\isadigit{2}}{\isacharparenright}\isanewline
+\ \ \ \ \isacommand{from}\isamarkupfalse%
+\ l{\isadigit{1}}\ la\ \isacommand{show}\isamarkupfalse%
+\ {\isacharquery}thesis\ \isanewline
+\ \ \ \ \ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}subgoal{\isacharunderscore}tac\ {\isachardoublequoteopen}sumn\ {\isacharparenleft}a\ {\isacharhash}\ rl{\isacharparenright}\ l\ {\isacharequal}\ a\ {\isacharplus}\ sumn\ rl\ {\isacharparenleft}l{\isacharminus}{\isadigit{1}}{\isacharparenright}{\isachardoublequoteclose}{\isacharparenright}\isanewline
+\ \ \ \ \ \ \ \isacommand{apply}\isamarkupfalse%
+\ clarsimp\isanewline
+\ \ \ \ \ \ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}subgoal{\isacharunderscore}tac\ {\isachardoublequoteopen}u\ {\isacharasterisk}\ {\isacharparenleft}fib\ {\isacharparenleft}Suc\ {\isacharparenleft}l\ {\isacharminus}\ Suc\ {\isadigit{0}}{\isacharparenright}{\isacharparenright}\ {\isacharminus}\ Suc\ {\isadigit{0}}{\isacharparenright}\ {\isacharplus}\ u\ {\isacharasterisk}\ fib\ {\isacharparenleft}l\ {\isacharminus}\ Suc\ {\isadigit{0}}{\isacharparenright}\ {\isacharequal}\ u\ {\isacharasterisk}\ {\isacharparenleft}fib\ {\isacharparenleft}Suc\ l{\isacharparenright}\ {\isacharminus}\ Suc\ {\isadigit{0}}{\isacharparenright}{\isachardoublequoteclose}\ \isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ {\isachardoublequoteopen}{\isacharparenleft}fib{\isadigit{2}}\ {\isacharparenleft}Suc\ {\isacharparenleft}l\ {\isacharminus}\ Suc\ {\isadigit{0}}{\isacharparenright}{\isacharparenright}\ {\isacharminus}\ Suc\ {\isacharparenleft}l\ {\isacharminus}\ Suc\ {\isadigit{0}}{\isacharparenright}{\isacharparenright}\ {\isacharplus}\ fib{\isadigit{2}}\ {\isacharparenleft}l\ {\isacharminus}\ Suc\ {\isadigit{0}}{\isacharparenright}\ {\isacharequal}\ {\isacharparenleft}fib{\isadigit{2}}\ {\isacharparenleft}Suc\ l{\isacharparenright}\ {\isacharminus}\ Suc\ l{\isacharparenright}{\isachardoublequoteclose}{\isacharparenright}\isanewline
+\ \ \ \ \ \ \ \ \ \isacommand{apply}\isamarkupfalse%
+\ simp\isanewline
+\ \ \ \ \ \ \isacommand{using}\isamarkupfalse%
+\ Cons{\isachardot}prems{\isacharparenleft}{\isadigit{5}}{\isacharparenright}\ f{\isadigit{1}}\ f{\isadigit{2}}\ \isacommand{apply}\isamarkupfalse%
+\ simp{\isacharunderscore}all\isanewline
+\ \ \ \ \ \ \isacommand{using}\isamarkupfalse%
+\ Cons{\isachardot}prems\ sumn{\isacharunderscore}first{\isacharunderscore}one{\isacharunderscore}out\ \isacommand{by}\isamarkupfalse%
+\ simp\isanewline
+\ \ \isacommand{qed}\isamarkupfalse%
+\isanewline
+\isacommand{qed}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ l{\isadigit{1}}{\isadigit{1}}{\isadigit{9}}{\isacharbrackleft}simp{\isacharbrackright}{\isacharcolon}\ {\isachardoublequoteopen}{\isadigit{1}}{\isadigit{6}}\ {\isacharasterisk}\ {\isacharparenleft}fib\ {\isadigit{5}}\ {\isacharminus}\ Suc\ {\isadigit{0}}{\isacharparenright}\ {\isacharplus}\ {\isacharparenleft}fib{\isadigit{2}}\ {\isadigit{5}}\ {\isacharminus}\ {\isadigit{5}}{\isacharparenright}\ {\isacharequal}\ {\isadigit{1}}{\isadigit{1}}{\isadigit{9}}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{sorry}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isacommand{lemma}\isamarkupfalse%
+\ l{\isadigit{1}}{\isadigit{5}}{\isadigit{4}}{\isadigit{1}}{\isacharbrackleft}simp{\isacharbrackright}{\isacharcolon}\ {\isachardoublequoteopen}{\isadigit{1}}{\isadigit{6}}\ {\isacharasterisk}\ {\isacharparenleft}fib\ {\isadigit{1}}{\isadigit{0}}\ {\isacharminus}\ Suc\ {\isadigit{0}}{\isacharparenright}\ {\isacharplus}\ {\isacharparenleft}fib{\isadigit{2}}\ {\isadigit{1}}{\isadigit{0}}\ {\isacharminus}\ {\isadigit{1}}{\isadigit{0}}{\isacharparenright}\ {\isacharequal}\ {\isadigit{1}}{\isadigit{5}}{\isadigit{4}}{\isadigit{1}}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{sorry}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isacommand{lemma}\isamarkupfalse%
+\ l{\isadigit{1}}{\isadigit{1}}{\isadigit{9}}{\isadigit{1}}{\isadigit{5}}{\isadigit{0}}{\isacharbrackleft}simp{\isacharbrackright}{\isacharcolon}\ {\isachardoublequoteopen}{\isadigit{1}}{\isadigit{6}}\ {\isacharasterisk}\ {\isacharparenleft}fib\ {\isadigit{1}}{\isadigit{9}}\ {\isacharminus}\ Suc\ {\isadigit{0}}{\isacharparenright}\ {\isacharplus}\ {\isacharparenleft}fib{\isadigit{2}}\ {\isadigit{1}}{\isadigit{9}}\ {\isacharminus}\ {\isadigit{1}}{\isadigit{9}}{\isacharparenright}\ {\isacharequal}\ {\isadigit{1}}{\isadigit{1}}{\isadigit{9}}{\isadigit{1}}{\isadigit{5}}{\isadigit{0}}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{sorry}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isacommand{lemma}\isamarkupfalse%
+\ l{\isadigit{2}}{\isadigit{9}}{\isadigit{1}}{\isadigit{7}}{\isacharbrackleft}simp{\isacharbrackright}{\isacharcolon}\ {\isachardoublequoteopen}{\isadigit{1}}{\isadigit{6}}\ {\isacharasterisk}\ {\isacharparenleft}fib\ {\isadigit{4}}{\isadigit{0}}\ {\isacharminus}\ Suc\ {\isadigit{0}}{\isacharparenright}\ {\isacharplus}\ {\isacharparenleft}fib{\isadigit{2}}\ {\isadigit{4}}{\isadigit{0}}\ {\isacharminus}\ {\isadigit{4}}{\isadigit{0}}{\isacharparenright}\ {\isacharequal}\ {\isadigit{2}}{\isadigit{9}}{\isadigit{1}}{\isadigit{7}}{\isadigit{1}}{\isadigit{9}}{\isadigit{6}}{\isadigit{4}}{\isadigit{9}}{\isadigit{5}}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{sorry}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ run{\isacharunderscore}len{\isacharunderscore}elem{\isacharunderscore}lower{\isacharunderscore}bound{\isacharcolon}\ {\isachardoublequoteopen}\isanewline
+{\isasymforall}i{\isachardot}\ {\isadigit{3}}{\isasymle}i\ {\isasymand}\ i{\isasymle}l\ {\isasymlongrightarrow}\ elem{\isacharunderscore}inv\ rl\ {\isacharparenleft}l{\isacharminus}i{\isacharparenright}\ u\ {\isasymLongrightarrow}\isanewline
+elem{\isacharunderscore}bigger{\isacharunderscore}than{\isacharunderscore}next\ rl\ {\isacharparenleft}l{\isacharminus}{\isadigit{2}}{\isacharparenright}\ {\isasymLongrightarrow}\isanewline
+elem{\isacharunderscore}larger{\isacharunderscore}than{\isacharunderscore}bound\ rl\ {\isacharparenleft}l{\isacharminus}{\isadigit{1}}{\isacharparenright}\ u\ {\isasymLongrightarrow}\ length\ rl\ {\isacharequal}\ l\ {\isasymLongrightarrow}\ l{\isasymge}{\isadigit{2}}\ {\isasymLongrightarrow}\ k{\isacharless}l\ \isanewline
+{\isasymLongrightarrow}\ rl{\isacharbang}{\isacharparenleft}l{\isacharminus}{\isadigit{1}}{\isacharminus}k{\isacharparenright}\ {\isasymge}\ u{\isacharasterisk}{\isacharparenleft}fib\ k{\isacharparenright}\ {\isacharplus}\ {\isacharparenleft}fib{\isadigit{2}}\ k{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}simp\ only{\isacharcolon}elem{\isacharunderscore}inv{\isacharunderscore}def\ elem{\isacharunderscore}larger{\isacharunderscore}than{\isacharunderscore}bound{\isacharunderscore}def\ elem{\isacharunderscore}bigger{\isacharunderscore}than{\isacharunderscore}next{\isacharunderscore}{\isadigit{2}}{\isacharunderscore}def\ elem{\isacharunderscore}bigger{\isacharunderscore}than{\isacharunderscore}next{\isacharunderscore}def{\isacharparenright}\isanewline
+\ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}rule\ rl{\isacharunderscore}elem{\isacharunderscore}lower{\isacharunderscore}bound{\isacharparenright}\isanewline
+\ \ \ \ \ \ \ \isacommand{apply}\isamarkupfalse%
+\ auto\isanewline
+\ \ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}metis\ Suc{\isacharunderscore}diff{\isacharunderscore}le\ diff{\isacharunderscore}Suc{\isacharunderscore}Suc\ numeral{\isacharunderscore}{\isadigit{2}}{\isacharunderscore}eq{\isacharunderscore}{\isadigit{2}}{\isacharparenright}%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ run{\isacharunderscore}len{\isacharunderscore}sum{\isacharunderscore}lower{\isacharunderscore}bound{\isacharcolon}\ {\isachardoublequoteopen}\isanewline
+{\isasymforall}i{\isachardot}\ {\isadigit{3}}{\isasymle}i\ {\isasymand}\ i{\isasymle}l\ {\isasymlongrightarrow}\ elem{\isacharunderscore}inv\ rl\ {\isacharparenleft}l{\isacharminus}i{\isacharparenright}\ u\ {\isasymLongrightarrow}\isanewline
+elem{\isacharunderscore}bigger{\isacharunderscore}than{\isacharunderscore}next\ rl\ {\isacharparenleft}l{\isacharminus}{\isadigit{2}}{\isacharparenright}\ {\isasymLongrightarrow}\ \isanewline
+elem{\isacharunderscore}larger{\isacharunderscore}than{\isacharunderscore}bound\ rl\ {\isacharparenleft}l{\isacharminus}{\isadigit{1}}{\isacharparenright}\ u\ {\isasymLongrightarrow}\ length\ rl\ {\isacharequal}\ l\ {\isasymLongrightarrow}\ l{\isasymge}{\isadigit{2}}\isanewline
+{\isasymLongrightarrow}\ sumn\ rl\ l\ {\isasymge}\ u{\isacharasterisk}{\isacharparenleft}{\isacharparenleft}fib\ {\isacharparenleft}l{\isacharplus}{\isadigit{1}}{\isacharparenright}{\isacharparenright}{\isacharminus}{\isadigit{1}}{\isacharparenright}\ {\isacharplus}\ {\isacharparenleft}{\isacharparenleft}fib{\isadigit{2}}\ {\isacharparenleft}l{\isacharplus}{\isadigit{1}}{\isacharparenright}{\isacharparenright}\ {\isacharminus}\ {\isacharparenleft}l{\isacharplus}{\isadigit{1}}{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}rule\ rl{\isacharunderscore}sum{\isacharunderscore}lower{\isacharunderscore}bound{\isacharparenright}\isanewline
+\ \ \ \ \ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}auto\ simp\ add{\isacharcolon}elem{\isacharunderscore}inv{\isacharunderscore}def\ elem{\isacharunderscore}larger{\isacharunderscore}than{\isacharunderscore}bound{\isacharunderscore}def\ elem{\isacharunderscore}bigger{\isacharunderscore}than{\isacharunderscore}next{\isacharunderscore}{\isadigit{2}}{\isacharunderscore}def\ elem{\isacharunderscore}bigger{\isacharunderscore}than{\isacharunderscore}next{\isacharunderscore}def{\isacharparenright}\isanewline
+\ \ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}metis\ Suc{\isacharunderscore}diff{\isacharunderscore}le\ diff{\isacharunderscore}Suc{\isacharunderscore}Suc\ numeral{\isacharunderscore}{\isadigit{2}}{\isacharunderscore}eq{\isacharunderscore}{\isadigit{2}}{\isacharparenright}%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}\isanewline
+elem{\isacharunderscore}inv\ rl\ {\isadigit{0}}\ u\ {\isasymLongrightarrow}\isanewline
+\ elem{\isacharunderscore}inv\ rl\ {\isadigit{1}}\ u\ {\isasymLongrightarrow}\ \isanewline
+elem{\isacharunderscore}bigger{\isacharunderscore}than{\isacharunderscore}next\ rl\ {\isadigit{2}}\ {\isasymLongrightarrow}\ \isanewline
+elem{\isacharunderscore}larger{\isacharunderscore}than{\isacharunderscore}bound\ rl\ {\isadigit{3}}\ u\ {\isasymLongrightarrow}\isanewline
+length\ rl\ {\isacharequal}\ {\isadigit{4}}\ {\isasymLongrightarrow}\ u\ {\isasymge}\ {\isadigit{1}}{\isadigit{6}}\ \isanewline
+{\isasymLongrightarrow}\ sum\ rl\ {\isasymge}\ {\isadigit{1}}{\isadigit{1}}{\isadigit{9}}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}simp\ add{\isacharcolon}elem{\isacharunderscore}inv{\isacharunderscore}def\ elem{\isacharunderscore}larger{\isacharunderscore}than{\isacharunderscore}bound{\isacharunderscore}def\ elem{\isacharunderscore}bigger{\isacharunderscore}than{\isacharunderscore}next{\isacharunderscore}{\isadigit{2}}{\isacharunderscore}def\ elem{\isacharunderscore}bigger{\isacharunderscore}than{\isacharunderscore}next{\isacharunderscore}def{\isacharparenright}\isanewline
+\ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}case{\isacharunderscore}tac\ rl{\isacharparenright}\isanewline
+\ \ \ \isacommand{prefer}\isamarkupfalse%
+\ {\isadigit{2}}\isanewline
+\ \ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}case{\isacharunderscore}tac\ list{\isacharparenright}\isanewline
+\ \ \ \ \isacommand{prefer}\isamarkupfalse%
+\ {\isadigit{2}}\isanewline
+\ \ \ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}case{\isacharunderscore}tac\ lista{\isacharparenright}\isanewline
+\ \ \ \ \ \isacommand{prefer}\isamarkupfalse%
+\ {\isadigit{2}}\isanewline
+\ \ \ \ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}case{\isacharunderscore}tac\ listb{\isacharparenright}\isanewline
+\ \ \ \ \ \ \isacommand{apply}\isamarkupfalse%
+\ auto\isanewline
+\ \ \isacommand{done}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+%
+\isadelimtheory
+\isanewline
+%
+\endisadelimtheory
+%
+\isatagtheory
+\isacommand{end}\isamarkupfalse%
+%
+\endisatagtheory
+{\isafoldtheory}%
+%
+\isadelimtheory
+%
+\endisadelimtheory
+%
+\end{isabellebody}%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "root"
+%%% End:

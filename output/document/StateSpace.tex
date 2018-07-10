@@ -1,0 +1,75 @@
+%
+\begin{isabellebody}%
+\setisabellecontext{StateSpace}%
+%
+\isamarkupsection{State Space Template%
+}
+\isamarkuptrue%
+%
+\isadelimtheory
+%
+\endisadelimtheory
+%
+\isatagtheory
+\isacommand{theory}\isamarkupfalse%
+\ StateSpace\ \isakeyword{imports}\ Hoare\isanewline
+\isakeyword{begin}%
+\endisatagtheory
+{\isafoldtheory}%
+%
+\isadelimtheory
+%
+\endisadelimtheory
+\isanewline
+\isanewline
+\isacommand{record}\isamarkupfalse%
+\ {\isacharprime}g\ state\ {\isacharequal}\ {\isachardoublequoteopen}globals{\isachardoublequoteclose}{\isacharcolon}{\isacharcolon}{\isacharprime}g\isanewline
+\isanewline
+\isacommand{definition}\isamarkupfalse%
+\isanewline
+\ \ upd{\isacharunderscore}globals{\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}{\isacharparenleft}{\isacharprime}g\ {\isasymRightarrow}\ {\isacharprime}g{\isacharparenright}\ {\isasymRightarrow}\ {\isacharparenleft}{\isacharprime}g{\isacharcomma}{\isacharprime}z{\isacharparenright}\ state{\isacharunderscore}scheme\ {\isasymRightarrow}\ {\isacharparenleft}{\isacharprime}g{\isacharcomma}{\isacharprime}z{\isacharparenright}\ state{\isacharunderscore}scheme{\isachardoublequoteclose}\isanewline
+\isakeyword{where}\isanewline
+\ \ {\isachardoublequoteopen}upd{\isacharunderscore}globals\ upd\ s\ {\isacharequal}\ s{\isasymlparr}globals\ {\isacharcolon}{\isacharequal}\ upd\ {\isacharparenleft}globals\ s{\isacharparenright}{\isasymrparr}{\isachardoublequoteclose}\ \isanewline
+\isanewline
+\isacommand{record}\isamarkupfalse%
+\ {\isacharparenleft}{\isacharprime}g{\isacharcomma}\ {\isacharprime}n{\isacharcomma}\ {\isacharprime}val{\isacharparenright}\ stateSP\ {\isacharequal}\ {\isachardoublequoteopen}{\isacharprime}g\ state{\isachardoublequoteclose}\ {\isacharplus}\isanewline
+\ \ locals\ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}{\isacharprime}n\ {\isasymRightarrow}\ {\isacharprime}val{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ upd{\isacharunderscore}globals{\isacharunderscore}conv{\isacharcolon}\ {\isachardoublequoteopen}upd{\isacharunderscore}globals\ f\ {\isacharequal}\ {\isacharparenleft}{\isasymlambda}s{\isachardot}\ s{\isasymlparr}globals\ {\isacharcolon}{\isacharequal}\ f\ {\isacharparenleft}globals\ s{\isacharparenright}{\isasymrparr}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}rule\ ext{\isacharparenright}\ {\isacharparenleft}simp\ add{\isacharcolon}\ upd{\isacharunderscore}globals{\isacharunderscore}def{\isacharparenright}%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+%
+\isadelimtheory
+\isanewline
+%
+\endisadelimtheory
+%
+\isatagtheory
+\isacommand{end}\isamarkupfalse%
+%
+\endisatagtheory
+{\isafoldtheory}%
+%
+\isadelimtheory
+%
+\endisadelimtheory
+%
+\end{isabellebody}%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "root"
+%%% End:

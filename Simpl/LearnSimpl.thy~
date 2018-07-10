@@ -1,0 +1,22 @@
+theory LearnSimpl
+  imports "Simpl/Simpl"
+  "Simpl/HeapList" "Simpl/Vcg"
+"HOL-Statespace.StateSpaceSyntax" "HOL-Library.LaTeXsugar"
+
+begin
+
+syntax
+ "_statespace_updates" :: "('a \<Rightarrow> 'b) \<Rightarrow> updbinds \<Rightarrow> ('a \<Rightarrow> 'b)" ("_\<langle>_\<rangle>" [900,0] 900)
+
+hoarestate vars = 
+  A :: nat
+  I :: nat
+  M :: nat
+  N :: nat
+  R :: nat
+  S :: nat
+
+lemma (in vars) "\<Gamma>\<turnstile> \<lbrace>\<acute>N = 5 \<rbrace>\<acute>N :== 2 * \<acute>N \<lbrace>\<acute>N = 10 \<rbrace>"
+lemma (in vars) "\<Gamma>\<turnstile> \<lbrace>\<acute>N = 5\<rbrace> \<acute>N :== 2 * \<acute>N \<lbrace>\<acute>N = 10\<rbrace>"
+
+end

@@ -1,0 +1,658 @@
+%
+\begin{isabellebody}%
+\setisabellecontext{HoareTotalDef}%
+%
+\isamarkupsection{Hoare Logic for Total Correctness%
+}
+\isamarkuptrue%
+%
+\isadelimtheory
+%
+\endisadelimtheory
+%
+\isatagtheory
+\isacommand{theory}\isamarkupfalse%
+\ HoareTotalDef\ \isakeyword{imports}\ HoarePartialDef\ Termination\ \isakeyword{begin}%
+\endisatagtheory
+{\isafoldtheory}%
+%
+\isadelimtheory
+%
+\endisadelimtheory
+%
+\isamarkupsubsection{Validity of Hoare Tuples: \isa{{\isasymGamma}{\isasymTurnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ c\ Q{\isacharcomma}A}%
+}
+\isamarkuptrue%
+\isacommand{definition}\isamarkupfalse%
+\isanewline
+\ \ validt\ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}{\isacharbrackleft}{\isacharparenleft}{\isacharprime}s{\isacharcomma}{\isacharprime}p{\isacharcomma}{\isacharprime}f{\isacharparenright}\ body{\isacharcomma}{\isacharprime}f\ set{\isacharcomma}{\isacharprime}s\ assn{\isacharcomma}{\isacharparenleft}{\isacharprime}s{\isacharcomma}{\isacharprime}p{\isacharcomma}{\isacharprime}f{\isacharparenright}\ com{\isacharcomma}{\isacharprime}s\ assn{\isacharcomma}{\isacharprime}s\ assn{\isacharbrackright}\ {\isasymRightarrow}\ bool{\isachardoublequoteclose}\isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ {\isacharparenleft}{\isachardoublequoteopen}{\isacharunderscore}{\isasymTurnstile}\isactrlsub t\isactrlbsub {\isacharprime}{\isacharslash}{\isacharunderscore}\isactrlesub {\isacharslash}\ {\isacharunderscore}\ {\isacharunderscore}\ {\isacharunderscore}{\isacharcomma}{\isacharunderscore}{\isachardoublequoteclose}\ \ {\isacharbrackleft}{\isadigit{6}}{\isadigit{1}}{\isacharcomma}{\isadigit{6}}{\isadigit{0}}{\isacharcomma}{\isadigit{1}}{\isadigit{0}}{\isadigit{0}}{\isadigit{0}}{\isacharcomma}\ {\isadigit{2}}{\isadigit{0}}{\isacharcomma}\ {\isadigit{1}}{\isadigit{0}}{\isadigit{0}}{\isadigit{0}}{\isacharcomma}{\isadigit{1}}{\isadigit{0}}{\isadigit{0}}{\isadigit{0}}{\isacharbrackright}\ {\isadigit{6}}{\isadigit{0}}{\isacharparenright}\isanewline
+\isakeyword{where}\isanewline
+\ {\isachardoublequoteopen}{\isasymGamma}{\isasymTurnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ c\ Q{\isacharcomma}A\ {\isasymequiv}\ {\isasymGamma}{\isasymTurnstile}\isactrlbsub {\isacharslash}F\isactrlesub \ P\ c\ Q{\isacharcomma}A\ {\isasymand}\ {\isacharparenleft}{\isasymforall}s\ {\isasymin}\ Normal\ {\isacharbackquote}\ P{\isachardot}\ {\isasymGamma}{\isasymturnstile}c{\isasymdown}s{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{definition}\isamarkupfalse%
+\isanewline
+\ \ cvalidt{\isacharcolon}{\isacharcolon}\isanewline
+\ \ {\isachardoublequoteopen}{\isacharbrackleft}{\isacharparenleft}{\isacharprime}s{\isacharcomma}{\isacharprime}p{\isacharcomma}{\isacharprime}f{\isacharparenright}\ body{\isacharcomma}{\isacharparenleft}{\isacharprime}s{\isacharcomma}{\isacharprime}p{\isacharparenright}\ quadruple\ set{\isacharcomma}{\isacharprime}f\ set{\isacharcomma}\isanewline
+\ \ \ \ {\isacharprime}s\ assn{\isacharcomma}{\isacharparenleft}{\isacharprime}s{\isacharcomma}{\isacharprime}p{\isacharcomma}{\isacharprime}f{\isacharparenright}\ com{\isacharcomma}{\isacharprime}s\ assn{\isacharcomma}{\isacharprime}s\ assn{\isacharbrackright}\ {\isasymRightarrow}\ bool{\isachardoublequoteclose}\isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ {\isacharparenleft}{\isachardoublequoteopen}{\isacharunderscore}{\isacharcomma}{\isacharunderscore}{\isasymTurnstile}\isactrlsub t\isactrlbsub {\isacharprime}{\isacharslash}{\isacharunderscore}\isactrlesub {\isacharslash}\ {\isacharunderscore}\ {\isacharunderscore}\ {\isacharunderscore}{\isacharcomma}{\isacharunderscore}{\isachardoublequoteclose}\ \ {\isacharbrackleft}{\isadigit{6}}{\isadigit{1}}{\isacharcomma}{\isadigit{6}}{\isadigit{0}}{\isacharcomma}\ {\isadigit{6}}{\isadigit{0}}{\isacharcomma}{\isadigit{1}}{\isadigit{0}}{\isadigit{0}}{\isadigit{0}}{\isacharcomma}\ {\isadigit{2}}{\isadigit{0}}{\isacharcomma}\ {\isadigit{1}}{\isadigit{0}}{\isadigit{0}}{\isadigit{0}}{\isacharcomma}{\isadigit{1}}{\isadigit{0}}{\isadigit{0}}{\isadigit{0}}{\isacharbrackright}\ {\isadigit{6}}{\isadigit{0}}{\isacharparenright}\isanewline
+\isakeyword{where}\isanewline
+\ {\isachardoublequoteopen}{\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymTurnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ c\ Q{\isacharcomma}A\ {\isasymequiv}\ {\isacharparenleft}{\isasymforall}{\isacharparenleft}P{\isacharcomma}p{\isacharcomma}Q{\isacharcomma}A{\isacharparenright}{\isasymin}{\isasymTheta}{\isachardot}\ {\isasymGamma}{\isasymTurnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ {\isacharparenleft}Call\ p{\isacharparenright}\ Q{\isacharcomma}A{\isacharparenright}\ {\isasymlongrightarrow}\ {\isasymGamma}\ {\isasymTurnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ c\ Q{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+\isanewline
+\isanewline
+\isanewline
+\isacommand{notation}\isamarkupfalse%
+\ {\isacharparenleft}ASCII{\isacharparenright}\isanewline
+\ \ validt\ \ {\isacharparenleft}{\isachardoublequoteopen}{\isacharunderscore}{\isacharbar}{\isacharequal}t{\isacharprime}{\isacharslash}{\isacharunderscore}{\isacharslash}\ {\isacharunderscore}\ {\isacharunderscore}\ {\isacharunderscore}{\isacharcomma}{\isacharunderscore}{\isachardoublequoteclose}\ \ {\isacharbrackleft}{\isadigit{6}}{\isadigit{1}}{\isacharcomma}{\isadigit{6}}{\isadigit{0}}{\isacharcomma}{\isadigit{1}}{\isadigit{0}}{\isadigit{0}}{\isadigit{0}}{\isacharcomma}\ {\isadigit{2}}{\isadigit{0}}{\isacharcomma}\ {\isadigit{1}}{\isadigit{0}}{\isadigit{0}}{\isadigit{0}}{\isacharcomma}{\isadigit{1}}{\isadigit{0}}{\isadigit{0}}{\isadigit{0}}{\isacharbrackright}\ {\isadigit{6}}{\isadigit{0}}{\isacharparenright}\ \isakeyword{and}\isanewline
+\ \ cvalidt\ \ {\isacharparenleft}{\isachardoublequoteopen}{\isacharunderscore}{\isacharcomma}{\isacharunderscore}{\isacharbar}{\isacharequal}t{\isacharprime}{\isacharslash}{\isacharunderscore}\ {\isacharslash}\ {\isacharunderscore}\ {\isacharunderscore}\ {\isacharunderscore}{\isacharcomma}{\isacharunderscore}{\isachardoublequoteclose}\ \ {\isacharbrackleft}{\isadigit{6}}{\isadigit{1}}{\isacharcomma}{\isadigit{6}}{\isadigit{0}}{\isacharcomma}{\isadigit{6}}{\isadigit{0}}{\isacharcomma}{\isadigit{1}}{\isadigit{0}}{\isadigit{0}}{\isadigit{0}}{\isacharcomma}\ {\isadigit{2}}{\isadigit{0}}{\isacharcomma}\ {\isadigit{1}}{\isadigit{0}}{\isadigit{0}}{\isadigit{0}}{\isacharcomma}{\isadigit{1}}{\isadigit{0}}{\isadigit{0}}{\isadigit{0}}{\isacharbrackright}\ {\isadigit{6}}{\isadigit{0}}{\isacharparenright}%
+\isamarkupsubsection{Properties of Validity%
+}
+\isamarkuptrue%
+\isacommand{lemma}\isamarkupfalse%
+\ validtI{\isacharcolon}\ \isanewline
+\ {\isachardoublequoteopen}{\isasymlbrakk}{\isasymAnd}s\ t{\isachardot}\ {\isasymlbrakk}{\isasymGamma}{\isasymturnstile}{\isasymlangle}c{\isacharcomma}Normal\ s{\isasymrangle}\ {\isasymRightarrow}\ t{\isacharsemicolon}s\ {\isasymin}\ P{\isacharsemicolon}t\ {\isasymnotin}\ Fault\ {\isacharbackquote}\ F{\isasymrbrakk}\ {\isasymLongrightarrow}\ t\ {\isasymin}\ Normal\ {\isacharbackquote}\ Q\ {\isasymunion}\ Abrupt\ {\isacharbackquote}\ A{\isacharsemicolon}\isanewline
+\ \ \ {\isasymAnd}s{\isachardot}\ s\ {\isasymin}\ P\ {\isasymLongrightarrow}\ {\isasymGamma}{\isasymturnstile}\ c{\isasymdown}{\isacharparenleft}Normal\ s{\isacharparenright}\ {\isasymrbrakk}\isanewline
+\ \ {\isasymLongrightarrow}\ {\isasymGamma}{\isasymTurnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ c\ Q{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}auto\ simp\ add{\isacharcolon}\ validt{\isacharunderscore}def\ valid{\isacharunderscore}def{\isacharparenright}%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ cvalidtI{\isacharcolon}\ \isanewline
+\ {\isachardoublequoteopen}{\isasymlbrakk}{\isasymAnd}s\ t{\isachardot}\ {\isasymlbrakk}{\isasymforall}{\isacharparenleft}P{\isacharcomma}p{\isacharcomma}Q{\isacharcomma}A{\isacharparenright}{\isasymin}{\isasymTheta}{\isachardot}\ {\isasymGamma}{\isasymTurnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ {\isacharparenleft}Call\ p{\isacharparenright}\ Q{\isacharcomma}A{\isacharsemicolon}{\isasymGamma}{\isasymturnstile}{\isasymlangle}c{\isacharcomma}Normal\ s{\isasymrangle}\ {\isasymRightarrow}\ t{\isacharsemicolon}s\ {\isasymin}\ P{\isacharsemicolon}\ \isanewline
+\ \ \ \ \ \ \ \ \ \ t\ {\isasymnotin}\ Fault\ {\isacharbackquote}\ F{\isasymrbrakk}\ \isanewline
+\ \ \ \ \ \ \ \ \ \ {\isasymLongrightarrow}\ t\ {\isasymin}\ Normal\ {\isacharbackquote}\ Q\ {\isasymunion}\ Abrupt\ {\isacharbackquote}\ A{\isacharsemicolon}\isanewline
+\ \ \ {\isasymAnd}s{\isachardot}\ {\isasymlbrakk}{\isasymforall}{\isacharparenleft}P{\isacharcomma}p{\isacharcomma}Q{\isacharcomma}A{\isacharparenright}{\isasymin}{\isasymTheta}{\isachardot}\ {\isasymGamma}{\isasymTurnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ {\isacharparenleft}Call\ p{\isacharparenright}\ Q{\isacharcomma}A{\isacharsemicolon}\ s{\isasymin}P{\isasymrbrakk}\ {\isasymLongrightarrow}\ \ {\isasymGamma}{\isasymturnstile}c{\isasymdown}{\isacharparenleft}Normal\ s{\isacharparenright}{\isasymrbrakk}\isanewline
+\ \ {\isasymLongrightarrow}\ {\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymTurnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ c\ Q{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}auto\ simp\ add{\isacharcolon}\ cvalidt{\isacharunderscore}def\ validt{\isacharunderscore}def\ valid{\isacharunderscore}def{\isacharparenright}%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ cvalidt{\isacharunderscore}postD{\isacharcolon}\ \isanewline
+\ {\isachardoublequoteopen}{\isasymlbrakk}{\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymTurnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ c\ Q{\isacharcomma}A{\isacharsemicolon}\ {\isasymforall}{\isacharparenleft}P{\isacharcomma}p{\isacharcomma}Q{\isacharcomma}A{\isacharparenright}{\isasymin}{\isasymTheta}{\isachardot}\ {\isasymGamma}{\isasymTurnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ {\isacharparenleft}Call\ p{\isacharparenright}\ Q{\isacharcomma}A{\isacharsemicolon}{\isasymGamma}{\isasymturnstile}{\isasymlangle}c{\isacharcomma}Normal\ s\ {\isasymrangle}\ {\isasymRightarrow}\ t{\isacharsemicolon}\isanewline
+\ \ \ s\ {\isasymin}\ P{\isacharsemicolon}t\ {\isasymnotin}\ Fault\ {\isacharbackquote}\ F{\isasymrbrakk}\ \isanewline
+\ \ {\isasymLongrightarrow}\ t\ {\isasymin}\ Normal\ {\isacharbackquote}\ Q\ {\isasymunion}\ Abrupt\ {\isacharbackquote}\ A{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}simp\ add{\isacharcolon}\ cvalidt{\isacharunderscore}def\ validt{\isacharunderscore}def\ valid{\isacharunderscore}def{\isacharparenright}%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ cvalidt{\isacharunderscore}termD{\isacharcolon}\ \isanewline
+\ {\isachardoublequoteopen}{\isasymlbrakk}{\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymTurnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ c\ Q{\isacharcomma}A{\isacharsemicolon}\ {\isasymforall}{\isacharparenleft}P{\isacharcomma}p{\isacharcomma}Q{\isacharcomma}A{\isacharparenright}{\isasymin}{\isasymTheta}{\isachardot}\ {\isasymGamma}{\isasymTurnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ {\isacharparenleft}Call\ p{\isacharparenright}\ Q{\isacharcomma}A{\isacharsemicolon}s\ {\isasymin}\ P{\isasymrbrakk}\ \isanewline
+\ \ {\isasymLongrightarrow}\ {\isasymGamma}{\isasymturnstile}c{\isasymdown}{\isacharparenleft}Normal\ s{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}simp\ add{\isacharcolon}\ cvalidt{\isacharunderscore}def\ validt{\isacharunderscore}def\ valid{\isacharunderscore}def{\isacharparenright}%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ validt{\isacharunderscore}augment{\isacharunderscore}Faults{\isacharcolon}\isanewline
+\ \ \isakeyword{assumes}\ valid{\isacharcolon}{\isachardoublequoteopen}{\isasymGamma}{\isasymTurnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ c\ Q{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+\ \ \isakeyword{assumes}\ F{\isacharprime}{\isacharcolon}\ {\isachardoublequoteopen}F\ {\isasymsubseteq}\ F{\isacharprime}{\isachardoublequoteclose}\isanewline
+\ \ \isakeyword{shows}\ {\isachardoublequoteopen}{\isasymGamma}{\isasymTurnstile}\isactrlsub t\isactrlbsub {\isacharslash}F{\isacharprime}\isactrlesub \ P\ c\ Q{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ valid\ F{\isacharprime}\isanewline
+\ \ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}auto\ intro{\isacharcolon}\ valid{\isacharunderscore}augment{\isacharunderscore}Faults\ simp\ add{\isacharcolon}\ validt{\isacharunderscore}def{\isacharparenright}%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\isamarkupsubsection{The Hoare Rules: \isa{{\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ c\ Q{\isacharcomma}A}%
+}
+\isamarkuptrue%
+\isacommand{inductive}\isamarkupfalse%
+\ {\isachardoublequoteopen}hoaret{\isachardoublequoteclose}{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isacharbrackleft}{\isacharparenleft}{\isacharprime}s{\isacharcomma}{\isacharprime}p{\isacharcomma}{\isacharprime}f{\isacharparenright}\ body{\isacharcomma}{\isacharparenleft}{\isacharprime}s{\isacharcomma}{\isacharprime}p{\isacharparenright}\ quadruple\ set{\isacharcomma}{\isacharprime}f\ set{\isacharcomma}\isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ {\isacharprime}s\ assn{\isacharcomma}{\isacharparenleft}{\isacharprime}s{\isacharcomma}{\isacharprime}p{\isacharcomma}{\isacharprime}f{\isacharparenright}\ com{\isacharcomma}{\isacharprime}s\ assn{\isacharcomma}{\isacharprime}s\ assn{\isacharbrackright}\ \isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ {\isacharequal}{\isachargreater}\ bool{\isachardoublequoteclose}\isanewline
+\ \ \ \ {\isacharparenleft}{\isachardoublequoteopen}{\isacharparenleft}{\isadigit{3}}{\isacharunderscore}{\isacharcomma}{\isacharunderscore}{\isacharslash}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharprime}{\isacharslash}{\isacharunderscore}\isactrlesub \ {\isacharparenleft}{\isacharunderscore}{\isacharslash}\ {\isacharparenleft}{\isacharunderscore}{\isacharparenright}{\isacharslash}\ {\isacharunderscore}{\isacharcomma}{\isacharunderscore}{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\ {\isacharbrackleft}{\isadigit{6}}{\isadigit{1}}{\isacharcomma}{\isadigit{6}}{\isadigit{0}}{\isacharcomma}{\isadigit{6}}{\isadigit{0}}{\isacharcomma}{\isadigit{1}}{\isadigit{0}}{\isadigit{0}}{\isadigit{0}}{\isacharcomma}{\isadigit{2}}{\isadigit{0}}{\isacharcomma}{\isadigit{1}}{\isadigit{0}}{\isadigit{0}}{\isadigit{0}}{\isacharcomma}{\isadigit{1}}{\isadigit{0}}{\isadigit{0}}{\isadigit{0}}{\isacharbrackright}{\isadigit{6}}{\isadigit{0}}{\isacharparenright}\ \ \isanewline
+\ \ \ \isakeyword{for}\ {\isasymGamma}{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isacharparenleft}{\isacharprime}s{\isacharcomma}{\isacharprime}p{\isacharcomma}{\isacharprime}f{\isacharparenright}\ body{\isachardoublequoteclose}\isanewline
+\isakeyword{where}\isanewline
+\ \ Skip{\isacharcolon}\ {\isachardoublequoteopen}{\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ Q\ Skip\ Q{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+\isanewline
+{\isacharbar}\ Basic{\isacharcolon}\ {\isachardoublequoteopen}{\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ {\isacharbraceleft}s{\isachardot}\ f\ s\ {\isasymin}\ Q{\isacharbraceright}\ {\isacharparenleft}Basic\ f{\isacharparenright}\ Q{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+\isanewline
+{\isacharbar}\ Spec{\isacharcolon}\ {\isachardoublequoteopen}{\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ {\isacharbraceleft}s{\isachardot}\ {\isacharparenleft}{\isasymforall}t{\isachardot}\ {\isacharparenleft}s{\isacharcomma}t{\isacharparenright}\ {\isasymin}\ r\ {\isasymlongrightarrow}\ t\ {\isasymin}\ Q{\isacharparenright}\ {\isasymand}\ {\isacharparenleft}{\isasymexists}t{\isachardot}\ {\isacharparenleft}s{\isacharcomma}t{\isacharparenright}\ {\isasymin}\ r{\isacharparenright}{\isacharbraceright}\ {\isacharparenleft}Spec\ r{\isacharparenright}\ Q{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+\isanewline
+{\isacharbar}\ Seq{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlbrakk}{\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ c\isactrlsub {\isadigit{1}}\ R{\isacharcomma}A{\isacharsemicolon}\ {\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ R\ c\isactrlsub {\isadigit{2}}\ Q{\isacharcomma}A{\isasymrbrakk}\isanewline
+\ \ \ \ \ \ \ \ {\isasymLongrightarrow}\isanewline
+\ \ \ \ \ \ \ \ {\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ Seq\ c\isactrlsub {\isadigit{1}}\ c\isactrlsub {\isadigit{2}}\ Q{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+\ \ \isanewline
+{\isacharbar}\ Cond{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlbrakk}{\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ {\isacharparenleft}P\ {\isasyminter}\ b{\isacharparenright}\ c\isactrlsub {\isadigit{1}}\ Q{\isacharcomma}A{\isacharsemicolon}\ {\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ {\isacharparenleft}P\ {\isasyminter}\ {\isacharminus}\ b{\isacharparenright}\ c\isactrlsub {\isadigit{2}}\ Q{\isacharcomma}A{\isasymrbrakk}\isanewline
+\ \ \ \ \ \ \ \ \ {\isasymLongrightarrow}\ \isanewline
+\ \ \ \ \ \ \ \ \ {\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ {\isacharparenleft}Cond\ b\ c\isactrlsub {\isadigit{1}}\ c\isactrlsub {\isadigit{2}}{\isacharparenright}\ Q{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+\isanewline
+{\isacharbar}\ While{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlbrakk}wf\ r{\isacharsemicolon}\ {\isasymforall}{\isasymsigma}{\isachardot}\ {\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ {\isacharparenleft}{\isacharbraceleft}{\isasymsigma}{\isacharbraceright}\ {\isasyminter}\ P\ {\isasyminter}\ b{\isacharparenright}\ c\ {\isacharparenleft}{\isacharbraceleft}t{\isachardot}\ {\isacharparenleft}t{\isacharcomma}{\isasymsigma}{\isacharparenright}{\isasymin}r{\isacharbraceright}\ {\isasyminter}\ P{\isacharparenright}{\isacharcomma}A{\isasymrbrakk}\isanewline
+\ \ \ \ \ \ \ \ \ \ {\isasymLongrightarrow}\isanewline
+\ \ \ \ \ \ \ \ \ \ {\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ {\isacharparenleft}While\ b\ c{\isacharparenright}\ {\isacharparenleft}P\ {\isasyminter}\ {\isacharminus}\ b{\isacharparenright}{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+\isanewline
+{\isacharbar}\ Guard{\isacharcolon}\ {\isachardoublequoteopen}{\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ {\isacharparenleft}g\ {\isasyminter}\ P{\isacharparenright}\ c\ Q{\isacharcomma}A\isanewline
+\ \ \ \ \ \ \ \ \ \ {\isasymLongrightarrow}\isanewline
+\ \ \ \ \ \ \ \ \ \ {\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ {\isacharparenleft}g\ {\isasyminter}\ P{\isacharparenright}\ Guard\ f\ g\ c\ Q{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+\isanewline
+{\isacharbar}\ Guarantee{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlbrakk}f\ {\isasymin}\ F{\isacharsemicolon}\ {\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ {\isacharparenleft}g\ {\isasyminter}\ P{\isacharparenright}\ c\ Q{\isacharcomma}A{\isasymrbrakk}\isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ {\isasymLongrightarrow}\isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ {\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ {\isacharparenleft}Guard\ f\ g\ c{\isacharparenright}\ Q{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+\isanewline
+{\isacharbar}\ CallRec{\isacharcolon}\ \isanewline
+\ \ {\isachardoublequoteopen}{\isasymlbrakk}{\isacharparenleft}P{\isacharcomma}p{\isacharcomma}Q{\isacharcomma}A{\isacharparenright}\ {\isasymin}\ Specs{\isacharsemicolon}\isanewline
+\ \ \ \ wf\ r{\isacharsemicolon}\ \isanewline
+\ \ \ \ Specs{\isacharunderscore}wf\ {\isacharequal}\ {\isacharparenleft}{\isasymlambda}p\ {\isasymsigma}{\isachardot}\ {\isacharparenleft}{\isasymlambda}{\isacharparenleft}P{\isacharcomma}q{\isacharcomma}Q{\isacharcomma}A{\isacharparenright}{\isachardot}\ {\isacharparenleft}P\ {\isasyminter}\ {\isacharbraceleft}s{\isachardot}\ {\isacharparenleft}{\isacharparenleft}s{\isacharcomma}q{\isacharparenright}{\isacharcomma}{\isacharparenleft}{\isasymsigma}{\isacharcomma}p{\isacharparenright}{\isacharparenright}\ {\isasymin}\ r{\isacharbraceright}{\isacharcomma}q{\isacharcomma}Q{\isacharcomma}A{\isacharparenright}{\isacharparenright}\ {\isacharbackquote}\ Specs{\isacharparenright}{\isacharsemicolon}\isanewline
+\ \ \ \ {\isasymforall}{\isacharparenleft}P{\isacharcomma}p{\isacharcomma}Q{\isacharcomma}A{\isacharparenright}{\isasymin}\ Specs{\isachardot}\ \isanewline
+\ \ \ \ \ \ p\ {\isasymin}\ dom\ {\isasymGamma}\ {\isasymand}\ {\isacharparenleft}{\isasymforall}{\isasymsigma}{\isachardot}\ {\isasymGamma}{\isacharcomma}{\isasymTheta}\ {\isasymunion}\ Specs{\isacharunderscore}wf\ p\ {\isasymsigma}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ {\isacharparenleft}{\isacharbraceleft}{\isasymsigma}{\isacharbraceright}\ {\isasyminter}\ P{\isacharparenright}\ {\isacharparenleft}the\ {\isacharparenleft}{\isasymGamma}\ p{\isacharparenright}{\isacharparenright}\ Q{\isacharcomma}A{\isacharparenright}\isanewline
+\ \ \ \ {\isasymrbrakk}\isanewline
+\ \ \ \ {\isasymLongrightarrow}\isanewline
+\ \ \ \ {\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ {\isacharparenleft}Call\ p{\isacharparenright}\ Q{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+\isanewline
+\isanewline
+{\isacharbar}\ DynCom{\isacharcolon}\ \ {\isachardoublequoteopen}{\isasymforall}s\ {\isasymin}\ P{\isachardot}\ {\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ {\isacharparenleft}c\ s{\isacharparenright}\ Q{\isacharcomma}A\ \isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ {\isasymLongrightarrow}\ \isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ {\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ {\isacharparenleft}DynCom\ c{\isacharparenright}\ Q{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+\isanewline
+\isanewline
+{\isacharbar}\ Throw{\isacharcolon}\ {\isachardoublequoteopen}{\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ A\ Throw\ Q{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+\isanewline
+{\isacharbar}\ Catch{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlbrakk}{\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ c\isactrlsub {\isadigit{1}}\ Q{\isacharcomma}R{\isacharsemicolon}\ {\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ R\ c\isactrlsub {\isadigit{2}}\ Q{\isacharcomma}A{\isasymrbrakk}\ {\isasymLongrightarrow}\ \ {\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ Catch\ c\isactrlsub {\isadigit{1}}\ c\isactrlsub {\isadigit{2}}\ Q{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+\isanewline
+{\isacharbar}\ Conseq{\isacharcolon}\ {\isachardoublequoteopen}{\isasymforall}s\ {\isasymin}\ P{\isachardot}\ {\isasymexists}P{\isacharprime}\ Q{\isacharprime}\ A{\isacharprime}{\isachardot}\ {\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P{\isacharprime}\ c\ Q{\isacharprime}{\isacharcomma}A{\isacharprime}\ {\isasymand}\ s\ {\isasymin}\ P{\isacharprime}\ {\isasymand}\ Q{\isacharprime}\ {\isasymsubseteq}\ Q\ {\isasymand}\ A{\isacharprime}\ {\isasymsubseteq}\ A\ \isanewline
+\ \ \ \ \ \ \ \ \ \ \ {\isasymLongrightarrow}\ {\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ c\ Q{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+\isanewline
+\isanewline
+{\isacharbar}\ Asm{\isacharcolon}\ {\isachardoublequoteopen}{\isacharparenleft}P{\isacharcomma}p{\isacharcomma}Q{\isacharcomma}A{\isacharparenright}\ {\isasymin}\ {\isasymTheta}\ \isanewline
+\ \ \ \ \ \ \ \ {\isasymLongrightarrow}\ \isanewline
+\ \ \ \ \ \ \ \ {\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ {\isacharparenleft}Call\ p{\isacharparenright}\ Q{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+\isanewline
+{\isacharbar}\ ExFalso{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlbrakk}{\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymTurnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ c\ Q{\isacharcomma}A{\isacharsemicolon}\ {\isasymnot}\ {\isasymGamma}{\isasymTurnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ c\ Q{\isacharcomma}A{\isasymrbrakk}\ {\isasymLongrightarrow}\ {\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ c\ Q{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+\ \ %
+\isamarkupcmt{This is a hack rule that enables us to derive completeness for
+        an arbitrary context \isa{{\isasymTheta}}, from completeness for an empty context.%
+}
+%
+\begin{isamarkuptext}%
+Does not work, because of rule ExFalso, the context \isa{{\isasymTheta}} is to blame.
+ A weaker version with empty context can be derived from soundness 
+ later on.%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{lemma}\isamarkupfalse%
+\ hoaret{\isacharunderscore}to{\isacharunderscore}hoarep{\isacharcolon}\isanewline
+\ \ \isakeyword{assumes}\ hoaret{\isacharcolon}\ {\isachardoublequoteopen}{\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ p\ Q{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+\ \ \isakeyword{shows}\ {\isachardoublequoteopen}{\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlbsub {\isacharslash}F\isactrlesub \ P\ p\ Q{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ hoaret\isanewline
+\isacommand{proof}\isamarkupfalse%
+\ {\isacharparenleft}induct{\isacharparenright}\isanewline
+\ \ \isacommand{case}\isamarkupfalse%
+\ Skip\ \isacommand{thus}\isamarkupfalse%
+\ {\isacharquery}case\ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}rule\ hoarep{\isachardot}intros{\isacharparenright}\isanewline
+\isacommand{next}\isamarkupfalse%
+\isanewline
+\ \ \isacommand{case}\isamarkupfalse%
+\ Basic\ \isacommand{thus}\isamarkupfalse%
+\ {\isacharquery}case\ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}rule\ hoarep{\isachardot}intros{\isacharparenright}\isanewline
+\isacommand{next}\isamarkupfalse%
+\isanewline
+\ \ \isacommand{case}\isamarkupfalse%
+\ Seq\ \isacommand{thus}\isamarkupfalse%
+\ {\isacharquery}case\ \isacommand{by}\isamarkupfalse%
+\ {\isacharminus}\ {\isacharparenleft}rule\ hoarep{\isachardot}intros{\isacharparenright}\isanewline
+\isacommand{next}\isamarkupfalse%
+\isanewline
+\ \ \isacommand{case}\isamarkupfalse%
+\ Cond\ \isacommand{thus}\isamarkupfalse%
+\ {\isacharquery}case\ \isacommand{by}\isamarkupfalse%
+\ {\isacharminus}\ {\isacharparenleft}rule\ hoarep{\isachardot}intros{\isacharparenright}\isanewline
+\isacommand{next}\isamarkupfalse%
+\isanewline
+\ \ \isacommand{case}\isamarkupfalse%
+\ {\isacharparenleft}While\ r\ {\isasymTheta}\ F\ P\ b\ c\ A{\isacharparenright}\isanewline
+\ \ \isacommand{hence}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymforall}{\isasymsigma}{\isachardot}\ {\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlbsub {\isacharslash}F\isactrlesub \ {\isacharparenleft}{\isacharbraceleft}{\isasymsigma}{\isacharbraceright}\ {\isasyminter}\ P\ {\isasyminter}\ b{\isacharparenright}\ c\ {\isacharparenleft}{\isacharbraceleft}t{\isachardot}\ {\isacharparenleft}t{\isacharcomma}\ {\isasymsigma}{\isacharparenright}\ {\isasymin}\ r{\isacharbraceright}\ {\isasyminter}\ P{\isacharparenright}{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+\ \ \ \ \isacommand{by}\isamarkupfalse%
+\ iprover\isanewline
+\ \ \isacommand{hence}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlbsub {\isacharslash}F\isactrlesub \ {\isacharparenleft}P\ {\isasyminter}\ b{\isacharparenright}\ c\ P{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+\ \ \ \ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}rule\ HoarePartialDef{\isachardot}conseq{\isacharparenright}\ blast\isanewline
+\ \ \isacommand{then}\isamarkupfalse%
+\ \isacommand{show}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlbsub {\isacharslash}F\isactrlesub \ P\ While\ b\ c\ {\isacharparenleft}P\ {\isasyminter}\ {\isacharminus}\ b{\isacharparenright}{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+\ \ \ \ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}rule\ hoarep{\isachardot}While{\isacharparenright}\isanewline
+\isacommand{next}\isamarkupfalse%
+\isanewline
+\ \ \isacommand{case}\isamarkupfalse%
+\ Guard\ \isacommand{thus}\isamarkupfalse%
+\ {\isacharquery}case\ \isacommand{by}\isamarkupfalse%
+\ {\isacharminus}\ {\isacharparenleft}rule\ hoarep{\isachardot}intros{\isacharparenright}\isanewline
+\isanewline
+\isacommand{next}\isamarkupfalse%
+\isanewline
+\ \ \isacommand{case}\isamarkupfalse%
+\ DynCom\ \isacommand{thus}\isamarkupfalse%
+\ {\isacharquery}case\ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}blast\ intro{\isacharcolon}\ hoarep{\isachardot}DynCom{\isacharparenright}\isanewline
+\isacommand{next}\isamarkupfalse%
+\isanewline
+\ \ \isacommand{case}\isamarkupfalse%
+\ Throw\ \isacommand{thus}\isamarkupfalse%
+\ {\isacharquery}case\ \isacommand{by}\isamarkupfalse%
+\ {\isacharminus}\ {\isacharparenleft}rule\ hoarep{\isachardot}Throw{\isacharparenright}\isanewline
+\isacommand{next}\isamarkupfalse%
+\isanewline
+\ \ \isacommand{case}\isamarkupfalse%
+\ Catch\ \isacommand{thus}\isamarkupfalse%
+\ {\isacharquery}case\ \isacommand{by}\isamarkupfalse%
+\ {\isacharminus}\ {\isacharparenleft}rule\ hoarep{\isachardot}Catch{\isacharparenright}\isanewline
+\isacommand{next}\isamarkupfalse%
+\isanewline
+\ \ \isacommand{case}\isamarkupfalse%
+\ Conseq\ \isacommand{thus}\isamarkupfalse%
+\ {\isacharquery}case\ \isacommand{by}\isamarkupfalse%
+\ {\isacharminus}\ {\isacharparenleft}rule\ hoarep{\isachardot}Conseq{\isacharcomma}blast{\isacharparenright}\isanewline
+\isacommand{next}\isamarkupfalse%
+\isanewline
+\ \ \isacommand{case}\isamarkupfalse%
+\ Asm\ \isacommand{thus}\isamarkupfalse%
+\ {\isacharquery}case\ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}rule\ HoarePartialDef{\isachardot}Asm{\isacharparenright}\isanewline
+\isacommand{next}\isamarkupfalse%
+\isanewline
+\ \ \isacommand{case}\isamarkupfalse%
+\ {\isacharparenleft}ExFalso\ {\isasymTheta}\ F\ P\ c\ Q\ A{\isacharparenright}\isanewline
+\ \ \isacommand{assume}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymTurnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ c\ Q{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+\ \ \isacommand{hence}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymTurnstile}\isactrlbsub {\isacharslash}F\isactrlesub \ P\ c\ Q{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+\ \ \ \ \isacommand{oops}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ hoaret{\isacharunderscore}augment{\isacharunderscore}context{\isacharcolon}\ \isanewline
+\ \ \isakeyword{assumes}\ deriv{\isacharcolon}\ {\isachardoublequoteopen}{\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ p\ Q{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+\ \ \isakeyword{shows}\ {\isachardoublequoteopen}{\isasymAnd}{\isasymTheta}{\isacharprime}{\isachardot}\ {\isasymTheta}\ {\isasymsubseteq}\ {\isasymTheta}{\isacharprime}\ {\isasymLongrightarrow}\ {\isasymGamma}{\isacharcomma}{\isasymTheta}{\isacharprime}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ p\ Q{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ deriv\isanewline
+\isacommand{proof}\isamarkupfalse%
+\ {\isacharparenleft}induct{\isacharparenright}\isanewline
+\ \ \isacommand{case}\isamarkupfalse%
+\ {\isacharparenleft}CallRec\ P\ p\ Q\ A\ Specs\ r\ Specs{\isacharunderscore}wf\ {\isasymTheta}\ F\ {\isasymTheta}{\isacharprime}{\isacharparenright}\isanewline
+\ \ \isacommand{have}\isamarkupfalse%
+\ aug{\isacharcolon}\ {\isachardoublequoteopen}{\isasymTheta}\ {\isasymsubseteq}\ {\isasymTheta}{\isacharprime}{\isachardoublequoteclose}\ \isacommand{by}\isamarkupfalse%
+\ fact\isanewline
+\ \ \isacommand{then}\isamarkupfalse%
+\isanewline
+\ \ \isacommand{have}\isamarkupfalse%
+\ h{\isacharcolon}\ {\isachardoublequoteopen}{\isasymAnd}{\isasymtau}\ p{\isachardot}\ {\isasymTheta}\ {\isasymunion}\ Specs{\isacharunderscore}wf\ p\ {\isasymtau}\isanewline
+\ \ \ \ \ \ \ {\isasymsubseteq}\ {\isasymTheta}{\isacharprime}\ {\isasymunion}\ Specs{\isacharunderscore}wf\ p\ {\isasymtau}{\isachardoublequoteclose}\isanewline
+\ \ \ \ \isacommand{by}\isamarkupfalse%
+\ blast\isanewline
+\ \ \isacommand{have}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymforall}{\isacharparenleft}P{\isacharcomma}p{\isacharcomma}Q{\isacharcomma}A{\isacharparenright}{\isasymin}Specs{\isachardot}\ p\ {\isasymin}\ dom\ {\isasymGamma}\ {\isasymand}\isanewline
+\ \ \ \ \ {\isacharparenleft}{\isasymforall}{\isasymtau}{\isachardot}\ {\isasymGamma}{\isacharcomma}{\isasymTheta}\ {\isasymunion}\ Specs{\isacharunderscore}wf\ p\ {\isasymtau}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ {\isacharparenleft}{\isacharbraceleft}{\isasymtau}{\isacharbraceright}\ {\isasyminter}\ P{\isacharparenright}\ {\isacharparenleft}the\ {\isacharparenleft}{\isasymGamma}\ p{\isacharparenright}{\isacharparenright}\ Q{\isacharcomma}A\ {\isasymand}\isanewline
+\ \ \ \ \ \ \ \ \ \ \ {\isacharparenleft}{\isasymforall}x{\isachardot}\ {\isasymTheta}\ {\isasymunion}\ Specs{\isacharunderscore}wf\ p\ {\isasymtau}\isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ {\isasymsubseteq}\ x\ {\isasymlongrightarrow}\isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ {\isasymGamma}{\isacharcomma}x{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ {\isacharparenleft}{\isacharbraceleft}{\isasymtau}{\isacharbraceright}\ {\isasyminter}\ P{\isacharparenright}\ {\isacharparenleft}the\ {\isacharparenleft}{\isasymGamma}\ p{\isacharparenright}{\isacharparenright}\ Q{\isacharcomma}A{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\ \isacommand{by}\isamarkupfalse%
+\ fact\isanewline
+\ \ \isacommand{hence}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymforall}{\isacharparenleft}P{\isacharcomma}p{\isacharcomma}Q{\isacharcomma}A{\isacharparenright}{\isasymin}Specs{\isachardot}\ p\ {\isasymin}\ dom\ {\isasymGamma}\ {\isasymand}\ \isanewline
+\ \ \ \ \ \ \ \ \ {\isacharparenleft}{\isasymforall}{\isasymtau}{\isachardot}\ {\isasymGamma}{\isacharcomma}{\isasymTheta}{\isacharprime}{\isasymunion}\ Specs{\isacharunderscore}wf\ p\ {\isasymtau}\ {\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ {\isacharparenleft}{\isacharbraceleft}{\isasymtau}{\isacharbraceright}\ {\isasyminter}\ P{\isacharparenright}\ {\isacharparenleft}the\ {\isacharparenleft}{\isasymGamma}\ p{\isacharparenright}{\isacharparenright}\ Q{\isacharcomma}A{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\ \ \ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}clarify{\isacharparenright}\isanewline
+\ \ \ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}rename{\isacharunderscore}tac\ P\ p\ Q\ A{\isacharparenright}\isanewline
+\ \ \ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}drule\ {\isacharparenleft}{\isadigit{1}}{\isacharparenright}\ bspec{\isacharparenright}\isanewline
+\ \ \ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}clarsimp{\isacharparenright}\isanewline
+\ \ \ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}erule{\isacharunderscore}tac\ x{\isacharequal}{\isasymtau}\ \isakeyword{in}\ allE{\isacharparenright}\isanewline
+\ \ \ \ \isacommand{apply}\isamarkupfalse%
+\ clarify\isanewline
+\ \ \ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}erule{\isacharunderscore}tac\ x{\isacharequal}{\isachardoublequoteopen}{\isasymTheta}{\isacharprime}\ {\isasymunion}\ Specs{\isacharunderscore}wf\ p\ {\isasymtau}{\isachardoublequoteclose}\ \isakeyword{in}\ allE{\isacharparenright}\isanewline
+\ \ \ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}insert\ aug{\isacharparenright}\isanewline
+\ \ \ \ \isacommand{apply}\isamarkupfalse%
+\ auto\isanewline
+\ \ \ \ \isacommand{done}\isamarkupfalse%
+\isanewline
+\ \ \isacommand{with}\isamarkupfalse%
+\ CallRec\ \isacommand{show}\isamarkupfalse%
+\ {\isacharquery}case\ \isacommand{by}\isamarkupfalse%
+\ {\isacharminus}\ {\isacharparenleft}rule\ hoaret{\isachardot}CallRec{\isacharparenright}\isanewline
+\isacommand{next}\isamarkupfalse%
+\isanewline
+\ \ \isacommand{case}\isamarkupfalse%
+\ DynCom\ \isacommand{thus}\isamarkupfalse%
+\ {\isacharquery}case\ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}blast\ intro{\isacharcolon}\ hoaret{\isachardot}DynCom{\isacharparenright}\isanewline
+\isacommand{next}\isamarkupfalse%
+\isanewline
+\ \ \isacommand{case}\isamarkupfalse%
+\ {\isacharparenleft}Conseq\ P\ {\isasymTheta}\ F\ c\ Q\ A\ {\isasymTheta}{\isacharprime}{\isacharparenright}\isanewline
+\ \ \isacommand{from}\isamarkupfalse%
+\ Conseq\isanewline
+\ \ \isacommand{have}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymforall}s\ {\isasymin}\ P{\isachardot}\ {\isacharparenleft}{\isasymexists}P{\isacharprime}\ Q{\isacharprime}\ A{\isacharprime}{\isachardot}\ {\isacharparenleft}{\isasymGamma}{\isacharcomma}{\isasymTheta}{\isacharprime}\ {\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P{\isacharprime}\ c\ Q{\isacharprime}{\isacharcomma}A{\isacharprime}{\isacharparenright}\ {\isasymand}\ s\ {\isasymin}\ P{\isacharprime}{\isasymand}\ Q{\isacharprime}\ {\isasymsubseteq}\ Q\ {\isasymand}\ A{\isacharprime}\ {\isasymsubseteq}\ A{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\ \ \ \ \isacommand{by}\isamarkupfalse%
+\ blast\isanewline
+\ \ \isacommand{with}\isamarkupfalse%
+\ Conseq\ \isacommand{show}\isamarkupfalse%
+\ {\isacharquery}case\ \isacommand{by}\isamarkupfalse%
+\ {\isacharminus}\ {\isacharparenleft}rule\ hoaret{\isachardot}Conseq{\isacharparenright}\isanewline
+\isacommand{next}\isamarkupfalse%
+\isanewline
+\ \ \isacommand{case}\isamarkupfalse%
+\ {\isacharparenleft}ExFalso\ {\isasymTheta}\ F\ P\ \ c\ Q\ A\ {\isasymTheta}{\isacharprime}{\isacharparenright}\isanewline
+\ \ \isacommand{have}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymTurnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ c\ Q{\isacharcomma}A{\isachardoublequoteclose}\ {\isachardoublequoteopen}{\isasymnot}\ {\isasymGamma}{\isasymTurnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ c\ Q{\isacharcomma}A{\isachardoublequoteclose}\ {\isachardoublequoteopen}{\isasymTheta}\ {\isasymsubseteq}\ {\isasymTheta}{\isacharprime}{\isachardoublequoteclose}\ \ \isacommand{by}\isamarkupfalse%
+\ fact{\isacharplus}\isanewline
+\ \ \isacommand{then}\isamarkupfalse%
+\ \isacommand{show}\isamarkupfalse%
+\ {\isacharquery}case\isanewline
+\ \ \ \ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}fastforce\ intro{\isacharcolon}\ hoaret{\isachardot}ExFalso\ simp\ add{\isacharcolon}\ cvalidt{\isacharunderscore}def{\isacharparenright}\isanewline
+\isacommand{qed}\isamarkupfalse%
+\ {\isacharparenleft}blast\ intro{\isacharcolon}\ hoaret{\isachardot}intros{\isacharparenright}{\isacharplus}%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\isamarkupsubsection{Some Derived Rules%
+}
+\isamarkuptrue%
+\isacommand{lemma}\isamarkupfalse%
+\ \ Conseq{\isacharprime}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymforall}s{\isachardot}\ s\ {\isasymin}\ P\ {\isasymlongrightarrow}\ \isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ {\isacharparenleft}{\isasymexists}P{\isacharprime}\ Q{\isacharprime}\ A{\isacharprime}{\isachardot}\ \isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ {\isacharparenleft}{\isasymforall}\ Z{\isachardot}\ {\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ {\isacharparenleft}P{\isacharprime}\ Z{\isacharparenright}\ c\ {\isacharparenleft}Q{\isacharprime}\ Z{\isacharparenright}{\isacharcomma}{\isacharparenleft}A{\isacharprime}\ Z{\isacharparenright}{\isacharparenright}\ {\isasymand}\isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ {\isacharparenleft}{\isasymexists}Z{\isachardot}\ s\ {\isasymin}\ P{\isacharprime}\ Z\ {\isasymand}\ {\isacharparenleft}Q{\isacharprime}\ Z\ {\isasymsubseteq}\ Q{\isacharparenright}\ {\isasymand}\ {\isacharparenleft}A{\isacharprime}\ Z\ {\isasymsubseteq}\ A{\isacharparenright}{\isacharparenright}{\isacharparenright}\isanewline
+\ \ \ \ \ \ \ \ \ \ \ {\isasymLongrightarrow}\isanewline
+\ \ \ \ \ \ \ \ \ \ \ {\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ c\ Q{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\isatagproof
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}rule\ Conseq{\isacharparenright}\isanewline
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}rule\ ballI{\isacharparenright}\isanewline
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}erule{\isacharunderscore}tac\ x{\isacharequal}s\ \isakeyword{in}\ allE{\isacharparenright}\isanewline
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}clarify{\isacharparenright}\isanewline
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}rule{\isacharunderscore}tac\ x{\isacharequal}{\isachardoublequoteopen}P{\isacharprime}\ Z{\isachardoublequoteclose}\ \isakeyword{in}\ exI{\isacharparenright}\isanewline
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}rule{\isacharunderscore}tac\ x{\isacharequal}{\isachardoublequoteopen}Q{\isacharprime}\ Z{\isachardoublequoteclose}\ \isakeyword{in}\ exI{\isacharparenright}\isanewline
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}rule{\isacharunderscore}tac\ x{\isacharequal}{\isachardoublequoteopen}A{\isacharprime}\ Z{\isachardoublequoteclose}\ \isakeyword{in}\ exI{\isacharparenright}\isanewline
+\isacommand{apply}\isamarkupfalse%
+\ blast\isanewline
+\isacommand{done}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ conseq{\isacharcolon}{\isachardoublequoteopen}{\isasymlbrakk}{\isasymforall}Z{\isachardot}\ {\isasymGamma}{\isacharcomma}{\isasymTheta}\ {\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ {\isacharparenleft}P{\isacharprime}\ Z{\isacharparenright}\ c\ {\isacharparenleft}Q{\isacharprime}\ Z{\isacharparenright}{\isacharcomma}{\isacharparenleft}A{\isacharprime}\ Z{\isacharparenright}{\isacharsemicolon}\isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ {\isasymforall}s{\isachardot}\ s\ {\isasymin}\ P\ {\isasymlongrightarrow}\ {\isacharparenleft}{\isasymexists}\ Z{\isachardot}\ s{\isasymin}P{\isacharprime}\ Z\ {\isasymand}\ {\isacharparenleft}Q{\isacharprime}\ Z\ {\isasymsubseteq}\ Q{\isacharparenright}{\isasymand}\ {\isacharparenleft}A{\isacharprime}\ Z\ {\isasymsubseteq}\ A{\isacharparenright}{\isacharparenright}{\isasymrbrakk}\isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ {\isasymLongrightarrow}\isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ {\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ c\ Q{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}rule\ Conseq{\isacharparenright}\ blast%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{theorem}\isamarkupfalse%
+\ conseqPrePost{\isacharcolon}\ \isanewline
+\ \ {\isachardoublequoteopen}{\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P{\isacharprime}\ c\ Q{\isacharprime}{\isacharcomma}A{\isacharprime}\ {\isasymLongrightarrow}\ P\ {\isasymsubseteq}\ P{\isacharprime}\ {\isasymLongrightarrow}\ \ Q{\isacharprime}\ {\isasymsubseteq}\ Q\ {\isasymLongrightarrow}\ A{\isacharprime}\ {\isasymsubseteq}\ A\ {\isasymLongrightarrow}\ \ {\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ c\ Q{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}rule\ conseq\ {\isacharbrackleft}\isakeyword{where}\ {\isacharquery}P{\isacharprime}{\isacharequal}{\isachardoublequoteopen}{\isasymlambda}Z{\isachardot}\ P{\isacharprime}{\isachardoublequoteclose}\ \isakeyword{and}\ {\isacharquery}Q{\isacharprime}{\isacharequal}{\isachardoublequoteopen}{\isasymlambda}Z{\isachardot}\ Q{\isacharprime}{\isachardoublequoteclose}{\isacharbrackright}{\isacharparenright}\ auto%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ conseqPre{\isacharcolon}\ {\isachardoublequoteopen}{\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P{\isacharprime}\ c\ Q{\isacharcomma}A\ {\isasymLongrightarrow}\ P\ {\isasymsubseteq}\ P{\isacharprime}\ {\isasymLongrightarrow}\ {\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ c\ Q{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}rule\ conseq{\isacharparenright}\ auto%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ conseqPost{\isacharcolon}\ {\isachardoublequoteopen}{\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ c\ Q{\isacharprime}{\isacharcomma}A{\isacharprime}{\isasymLongrightarrow}\ Q{\isacharprime}\ {\isasymsubseteq}\ Q\ {\isasymLongrightarrow}\ A{\isacharprime}\ {\isasymsubseteq}\ A\ {\isasymLongrightarrow}\ \ \ {\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ P\ c\ Q{\isacharcomma}A{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}rule\ conseq{\isacharparenright}\ auto%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ Spec{\isacharunderscore}wf{\isacharunderscore}conv{\isacharcolon}\ \isanewline
+\ \ {\isachardoublequoteopen}{\isacharparenleft}{\isasymlambda}{\isacharparenleft}P{\isacharcomma}\ q{\isacharcomma}\ Q{\isacharcomma}\ A{\isacharparenright}{\isachardot}\ {\isacharparenleft}P\ {\isasyminter}\ {\isacharbraceleft}s{\isachardot}\ {\isacharparenleft}{\isacharparenleft}s{\isacharcomma}\ q{\isacharparenright}{\isacharcomma}\ {\isasymtau}{\isacharcomma}\ p{\isacharparenright}\ {\isasymin}\ r{\isacharbraceright}{\isacharcomma}\ q{\isacharcomma}\ Q{\isacharcomma}\ A{\isacharparenright}{\isacharparenright}\ {\isacharbackquote}\isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ {\isacharparenleft}{\isasymUnion}p{\isasymin}Procs{\isachardot}\ {\isasymUnion}Z{\isachardot}\ {\isacharbraceleft}{\isacharparenleft}P\ p\ Z{\isacharcomma}\ p{\isacharcomma}\ Q\ p\ Z{\isacharcomma}\ A\ p\ Z{\isacharparenright}{\isacharbraceright}{\isacharparenright}\ {\isacharequal}\ \isanewline
+\ \ \ \ \ \ \ \ {\isacharparenleft}{\isasymUnion}q{\isasymin}Procs{\isachardot}\ {\isasymUnion}Z{\isachardot}\ {\isacharbraceleft}{\isacharparenleft}P\ q\ Z\ {\isasyminter}\ {\isacharbraceleft}s{\isachardot}\ {\isacharparenleft}{\isacharparenleft}s{\isacharcomma}\ q{\isacharparenright}{\isacharcomma}\ {\isasymtau}{\isacharcomma}\ p{\isacharparenright}\ {\isasymin}\ r{\isacharbraceright}{\isacharcomma}\ q{\isacharcomma}\ Q\ q\ Z{\isacharcomma}\ A\ q\ Z{\isacharparenright}{\isacharbraceright}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}auto\ intro{\isacharbang}{\isacharcolon}\ image{\isacharunderscore}eqI{\isacharparenright}%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ CallRec{\isacharprime}{\isacharcolon}\ \isanewline
+\ \ {\isachardoublequoteopen}{\isasymlbrakk}p{\isasymin}Procs{\isacharsemicolon}\ Procs\ {\isasymsubseteq}\ dom\ {\isasymGamma}{\isacharsemicolon}\isanewline
+\ \ \ \ wf\ r{\isacharsemicolon}\ \isanewline
+\ \ \ {\isasymforall}p{\isasymin}Procs{\isachardot}\ {\isasymforall}{\isasymtau}\ Z{\isachardot}\ \isanewline
+\ \ \ {\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymunion}{\isacharparenleft}{\isasymUnion}q{\isasymin}Procs{\isachardot}\ {\isasymUnion}Z{\isachardot}\ \isanewline
+\ \ \ \ {\isacharbraceleft}{\isacharparenleft}{\isacharparenleft}P\ q\ Z{\isacharparenright}\ {\isasyminter}\ {\isacharbraceleft}s{\isachardot}\ {\isacharparenleft}{\isacharparenleft}s{\isacharcomma}q{\isacharparenright}{\isacharcomma}{\isacharparenleft}{\isasymtau}{\isacharcomma}p{\isacharparenright}{\isacharparenright}\ {\isasymin}\ r{\isacharbraceright}{\isacharcomma}q{\isacharcomma}Q\ q\ Z{\isacharcomma}{\isacharparenleft}A\ q\ Z{\isacharparenright}{\isacharparenright}{\isacharbraceright}{\isacharparenright}\isanewline
+\ \ \ \ \ {\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ {\isacharparenleft}{\isacharbraceleft}{\isasymtau}{\isacharbraceright}\ {\isasyminter}\ {\isacharparenleft}P\ p\ Z{\isacharparenright}{\isacharparenright}\ {\isacharparenleft}the\ {\isacharparenleft}{\isasymGamma}\ p{\isacharparenright}{\isacharparenright}\ {\isacharparenleft}Q\ p\ Z{\isacharparenright}{\isacharcomma}{\isacharparenleft}A\ p\ Z{\isacharparenright}{\isasymrbrakk}\isanewline
+\ \ \ {\isasymLongrightarrow}\isanewline
+\ \ \ {\isasymGamma}{\isacharcomma}{\isasymTheta}{\isasymturnstile}\isactrlsub t\isactrlbsub {\isacharslash}F\isactrlesub \ {\isacharparenleft}P\ p\ Z{\isacharparenright}\ {\isacharparenleft}Call\ p{\isacharparenright}\ {\isacharparenleft}Q\ p\ Z{\isacharparenright}{\isacharcomma}{\isacharparenleft}A\ p\ Z{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\isatagproof
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}rule\ CallRec\ {\isacharbrackleft}\isakeyword{where}\ Specs{\isacharequal}{\isachardoublequoteopen}{\isasymUnion}p{\isasymin}Procs{\isachardot}\ {\isasymUnion}Z{\isachardot}\ {\isacharbraceleft}{\isacharparenleft}{\isacharparenleft}P\ p\ Z{\isacharparenright}{\isacharcomma}p{\isacharcomma}Q\ p\ Z{\isacharcomma}A\ p\ Z{\isacharparenright}{\isacharbraceright}{\isachardoublequoteclose}\ \isakeyword{and}\isanewline
+\ \ \ \ \ \ \ \ \ r{\isacharequal}r{\isacharbrackright}{\isacharparenright}\isanewline
+\isacommand{apply}\isamarkupfalse%
+\ \ \ \ blast\isanewline
+\isacommand{apply}\isamarkupfalse%
+\ \ \ assumption\isanewline
+\isacommand{apply}\isamarkupfalse%
+\ \ {\isacharparenleft}rule\ refl{\isacharparenright}\isanewline
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}clarsimp{\isacharparenright}\isanewline
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}rename{\isacharunderscore}tac\ p{\isacharprime}{\isacharparenright}\isanewline
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}rule\ conjI{\isacharparenright}\isanewline
+\isacommand{apply}\isamarkupfalse%
+\ \ blast\isanewline
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}intro\ allI{\isacharparenright}\isanewline
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}rename{\isacharunderscore}tac\ Z\ {\isasymtau}{\isacharparenright}\isanewline
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}drule{\isacharunderscore}tac\ x{\isacharequal}p{\isacharprime}\ \isakeyword{in}\ bspec{\isacharcomma}\ assumption{\isacharparenright}\isanewline
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}erule{\isacharunderscore}tac\ x{\isacharequal}{\isasymtau}\ \isakeyword{in}\ allE{\isacharparenright}\isanewline
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}erule{\isacharunderscore}tac\ x{\isacharequal}Z\ \isakeyword{in}\ allE{\isacharparenright}\isanewline
+\isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}fastforce\ simp\ add{\isacharcolon}\ Spec{\isacharunderscore}wf{\isacharunderscore}conv{\isacharparenright}\isanewline
+\isacommand{done}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+%
+\isadelimtheory
+\isanewline
+%
+\endisadelimtheory
+%
+\isatagtheory
+\isacommand{end}\isamarkupfalse%
+%
+\endisatagtheory
+{\isafoldtheory}%
+%
+\isadelimtheory
+%
+\endisadelimtheory
+%
+\end{isabellebody}%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "root"
+%%% End:

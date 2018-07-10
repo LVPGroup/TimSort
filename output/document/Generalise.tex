@@ -1,0 +1,449 @@
+%
+\begin{isabellebody}%
+\setisabellecontext{Generalise}%
+%
+\isadelimtheory
+\isanewline
+\isanewline
+\isanewline
+\isanewline
+%
+\endisadelimtheory
+%
+\isatagtheory
+\isacommand{theory}\isamarkupfalse%
+\ Generalise\ \isakeyword{imports}\ {\isachardoublequoteopen}HOL{\isacharminus}Statespace{\isachardot}DistinctTreeProver{\isachardoublequoteclose}\isanewline
+\isakeyword{begin}%
+\endisatagtheory
+{\isafoldtheory}%
+%
+\isadelimtheory
+\isanewline
+%
+\endisadelimtheory
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ protectRefl{\isacharcolon}\ {\isachardoublequoteopen}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}PROP\ C{\isacharparenright}\ {\isasymLongrightarrow}\ PROP\ Pure{\isachardot}prop\ {\isacharparenleft}PROP\ C{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}simp\ add{\isacharcolon}\ prop{\isacharunderscore}def{\isacharparenright}%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ protectImp{\isacharcolon}\ \isanewline
+\ \isakeyword{assumes}\ i{\isacharcolon}\ {\isachardoublequoteopen}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}PROP\ P\ {\isasymLongrightarrow}\ PROP\ Q{\isacharparenright}{\isachardoublequoteclose}\ \isanewline
+\ \isakeyword{shows}\ {\isachardoublequoteopen}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}PROP\ Pure{\isachardot}prop\ P\ {\isasymLongrightarrow}\ PROP\ Pure{\isachardot}prop\ Q{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\isatagproof
+\isacommand{proof}\isamarkupfalse%
+\ {\isacharminus}\isanewline
+\ \ \isacommand{{\isacharbraceleft}}\isamarkupfalse%
+\isanewline
+\ \ \ \ \isacommand{assume}\isamarkupfalse%
+\ P{\isacharcolon}\ {\isachardoublequoteopen}PROP\ Pure{\isachardot}prop\ P{\isachardoublequoteclose}\isanewline
+\ \ \ \ \isacommand{from}\isamarkupfalse%
+\ i\ {\isacharbrackleft}unfolded\ prop{\isacharunderscore}def{\isacharcomma}\ OF\ P\ {\isacharbrackleft}unfolded\ prop{\isacharunderscore}def{\isacharbrackright}{\isacharbrackright}\ \isanewline
+\ \ \ \ \isacommand{have}\isamarkupfalse%
+\ {\isachardoublequoteopen}PROP\ Pure{\isachardot}prop\ Q{\isachardoublequoteclose}\isanewline
+\ \ \ \ \ \ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}simp\ add{\isacharcolon}\ prop{\isacharunderscore}def{\isacharparenright}\isanewline
+\ \ \isacommand{{\isacharbraceright}}\isamarkupfalse%
+\isanewline
+\ \ \isacommand{note}\isamarkupfalse%
+\ i{\isacharprime}\ {\isacharequal}\ this\isanewline
+\ \ \isacommand{show}\isamarkupfalse%
+\ {\isachardoublequoteopen}PROP\ {\isacharquery}thesis{\isachardoublequoteclose}\ \isanewline
+\ \ \ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}rule\ protectI{\isacharparenright}\isanewline
+\ \ \ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}rule\ i{\isacharprime}{\isacharparenright}\isanewline
+\ \ \ \ \isacommand{apply}\isamarkupfalse%
+\ assumption\isanewline
+\ \ \ \ \isacommand{done}\isamarkupfalse%
+\isanewline
+\isacommand{qed}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ generaliseConj{\isacharcolon}\ \isanewline
+\ \ \isakeyword{assumes}\ i{\isadigit{1}}{\isacharcolon}\ {\isachardoublequoteopen}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}Trueprop\ P{\isacharparenright}\ {\isasymLongrightarrow}\ PROP\ Pure{\isachardot}prop\ {\isacharparenleft}Trueprop\ Q{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\ \ \isakeyword{assumes}\ i{\isadigit{2}}{\isacharcolon}\ {\isachardoublequoteopen}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}Trueprop\ P{\isacharprime}{\isacharparenright}\ {\isasymLongrightarrow}\ PROP\ Pure{\isachardot}prop\ {\isacharparenleft}Trueprop\ Q{\isacharprime}{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\ \ \isakeyword{shows}\ {\isachardoublequoteopen}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}Trueprop\ {\isacharparenleft}P\ {\isasymand}\ P{\isacharprime}{\isacharparenright}{\isacharparenright}\ {\isasymLongrightarrow}\ {\isacharparenleft}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}Trueprop\ {\isacharparenleft}Q\ {\isasymand}\ Q{\isacharprime}{\isacharparenright}{\isacharparenright}{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ i{\isadigit{1}}\ i{\isadigit{2}}\isanewline
+\ \ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}auto\ simp\ add{\isacharcolon}\ prop{\isacharunderscore}def{\isacharparenright}%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ generaliseAll{\isacharcolon}\ \isanewline
+\ \isakeyword{assumes}\ i{\isacharcolon}\ {\isachardoublequoteopen}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}{\isasymAnd}s{\isachardot}\ PROP\ Pure{\isachardot}prop\ {\isacharparenleft}Trueprop\ {\isacharparenleft}P\ s{\isacharparenright}{\isacharparenright}\ {\isasymLongrightarrow}\ PROP\ Pure{\isachardot}prop\ {\isacharparenleft}Trueprop\ {\isacharparenleft}Q\ s{\isacharparenright}{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\ \isanewline
+\ \isakeyword{shows}\ {\isachardoublequoteopen}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}Trueprop\ {\isacharparenleft}{\isasymforall}s{\isachardot}\ P\ s{\isacharparenright}{\isacharparenright}\ {\isasymLongrightarrow}\ PROP\ Pure{\isachardot}prop\ {\isacharparenleft}Trueprop\ {\isacharparenleft}{\isasymforall}s{\isachardot}\ Q\ s{\isacharparenright}{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ i\isanewline
+\ \ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}auto\ simp\ add{\isacharcolon}\ prop{\isacharunderscore}def{\isacharparenright}%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ generalise{\isacharunderscore}all{\isacharcolon}\ \isanewline
+\ \isakeyword{assumes}\ i{\isacharcolon}\ {\isachardoublequoteopen}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}{\isasymAnd}s{\isachardot}\ PROP\ Pure{\isachardot}prop\ {\isacharparenleft}PROP\ P\ s{\isacharparenright}\ {\isasymLongrightarrow}\ PROP\ Pure{\isachardot}prop\ {\isacharparenleft}PROP\ Q\ s{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\ \isanewline
+\ \isakeyword{shows}\ {\isachardoublequoteopen}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}{\isacharparenleft}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}{\isasymAnd}s{\isachardot}\ PROP\ P\ s{\isacharparenright}{\isacharparenright}\ {\isasymLongrightarrow}\ {\isacharparenleft}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}{\isasymAnd}s{\isachardot}\ PROP\ Q\ s{\isacharparenright}{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ i\isanewline
+\ \ \isacommand{proof}\isamarkupfalse%
+\ {\isacharparenleft}unfold\ prop{\isacharunderscore}def{\isacharparenright}\isanewline
+\ \ \ \ \isacommand{assume}\isamarkupfalse%
+\ i{\isadigit{1}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymAnd}s{\isachardot}\ {\isacharparenleft}PROP\ P\ s{\isacharparenright}\ {\isasymLongrightarrow}\ {\isacharparenleft}PROP\ Q\ s{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\ \ \ \ \isacommand{assume}\isamarkupfalse%
+\ i{\isadigit{2}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymAnd}s{\isachardot}\ PROP\ P\ s{\isachardoublequoteclose}\isanewline
+\ \ \ \ \isacommand{show}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymAnd}s{\isachardot}\ PROP\ Q\ s{\isachardoublequoteclose}\isanewline
+\ \ \ \ \ \ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}rule\ i{\isadigit{1}}{\isacharparenright}\ {\isacharparenleft}rule\ i{\isadigit{2}}{\isacharparenright}\isanewline
+\ \ \isacommand{qed}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ generaliseTrans{\isacharcolon}\ \isanewline
+\ \ \isakeyword{assumes}\ i{\isadigit{1}}{\isacharcolon}\ {\isachardoublequoteopen}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}PROP\ P\ {\isasymLongrightarrow}\ PROP\ Q{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\ \ \isakeyword{assumes}\ i{\isadigit{2}}{\isacharcolon}\ {\isachardoublequoteopen}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}PROP\ Q\ {\isasymLongrightarrow}\ PROP\ R{\isacharparenright}{\isachardoublequoteclose}\ \isanewline
+\ \ \isakeyword{shows}\ {\isachardoublequoteopen}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}PROP\ P\ {\isasymLongrightarrow}\ PROP\ R{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ i{\isadigit{1}}\ i{\isadigit{2}}\isanewline
+\ \ \isacommand{proof}\isamarkupfalse%
+\ {\isacharparenleft}unfold\ prop{\isacharunderscore}def{\isacharparenright}\isanewline
+\ \ \ \ \isacommand{assume}\isamarkupfalse%
+\ P{\isacharunderscore}Q{\isacharcolon}\ {\isachardoublequoteopen}PROP\ P\ {\isasymLongrightarrow}\ PROP\ Q{\isachardoublequoteclose}\ \isanewline
+\ \ \ \ \isacommand{assume}\isamarkupfalse%
+\ Q{\isacharunderscore}R{\isacharcolon}\ {\isachardoublequoteopen}PROP\ Q\ {\isasymLongrightarrow}\ PROP\ R{\isachardoublequoteclose}\ \isanewline
+\ \ \ \ \isacommand{assume}\isamarkupfalse%
+\ P{\isacharcolon}\ {\isachardoublequoteopen}PROP\ P{\isachardoublequoteclose}\isanewline
+\ \ \ \ \isacommand{show}\isamarkupfalse%
+\ {\isachardoublequoteopen}PROP\ R{\isachardoublequoteclose}\isanewline
+\ \ \ \ \ \ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}rule\ Q{\isacharunderscore}R\ {\isacharbrackleft}OF\ P{\isacharunderscore}Q\ {\isacharbrackleft}OF\ P{\isacharbrackright}{\isacharbrackright}{\isacharparenright}\isanewline
+\ \ \isacommand{qed}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ meta{\isacharunderscore}spec{\isacharcolon}\isanewline
+\ \ \isakeyword{assumes}\ {\isachardoublequoteopen}{\isasymAnd}x{\isachardot}\ PROP\ P\ x{\isachardoublequoteclose}\isanewline
+\ \ \isakeyword{shows}\ {\isachardoublequoteopen}PROP\ P\ x{\isachardoublequoteclose}%
+\isadelimproof
+\ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ fact%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+\isanewline
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ meta{\isacharunderscore}spec{\isacharunderscore}protect{\isacharcolon}\isanewline
+\ \ \isakeyword{assumes}\ g{\isacharcolon}\ {\isachardoublequoteopen}{\isasymAnd}x{\isachardot}\ PROP\ P\ x{\isachardoublequoteclose}\isanewline
+\ \ \isakeyword{shows}\ {\isachardoublequoteopen}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}PROP\ P\ x{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ g\isanewline
+\isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}auto\ simp\ add{\isacharcolon}\ prop{\isacharunderscore}def{\isacharparenright}%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ generaliseImp{\isacharcolon}\ \isanewline
+\ \ \isakeyword{assumes}\ i{\isacharcolon}\ {\isachardoublequoteopen}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}Trueprop\ P{\isacharparenright}\ {\isasymLongrightarrow}\ PROP\ Pure{\isachardot}prop\ {\isacharparenleft}Trueprop\ Q{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\ \ \isakeyword{shows}\ {\isachardoublequoteopen}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}Trueprop\ {\isacharparenleft}X\ {\isasymlongrightarrow}\ P{\isacharparenright}{\isacharparenright}\ {\isasymLongrightarrow}\ PROP\ Pure{\isachardot}prop\ {\isacharparenleft}Trueprop\ {\isacharparenleft}X\ {\isasymlongrightarrow}\ Q{\isacharparenright}{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ i\isanewline
+\ \ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}auto\ simp\ add{\isacharcolon}\ prop{\isacharunderscore}def{\isacharparenright}%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ generaliseEx{\isacharcolon}\ \isanewline
+\ \isakeyword{assumes}\ i{\isacharcolon}\ {\isachardoublequoteopen}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}{\isasymAnd}s{\isachardot}\ PROP\ Pure{\isachardot}prop\ {\isacharparenleft}Trueprop\ {\isacharparenleft}P\ s{\isacharparenright}{\isacharparenright}\ {\isasymLongrightarrow}\ PROP\ Pure{\isachardot}prop\ {\isacharparenleft}Trueprop\ {\isacharparenleft}Q\ s{\isacharparenright}{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\ \isanewline
+\ \isakeyword{shows}\ {\isachardoublequoteopen}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}Trueprop\ {\isacharparenleft}{\isasymexists}s{\isachardot}\ P\ s{\isacharparenright}{\isacharparenright}\ {\isasymLongrightarrow}\ PROP\ Pure{\isachardot}prop\ {\isacharparenleft}Trueprop\ {\isacharparenleft}{\isasymexists}s{\isachardot}\ Q\ s{\isacharparenright}{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ i\isanewline
+\ \ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}auto\ simp\ add{\isacharcolon}\ prop{\isacharunderscore}def{\isacharparenright}%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ generaliseRefl{\isacharcolon}\ {\isachardoublequoteopen}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}Trueprop\ P{\isacharparenright}\ {\isasymLongrightarrow}\ PROP\ Pure{\isachardot}prop\ {\isacharparenleft}Trueprop\ P{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}auto\ simp\ add{\isacharcolon}\ prop{\isacharunderscore}def{\isacharparenright}%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ generaliseRefl{\isacharprime}{\isacharcolon}\ {\isachardoublequoteopen}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}PROP\ P\ {\isasymLongrightarrow}\ PROP\ P{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}auto\ simp\ add{\isacharcolon}\ prop{\isacharunderscore}def{\isacharparenright}%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ generaliseAllShift{\isacharcolon}\isanewline
+\ \ \isakeyword{assumes}\ i{\isacharcolon}\ {\isachardoublequoteopen}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}{\isasymAnd}s{\isachardot}\ P\ {\isasymLongrightarrow}\ Q\ s{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\ \ \isakeyword{shows}\ {\isachardoublequoteopen}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}Trueprop\ P{\isacharparenright}\ {\isasymLongrightarrow}\ PROP\ Pure{\isachardot}prop\ {\isacharparenleft}Trueprop\ {\isacharparenleft}{\isasymforall}s{\isachardot}\ Q\ s{\isacharparenright}{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ i\isanewline
+\ \ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}auto\ simp\ add{\isacharcolon}\ prop{\isacharunderscore}def{\isacharparenright}%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ generalise{\isacharunderscore}allShift{\isacharcolon}\isanewline
+\ \ \isakeyword{assumes}\ i{\isacharcolon}\ {\isachardoublequoteopen}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}{\isasymAnd}s{\isachardot}\ PROP\ P\ {\isasymLongrightarrow}\ PROP\ Q\ s{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\ \ \isakeyword{shows}\ {\isachardoublequoteopen}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}PROP\ P{\isacharparenright}\ {\isasymLongrightarrow}\ PROP\ Pure{\isachardot}prop\ {\isacharparenleft}{\isasymAnd}s{\isachardot}\ PROP\ Q\ s{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ i\isanewline
+\ \ \isacommand{proof}\isamarkupfalse%
+\ {\isacharparenleft}unfold\ prop{\isacharunderscore}def{\isacharparenright}\isanewline
+\ \ \ \ \isacommand{assume}\isamarkupfalse%
+\ P{\isacharunderscore}Q{\isacharcolon}\ {\isachardoublequoteopen}{\isasymAnd}s{\isachardot}\ PROP\ P\ {\isasymLongrightarrow}\ PROP\ Q\ s{\isachardoublequoteclose}\ \isanewline
+\ \ \ \ \isacommand{assume}\isamarkupfalse%
+\ P{\isacharcolon}\ {\isachardoublequoteopen}PROP\ P{\isachardoublequoteclose}\isanewline
+\ \ \ \ \isacommand{show}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymAnd}s{\isachardot}\ PROP\ Q\ s{\isachardoublequoteclose}\isanewline
+\ \ \ \ \ \ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}rule\ P{\isacharunderscore}Q\ {\isacharbrackleft}OF\ P{\isacharbrackright}{\isacharparenright}\isanewline
+\ \ \isacommand{qed}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ generaliseImpl{\isacharcolon}\isanewline
+\ \ \isakeyword{assumes}\ i{\isacharcolon}\ {\isachardoublequoteopen}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}PROP\ Pure{\isachardot}prop\ P\ {\isasymLongrightarrow}\ PROP\ Pure{\isachardot}prop\ Q{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\ \ \isakeyword{shows}\ {\isachardoublequoteopen}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}{\isacharparenleft}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}PROP\ X\ {\isasymLongrightarrow}\ PROP\ P{\isacharparenright}{\isacharparenright}\ {\isasymLongrightarrow}\ {\isacharparenleft}PROP\ Pure{\isachardot}prop\ {\isacharparenleft}PROP\ X\ {\isasymLongrightarrow}\ PROP\ Q{\isacharparenright}{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ i\isanewline
+\ \ \isacommand{proof}\isamarkupfalse%
+\ {\isacharparenleft}unfold\ prop{\isacharunderscore}def{\isacharparenright}\isanewline
+\ \ \ \ \isacommand{assume}\isamarkupfalse%
+\ i{\isadigit{1}}{\isacharcolon}\ {\isachardoublequoteopen}PROP\ P\ {\isasymLongrightarrow}\ PROP\ Q{\isachardoublequoteclose}\isanewline
+\ \ \ \ \isacommand{assume}\isamarkupfalse%
+\ i{\isadigit{2}}{\isacharcolon}\ {\isachardoublequoteopen}PROP\ X\ {\isasymLongrightarrow}\ PROP\ P{\isachardoublequoteclose}\isanewline
+\ \ \ \ \isacommand{assume}\isamarkupfalse%
+\ X{\isacharcolon}\ {\isachardoublequoteopen}PROP\ X{\isachardoublequoteclose}\isanewline
+\ \ \ \ \isacommand{show}\isamarkupfalse%
+\ {\isachardoublequoteopen}PROP\ Q{\isachardoublequoteclose}\isanewline
+\ \ \ \ \ \ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}rule\ i{\isadigit{1}}\ {\isacharbrackleft}OF\ i{\isadigit{2}}\ {\isacharbrackleft}OF\ X{\isacharbrackright}{\isacharbrackright}{\isacharparenright}\isanewline
+\ \ \isacommand{qed}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+%
+\isadelimML
+\isanewline
+%
+\endisadelimML
+%
+\isatagML
+\isacommand{ML{\isacharunderscore}file}\isamarkupfalse%
+\ {\isachardoublequoteopen}generalise{\isacharunderscore}state{\isachardot}ML{\isachardoublequoteclose}%
+\endisatagML
+{\isafoldML}%
+%
+\isadelimML
+\isanewline
+%
+\endisadelimML
+%
+\isadelimtheory
+\isanewline
+%
+\endisadelimtheory
+%
+\isatagtheory
+\isacommand{end}\isamarkupfalse%
+%
+\endisatagtheory
+{\isafoldtheory}%
+%
+\isadelimtheory
+%
+\endisadelimtheory
+%
+\end{isabellebody}%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "root"
+%%% End:
