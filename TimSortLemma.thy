@@ -393,24 +393,5 @@ elem_larger_than_bound rl (l-1) u \<Longrightarrow> length rl = l \<Longrightarr
       apply (auto simp add:elem_inv_def elem_larger_than_bound_def elem_bigger_than_next_2_def elem_bigger_than_next_def)
   by (metis Suc_diff_le diff_Suc_Suc numeral_2_eq_2)
 
-(*
-lemma "
-elem_inv rl 0 u \<Longrightarrow>
- elem_inv rl 1 u \<Longrightarrow> 
-elem_bigger_than_next rl 2 \<Longrightarrow> 
-elem_larger_than_bound rl 3 u \<Longrightarrow>
-length rl = 4 \<Longrightarrow> u \<ge> 16 
-\<Longrightarrow> sum rl \<ge> 119"
-  apply (simp add:elem_inv_def elem_larger_than_bound_def elem_bigger_than_next_2_def elem_bigger_than_next_def)
-  apply (case_tac rl)
-   prefer 2
-   apply (case_tac list)
-    prefer 2
-    apply (case_tac lista)
-     prefer 2
-     apply (case_tac listb)
-      apply auto
-  done
-*)
 
 end
