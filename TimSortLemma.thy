@@ -365,14 +365,13 @@ next
 qed
 
 lemma l119[simp]: "16 * (fib 5 - Suc 0) + (fib2 5 - 5) = 119"
-  sorry
+  by eval
 lemma l1541[simp]: "16 * (fib 10 - Suc 0) + (fib2 10 - 10) = 1541"
-  sorry
+  by eval
 lemma l119150[simp]: "16 * (fib 19 - Suc 0) + (fib2 19 - 19) = 119150"
-  sorry
+  by eval
 lemma l2917[simp]: "16 * (fib 40 - Suc 0) + (fib2 40 - 40) = 2917196495"
-  sorry
-(* value "16 * (fib 40 - Suc 0) + (fib2 40 - 40)" *)
+  by eval
 
 lemma run_len_elem_lower_bound: "
 \<forall>i. 3\<le>i \<and> i\<le>l \<longrightarrow> elem_inv rl (l-i) u \<Longrightarrow>
