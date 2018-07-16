@@ -30,9 +30,6 @@ lemma list_copy_zero:"list_copy xs n ys m 0 = xs"
 definition sorted_in::"int list \<Rightarrow> nat \<Rightarrow> nat \<Rightarrow> bool" where
 "sorted_in xs lo hi = (\<forall>i. (i\<ge>lo\<and>i<hi)\<longrightarrow>(xs!i\<le>xs!(i+1)))"
 
-thm allE
-value "sorted [0,-1::int]"
-value "([0::int,-1]!0) \<le>([0::int,-1]!1)"
 lemma sorted_in_one_more: "sorted_in xs lo hi \<Longrightarrow> sorted_in (x#xs) (Suc lo) (Suc hi)"
   apply (auto simp add:sorted_in_def)
   apply (erule_tac ?x = "i-1" in allE)
@@ -110,21 +107,6 @@ definition elem_inv::"nat list \<Rightarrow> nat \<Rightarrow> nat \<Rightarrow>
       (elem_bigger_than_next array index) \<and>
       (elem_larger_than_bound array index bound)"
 
-
-value "(1::int)#2#3#[]"
-value "last ((1::int)#2#3#[])"
-value "butlast ((1::int)#2#3#[])"
-
-value "((1::int)#2#3#[])!2"
-value "take 2 ((1::int)#2#3#[])"
-value "((1::int)#2#3#[])[2:=10]"
-value "replicate 5 (6::nat)"
-value "if (3::nat)>4 then 5::nat else (if (3::nat)>4 then 7 else 8)"
-
-value "if 150 < (120::nat) then (4::nat) else 
-                (if (150::nat) < 1542 then (9::nat) else
-                 (if (150::nat) < 119151 then (18::nat) else (39::nat)))"
-
 lemma suc_simp:"Suc n = n+1"
   by simp
 
@@ -137,8 +119,6 @@ primrec sumn :: "nat list \<Rightarrow> nat \<Rightarrow> nat"
   where
 "sumn a 0 = 0" |
 "sumn a (Suc n) = a!n + (sumn a n)"
-
-value "sumn (1#2#3#[]) 2"
 
 fun fib:: "nat \<Rightarrow> nat" where
 "fib 0 = 1" |
@@ -156,17 +136,6 @@ lemma fib_plus_2: "fib(n+2) = fib(n+1) + fib(n)"
 
 lemma fib2_plus_2: "fib2(n+2) = fib2(n+1) + fib2(n) + 1"
   by auto
-
-value "((fib 5) - 1)*16 + (fib2 5) - (5)"
-value "((fib 19) - 1)*16 + (fib2 19) - (19)"
-
-value "fib 3"
-value "fib2 3"
-term "15::nat"
-
-
-
-
 
 (* lemma for push_run_spec *)
 lemma less_than: "\<lbrakk>(a::nat)\<le>(b::nat); a\<noteq>b\<rbrakk> \<Longrightarrow> a<b"
@@ -392,6 +361,7 @@ elem_larger_than_bound rl (l-1) u \<Longrightarrow> length rl = l \<Longrightarr
       apply (auto simp add:elem_inv_def elem_larger_than_bound_def elem_bigger_than_next_2_def elem_bigger_than_next_def)
   by (metis Suc_diff_le diff_Suc_Suc numeral_2_eq_2)
 
+(*
 lemma "
 elem_inv rl 0 u \<Longrightarrow>
  elem_inv rl 1 u \<Longrightarrow> 
@@ -409,6 +379,6 @@ length rl = 4 \<Longrightarrow> u \<ge> 16
      apply (case_tac listb)
       apply auto
   done
-
+*)
 
 end

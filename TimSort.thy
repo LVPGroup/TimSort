@@ -40,8 +40,7 @@ lemma (in merge_at_impl) merge_at_spec:
 (invariant \<acute>run_len \<acute>run_base \<acute>a \<acute>stack_size) \<and>
 (sumn \<acute>run_len \<acute>stack_size = sumn \<^bsup>\<sigma>\<^esup>run_len \<^bsup>\<sigma>\<^esup>stack_size) \<and>
 (\<acute>run_len!(\<acute>stack_size-1) \<ge> \<^bsup>\<sigma>\<^esup>run_len!(\<^bsup>\<sigma>\<^esup>stack_size-1)) \<rbrace>"
-  sorry
-(*  apply (simp only:invariant_def)
+  apply (simp only:invariant_def)
   apply (hoare_rule HoarePartial.ProcNoRec1)
   apply vcg
   apply (rename_tac a ys xs l i)
@@ -178,7 +177,7 @@ lemma (in merge_at_impl) merge_at_spec:
    apply clarsimp
   apply clarsimp
   apply (smt Suc_diff_Suc Suc_lessI leD length_list_update less_or_eq_imp_le minus_nat.diff_0 not_less_eq nth_list_update_eq numeral_2_eq_2 numeral_3_eq_3)
-  done  *)
+  done  
 
 
 lemma (in push_run_impl) push_run_spec:
@@ -202,8 +201,7 @@ PROC push_run(\<acute>run_base_i, \<acute>run_len_i)
 (\<forall>i. (i\<ge>0 \<and> i<\<acute>stack_size-1) \<longrightarrow> (\<acute>run_base!i = \<^bsup>\<sigma>\<^esup>run_base!i)) \<and> 
 (invariant \<acute>run_len \<acute>run_base \<acute>a \<acute>stack_size) \<and>
 (size \<acute>a = size \<^bsup>\<sigma>\<^esup>a) \<rbrace>"
-  sorry
-(*  apply (simp add:invariant_def)
+  apply (simp add:invariant_def)
   apply (hoare_rule HoarePartial.ProcNoRec1)
   apply vcg
   apply (subgoal_tac "stack_size<length run_len")
@@ -277,7 +275,7 @@ PROC push_run(\<acute>run_base_i, \<acute>run_len_i)
       prefer 2
   using run_len_iter[of 39] apply simp
   apply linarith
-  done *)
+  done 
 
 lemma (in merge_collapse_impl) merge_collapse_spec:
 "\<forall>\<sigma>. \<Gamma>\<turnstile> \<lbrace>\<sigma>. (\<acute>stack_size>0) \<and> (\<acute>stack_size\<ge>4 \<longrightarrow> elem_inv \<acute>run_len (\<acute>stack_size-4) 16) \<and>
@@ -293,8 +291,7 @@ PROC merge_collapse()
 (invariant \<acute>run_len \<acute>run_base \<acute>a \<acute>stack_size) \<and>
 (size \<acute>a = size \<^bsup>\<sigma>\<^esup>a)\<and>
 (\<acute>run_base!0 = \<^bsup>\<sigma>\<^esup>run_base!0) \<rbrace>"
-  sorry
-(*  apply (hoare_rule HoarePartial.ProcNoRec1)
+  apply (hoare_rule HoarePartial.ProcNoRec1)
   apply (hoare_rule anno="TRY WHILE \<acute>stack_size > 1 
     INV \<lbrace>
     (sumn \<acute>run_len \<acute>stack_size  = sumn \<^bsup>\<sigma>\<^esup>run_len \<^bsup>\<sigma>\<^esup>stack_size) \<and>
@@ -359,7 +356,7 @@ PROC merge_collapse()
    apply (smt Suc_diff_le Suc_numeral diff_Suc_Suc nat_less_le not_less numeral_2_eq_2 numeral_3_eq_3 semiring_norm(2) semiring_norm(8) zero_less_Suc zero_less_diff)
   apply (simp add:elem_larger_than_bound_def)
      apply (smt Suc_diff_le Suc_lessI Suc_numeral diff_Suc_Suc diff_le_self diff_less le_antisym le_less_trans less_imp_le_nat semiring_norm(2) semiring_norm(8) zero_less_Suc zero_less_numeral)
-  done *)
+  done 
 
 
 lemma (in merge_force_collapse_impl) merge_force_collapse_spec:
@@ -370,8 +367,7 @@ PROC merge_force_collapse()
 \<lbrace> (\<acute>stack_size = 1) \<and>
 (invariant \<acute>run_len \<acute>run_base \<acute>a \<acute>stack_size) \<and>
 (size \<acute>a = size \<^bsup>\<sigma>\<^esup>a) \<rbrace>"
-  sorry
-(*  apply (hoare_rule HoarePartial.ProcNoRec1)
+  apply (hoare_rule HoarePartial.ProcNoRec1)
   apply (hoare_rule anno="WHILE \<acute>stack_size > 1
 INV \<lbrace> (sumn \<acute>run_len \<acute>stack_size  = sumn \<^bsup>\<sigma>\<^esup>run_len \<^bsup>\<sigma>\<^esup>stack_size) \<and>
     (\<forall>i. ((i\<ge>5 \<and> i\<le>\<acute>stack_size)\<longrightarrow>(elem_inv \<acute>run_len (\<acute>stack_size-i) 16))) \<and>
@@ -409,7 +405,7 @@ CALL merge_at(\<acute>n) OD" in HoarePartial.annotateI)
     apply auto[1]
    apply force
   apply auto[1]
-  done*)
+  done
 
 lemma (in reverse_range_impl) reverse_range_modifies:
   shows
@@ -580,8 +576,7 @@ lemma (in sort_impl) sort_spec:
 (\<acute>lo +2\<le> \<acute>hi) \<and> (\<acute>hi \<le> size \<acute>array) \<and> (\<acute>hi - \<acute>lo \<ge> 16) \<and> (length \<acute>array < 2917196496) \<rbrace> (* if lo + 1 = hi then the array is already sorted *)
 PROC sort(\<acute>array, \<acute>lo, \<acute>hi, \<acute>ret) 
 \<lbrace> True\<rbrace>"
-  sorry
-(*  apply (hoare_rule HoarePartial.ProcNoRec1)
+  apply (hoare_rule HoarePartial.ProcNoRec1)
   apply (hoare_rule anno = "
              TRY \<acute>n_remaining :== \<acute>hi - \<acute>lo;; IF \<acute>n_remaining < 2 THEN \<acute>ret :== \<acute>array;; THROW FI;;
                 IF \<acute>n_remaining < 32
@@ -714,14 +709,14 @@ PROC sort(\<acute>array, \<acute>lo, \<acute>hi, \<acute>ret)
    apply (simp only:elem_larger_than_bound_def)
 (* finish {inv} c {inv} *)
   apply (intro conjI impI)
-                   apply (simp_all add:elem_larger_than_bound_def elem_inv_def elem_bigger_than_next_2_def elem_bigger_than_next_def)
+     apply (simp_all add:elem_larger_than_bound_def elem_inv_def elem_bigger_than_next_2_def elem_bigger_than_next_def)
   apply (subgoal_tac "length a \<noteq> 0")
    apply clarsimp
   apply clarsimp
   apply (case_tac "stack_size")
    apply clarify
   using sumn.simps apply clarsimp
-  done *)
+  done 
 
 
 end
