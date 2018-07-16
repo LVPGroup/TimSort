@@ -482,6 +482,7 @@ void timsort(int *array, int array_len)
     run_base = (int*)malloc(sizeof(int) * stack_len);
     while (n_remaining != 0) {
         run_len_i = count_run_and_make_ascending(a, lo, hi);
+//        printf("%d\n",run_len_i);
         if (run_len_i < min_run) {
             if (n_remaining <= min_run) {
                 force = n_remaining;
@@ -516,28 +517,55 @@ int cmpfunc (const void * a, const void * b) {
 int main(int argc, char const *argv[])
 {
     int *test_array;
-    int test_length;
+    int gen_time,gen_max,step_max;
     int *timsort_res;
     int *quicksort_res;
-    int i;
-    clock_t start,end;
-    float s1,s2;
-    test_length = 1000000;
+    int i,j;
+    int *gen_length;
+    int array_length = 0;
+    gen_time = 500000;
+    gen_max = 100;
+    step_max = 100;
     srand48(time(NULL));
-    test_array = (int*)malloc(sizeof(int) * test_length);
-    for (i = 0; i < test_length; ++i) {
-        test_array[i] = (int)(1000*drand48());
+    gen_length = (int*)malloc(gen_time* sizeof(int));
+    gen_length[0] = 0;
+    for (i = 1; i < gen_time; ++i) {
+        gen_length[i] = gen_length[i-1] + (int)(gen_max*drand48());
     }
-    timsort_res = (int*)malloc(sizeof(int)*test_length);
-    quicksort_res = (int*)malloc(sizeof(int)*test_length);
-    memcpy(timsort_res, test_array, test_length* sizeof(int));
-    memcpy(quicksort_res, test_array, test_length* sizeof(int));
-    timsort(timsort_res, test_length);
-    qsort(quicksort_res, (unsigned)test_length, sizeof(int), cmpfunc);
-    if (check_sort(quicksort_res, timsort_res, 0, test_length) == 1) {
+    array_length = gen_length[i-1];
+    test_array = (int*)malloc(sizeof(int) * array_length);
+    for (i = 1; i < gen_time; ++i) {
+        test_array[gen_length[i-1]] = 0;
+        for (j = gen_length[i-1]+1; j < gen_length[i]; ++j) {
+            test_array[j] = test_array[j-1] + (int)(step_max*drand48());
+        }
+    }
+//    for (i = 0; i < gen_time; ++i) {
+//        printf("%d ",gen_length[i]);
+//    }
+//    printf("\n");
+//    for (i = 0; i < array_length; ++i) {
+//        printf("%d ",test_array[i]);
+//    }
+
+    printf("length:%d\n",array_length);
+    timsort_res = (int*)malloc(sizeof(int)*array_length);
+    quicksort_res = (int*)malloc(sizeof(int)*array_length);
+    memcpy(timsort_res, test_array, array_length* sizeof(int));
+    memcpy(quicksort_res, test_array, array_length* sizeof(int));
+    clock_t start = clock();
+    timsort(timsort_res, array_length);
+    clock_t end = clock();
+    float s1 = (float)(end - start) / CLOCKS_PER_SEC;
+    start = clock();
+    qsort(quicksort_res, (unsigned)array_length, sizeof(int), cmpfunc);
+    end = clock();
+    float s2 = (float)(end - start) / CLOCKS_PER_SEC;
+    if (check_sort(quicksort_res, timsort_res, 0, array_length) == 1) {
          printf("wrong\n");
      } else {
          printf("right\n");
+         printf("tim:%.3f quick:%.3f",s1,s2);
      }
     return 0;
 }
