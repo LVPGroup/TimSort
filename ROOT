@@ -1,5 +1,5 @@
 session "TimSort" = "HOL" +
-  options [document = pdf, document_output = "output"]
+  options [document = false]
   sessions
     "HOL-Library"
     "HOL-Statespace"
@@ -8,5 +8,3 @@ session "TimSort" = "HOL" +
     TimSortProc
     GallopA
     TimSort
-  document_files
-    "root.tex"
