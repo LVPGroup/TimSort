@@ -1,4 +1,5 @@
 session "TimSort" = Simpl +
+  options [timeout = 1800]
   theories
     TimSortLemma
     TimSortProc
