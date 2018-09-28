@@ -1,5 +1,5 @@
 theory TimSortProc
-  imports "Simpl/Vcg" Main "~~/src/HOL/Library/Code_Target_Numeral" "TimSortLemma"
+  imports "Simpl.Vcg" "TimSortLemma"
 begin 
 
 hoarestate globals_var = 

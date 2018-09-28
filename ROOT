@@ -1,8 +1,5 @@
-session "TimSort" = "HOL" +
+session "TimSort" = Simpl +
   options [document = false]
-  sessions
-    "HOL-Library"
-    "HOL-Statespace"
   theories
     TimSortLemma
     TimSortProc

@@ -1,5 +1,5 @@
 theory TimSortLemma
-  imports  Main "~~/src/HOL/Library/Code_Target_Numeral" 
+  imports  Main "HOL-Library.Code_Target_Numeral" 
 begin
 definition list_copy :: "'a list \<Rightarrow> nat \<Rightarrow> 'a list  \<Rightarrow> nat \<Rightarrow> nat \<Rightarrow> 'a list" where
 "list_copy xs n ys m l = (take n xs) @ (take l (drop m ys)) @ (drop (n+l) xs)"

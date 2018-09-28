@@ -1,5 +1,5 @@
 theory TimSort
-  imports "Simpl/Vcg" Main "~~/src/HOL/Library/Code_Target_Numeral" "TimSortLemma" "TimSortProc" "GallopA"
+  imports "GallopA"
 begin
 
 definition equal_size :: "nat list \<Rightarrow> nat list \<Rightarrow> bool" where

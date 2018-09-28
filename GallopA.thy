@@ -1,5 +1,5 @@
 theory GallopA
-  imports "Simpl/Vcg" Main "~~/src/HOL/Library/Code_Target_Numeral" "TimSortLemma" "TimSortProc"
+  imports "TimSortProc"
 begin
 
 
@@ -396,9 +396,16 @@ CATCH
 Skip
 END"
         in HoarePartial.annotateI) 
-   apply vcg 
-    apply (simp_all)
-    apply (auto simp add:Suc_diff_Suc)
+  apply vcg
+  subgoal by (simp add:Suc_diff_Suc)
+  subgoal by simp
+  subgoal
+    apply simp
+    using less_imp_diff_less by force
+  subgoal by simp
+  subgoal by (auto simp add:Suc_diff_Suc)
+  subgoal by simp
+  subgoal by simp
   done 
 
 
